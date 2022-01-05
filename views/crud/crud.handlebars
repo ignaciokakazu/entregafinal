@@ -1,0 +1,79 @@
+
+<div class="container">
+<h1>CRUD</h1>
+
+<form>
+    <div class="form-group">
+        <label>Id</label>
+        <input type='text' name='id' class='form-control' disabled>
+    </div>
+    <div class="form-group">
+        <label>Nombre</label>
+        <input type='text' name='nombre' class='form-control'>
+    </div>
+    <div class="form-group">
+        <label>Descripción</label>
+        <input type='text' name='descripcion' class='form-control'>
+    </div>
+    <div class="form-group">
+        <label>Código</label>
+        <input type='text' name='codigo' class='form-control'>
+    </div>
+    <div class="form-group">
+        <label>Foto</label>
+        <input type='text' name='foto' class='form-control'>
+    </div>
+    <div class="form-group">
+        <label>Precio</label>
+        <input type='text' name='precio' class='form-control'>
+    </div>
+    <div class="form-group">
+        <label>Stock</label>
+        <input type='text' name='stock' class='form-control'>
+    </div>
+
+</form>
+    <button class="btn btn-primary" id="btnAgregar">Agregar</button>
+    <button class="btn btn-secondary" id="btnEditar" style='display:none;'>Editar</button>
+
+        <div id="tablaProductos" class="mt-5">
+                {{#if prod}}
+                <table class='table'>
+                    <tr>
+                        <thead>
+                            <th scope='col'>Id</th>
+                            <th scope='col'>Producto</th>
+                            <th scope='col'>Descripción</th>
+                            <th scope='col'>Código</th>
+                            <th scrope='col'>Foto</th>
+                            <th scrope='col'>Precio</th>
+                            <th scope='col'>Stock</th>
+                            <th scrope='col'>Editar</th>
+                            <th scope='col'>Borrar</th>
+                        </thead>
+                    </tr>
+                        {{#each prod}}
+                        <tr id="fila-{{id}}">
+                        <td>{{id}}</td>
+                        <td>{{nombre}}</td>
+                        <td>{{descripcion}}</td>
+                        <td>{{codigo}}</td>
+                        <td><img src='{{foto}}' width="50px"></td>
+                        <td>{{precio}}</td>
+                        <td>{{stock}}</td>
+                        <td><button onclick='seleccionEditar({{id}})' class='btn btn-warning'>Editar</button></td>
+                        <td><button onclick='borrarProducto({{id}});' class='btn btn-danger'>Borrar</button></td>
+                        </tr>
+                        {{/each}}
+                </table>
+                {{else}}
+                <div class="card">
+                    <div class="card-text">
+                        <h2>No se encontraron productos</h2>
+                    </div>
+                </div>
+                {{/if}}
+            
+        </div>
+</div>
+<script src='../js/interno/crud.js'
