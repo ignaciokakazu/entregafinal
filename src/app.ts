@@ -23,7 +23,7 @@ if (modo === 'FORK') {
     })
 } else {
     if (cluster.isMaster && cluster.isPrimary) {
-        const numCPU = process.env.WEB_CONCURRENCY || 1; //os.cpus().length
+        const numCPU = 2//process.env.WEB_CONCURRENCY || 1; //os.cpus().length
         infoLogger.info(`NÚMERO DE CPUS => ${numCPU}`);
         infoLogger.info(`PID MASTER => ${process.pid}`);
 
