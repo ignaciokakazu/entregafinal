@@ -1,5 +1,5 @@
 import {ProductosFSDAO} from './DAO/fileSystem';
-import {ProductosSQLiteDAO} from './DAO/sqlite';
+// import {ProductosSQLiteDAO} from './DAO/sqlite';
 import { ProductosMemoryDAO } from './DAO/memory';
 import { ProductosMYSQLDAO } from './DAO/mySQL';
 import {ProductosMongoDAO} from './DAO/mongodb';
@@ -22,9 +22,9 @@ export class ProductosFactoryDAO {
                 console.log("Soy Factory y es el FS");
                 return new ProductosFSDAO();
             
-            case TipoPersistencia.sqlite:
-                console.log("Soy el factory y es sqlite");
-                return new ProductosSQLiteDAO();
+            // case TipoPersistencia.sqlite:
+            //     console.log("Soy el factory y es sqlite");
+            //     return new ProductosSQLiteDAO();
             
             case TipoPersistencia.memory:
                 console.log("Soy el factory y es memory");
