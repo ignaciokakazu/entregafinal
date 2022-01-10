@@ -1,6 +1,6 @@
 import {Request, Response, NextFunction} from 'express';
 import {apiLogin} from '../apis/login';
-import {UserI, NewUserI} from '../models/login/login.interfaces';
+import {UserI, NewUserI} from '../interfaces/login.interfaces';
 import Joi from 'joi';
 import bcrypt from 'bcrypt';
 import {infoLogger} from '../services/logger';

@@ -1,4 +1,4 @@
-// const urlOrigen = 'http://localhost:8080/'
+const urlOrigen = 'http://localhost:8080/'
 
 /* -----eliminar ------------------*/
 const borrarProducto = async (id) => {
@@ -33,7 +33,7 @@ const agregarProducto = (e) => {
   e.preventDefault();
 
   const inputs = document.getElementsByTagName('input');
-  console.log(inputs[0].name);
+  console.log(inputs)
   const producto = {
     nombre: inputs[1].value,
     descripcion: inputs[2].value,
@@ -42,44 +42,45 @@ const agregarProducto = (e) => {
     precio: inputs[5].value,
     stock: inputs[6].value,
   };
+  console.log(producto)
+  console.log(JSON.stringify(producto))
+//   postDataParams(urlOrigen + 'api/images/upload', JSON.stringify(producto))
+//     .then((response) => response.json())
+//     .then((data) => {
+//       // si es ok, devuelve un mensaje. sino un error
+//       if (data.error) {
+//         alert(data.error);
+//       }
+//       if (data.msg) {
+//         alert(data.msg);
+//         console.log(producto);
+//         filaAppend(producto, data.id);
+//         // actualizar la tabla
 
-  postDataParams(urlOrigen + 'api/productos/agregar', JSON.stringify(producto))
-    .then((response) => response.json())
-    .then((data) => {
-      // si es ok, devuelve un mensaje. sino un error
-      if (data.error) {
-        alert(data.error);
-      }
-      if (data.msg) {
-        alert(data.msg);
-        console.log(producto);
-        filaAppend(producto, data.id);
-        // actualizar la tabla
+//         const inputs = document.getElementsByTagName('input');
+//         for (let i = 0; i < inputs.length; i++) {
+//           inputs[i].value = '';
+//         }
+//       }
+//     })
+//     .catch((error) => alert(error));
+// };
 
-        const inputs = document.getElementsByTagName('input');
-        for (let i = 0; i < inputs.length; i++) {
-          inputs[i].value = '';
-        }
-      }
-    })
-    .catch((error) => alert(error));
-};
+// async function postDataParams(url, data) {
+//   const response = await fetch(url, {
+//     method: 'POST', // *GET, POST, PUT, DELETE, etc.
+//     mode: 'cors', // no-cors, *cors, same-origin
+//     headers: {
+//       'Content-Type': 'application/json',
+//     },
+//     body: data,
+//   });
 
-async function postDataParams(url, data) {
-  const response = await fetch(url, {
-    method: 'POST', // *GET, POST, PUT, DELETE, etc.
-    mode: 'cors', // no-cors, *cors, same-origin
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: data,
-  });
+//   return response;
+// }
 
-  return response;
-}
-
-const btnAgregar = document.getElementById('btnAgregar');
-btnAgregar.addEventListener('click', agregarProducto);
+// const btnAgregar = document.getElementById('btnAgregar');
+// btnAgregar.addEventListener('click', agregarProducto);
 
 const filaAppend = (producto, id) => {
   const tablas = document.getElementsByClassName('table');

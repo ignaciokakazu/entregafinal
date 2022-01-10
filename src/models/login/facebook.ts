@@ -1,7 +1,7 @@
 import { string } from 'joi';
 import Mongoose from 'mongoose';
 import config from '../../config/config';
-import {UserI, NewUserI} from './login.interfaces';
+import {UserI, NewUserI} from '../../interfaces/login.interfaces';
 
 /*schemas para mongoose*/
 const usersSchema = new Mongoose.Schema<UserI>({

@@ -1,8 +1,8 @@
 /* eslint-disable import/no-unresolved */
 import {Request, Response} from 'express';
 import {api} from '../apis/api';
-import {CarritoArray, CarritoInterface, NewCarritoInterface} from '../models/carrito/carrito.interfaces';
-import {UserI} from '../models/login/login.interfaces';
+import {CarritoArray, CarritoInterface, NewCarritoInterface} from '../interfaces/carrito.interfaces';
+import {UserI} from '../interfaces/login.interfaces';
 import {infoLogger} from '../services/logger';
 import { apiLogin } from '../apis/login';
 import SmsService from '../services/twilio';

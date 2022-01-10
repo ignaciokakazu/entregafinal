@@ -5,8 +5,8 @@
   "main": "dist/app.js",
   "scripts": {
     "build": "npm install && node_modules/.bin/tsc",
-    "start": "npm run build && node dist/index.js --cluster",
-    "start:test": "tsc && node dist/index.js --cluster",
+    "start": "npm run build && node dist/app.js --cluster",
+    "start:test": "tsc && node dist/app.js --cluster",
     "dev": "nodemon",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

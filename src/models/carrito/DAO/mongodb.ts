@@ -1,8 +1,8 @@
 import mongoose from 'mongoose';
-import {CarritoInterface, NewCarritoInterface} from '../carrito.interfaces';
+import {CarritoInterface, NewCarritoInterface} from '../../../interfaces/carrito.interfaces';
 import Config from '../../../config/config';
 import Moment from 'moment';
-import { ProductoInterface } from '../../productos/productos.interfaces';
+import { ProductoInterface } from '../../../interfaces/productos.interfaces';
 import {infoLogger} from '../../../services/logger';
 
 const carritoSchema = new mongoose.Schema<CarritoInterface>({

@@ -1,7 +1,7 @@
 import Mongoose from 'mongoose';
 import bcrypt from 'bcrypt';
 import config from '../../../config/config';
-import {UserI, NewUserI} from '../login.interfaces';
+import {UserI, NewUserI} from '../../../interfaces/login.interfaces';
 import { infoLogger } from '../../../services/logger';
 
 

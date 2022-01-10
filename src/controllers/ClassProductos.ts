@@ -3,7 +3,7 @@
 import { Request, Response, NextFunction } from 'express';
 import Joi from 'joi'
 import {ProductoInterface,
-        NewProductoInterface} from '../models/productos/productos.interfaces';
+        NewProductoInterface} from '../interfaces/productos.interfaces';
 import {MensajeErrorInterface} from '../models/mensajes/mensajeError.interfaces';
 import {api} from '../apis/api';
 import { infoLogger } from '../services/logger';
@@ -16,6 +16,16 @@ class ClassProductos {
             res.json(lista);
         } catch (error: any) {
             res.json({error: error.message});
+        }
+    }
+
+    async getProductosByCat(req: Request, res: Response) {
+        try {
+            const category: string = req.params.category;
+            const prod: ProductoInterface[] = await api.getProductosByCat(category);
+            res.json(prod);
+        } catch (error: any) {
+            res.json({error: error.message})
         }
     }
 
@@ -43,10 +53,11 @@ class ClassProductos {
                 nombre: req.body.nombre,
                 descripcion: req.body.descripcion,
                 codigo: req.body.codigo,
-                foto: req.body.foto,
+                fotos: req.body.fotos,
                 precio: req.body.precio,
                 stock: req.body.stock,
-                timestamp: new Date().toString()
+                timestamp: new Date(),
+                idCategoria: req.body.idCategoria
             }
 
             const respuesta = await api.insertProducto(newProducto);
@@ -84,10 +95,11 @@ class ClassProductos {
                 nombre: req.body.nombre,
                 descripcion: req.body.descripcion,
                 codigo: req.body.codigo,
-                foto: req.body.foto,
+                fotos: req.body.fotos,
                 precio: req.body.precio,
                 stock: req.body.stock,
-                timestamp: new Date().toString()
+                timestamp: new Date(),
+                idCategoria: req.body.idCategoria
             }
 
             await api.updateProducto(id, obj);
@@ -116,7 +128,7 @@ class ClassProductos {
             nombre: Joi.string().min(3).max(50).required(),
             descripcion: Joi.string().min(10).max(200).required(),
             codigo: Joi.string().min(3).max(3).required(),
-            foto: Joi.string().min(3).max(200).required(),
+            fotos: Joi.array().items(Joi.string().min(6).max(200).required()),
             precio: Joi.number().required(),
             stock: Joi.number().integer().required(),
             // no está el timestamp porque se arma con el DAO

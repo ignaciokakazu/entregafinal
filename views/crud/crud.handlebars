@@ -2,7 +2,7 @@
 <div class="container">
 <h1>CRUD</h1>
 
-<form>
+<form action="http://localhost:8080/api/images/upload" enctype="multipart/form-data" method="post">
     <div class="form-group">
         <label>Id</label>
         <input type='text' name='id' class='form-control' disabled>
@@ -20,8 +20,14 @@
         <input type='text' name='codigo' class='form-control'>
     </div>
     <div class="form-group">
+        <label>Categoría</label>
+        <select name='categoria' class='form-control'>
+            <option></option>
+        </select>
+    </div>
+    <div class="form-group">
         <label>Foto</label>
-        <input type='text' name='foto' class='form-control'>
+        <input type='file' name='foto' class='form-control' multiple />
     </div>
     <div class="form-group">
         <label>Precio</label>
@@ -31,7 +37,7 @@
         <label>Stock</label>
         <input type='text' name='stock' class='form-control'>
     </div>
-
+    <input type='submit' value='enviar'>
 </form>
     <button class="btn btn-primary" id="btnAgregar">Agregar</button>
     <button class="btn btn-secondary" id="btnEditar" style='display:none;'>Editar</button>

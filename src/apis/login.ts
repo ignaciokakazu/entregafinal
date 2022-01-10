@@ -1,6 +1,6 @@
 import {Request, Response} from 'express';
 import {LoginFactory, TipoPersistencia} from '../models/login/login.factory';
-import {UserI} from '../models/login/login.interfaces';
+import {UserI} from '../interfaces/login.interfaces';
 /**
  * Con esta variable elegimos el tipo de persistencia
  */

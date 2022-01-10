@@ -13,7 +13,7 @@ import { Server } from 'socket.io';
 import { swaggerDocument } from './swagger';
 import config from '../config/config'
 import passport from '../middleware/passportLocal';
-import mainRouter from '../router/index';
+import mainRouter from '../routes/index';
 import { infoLogger } from './logger';
 // import { socket } from './socket';
 // import { socketProducts } from './services/socket'; //socket io

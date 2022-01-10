@@ -1,15 +1,15 @@
 export type ProductoArray = Array<ProductoInterface>;
 
 export interface ProductoInterface {
-    _id: string, 
-    //timestamp: string,
+    _id: string|number, 
     nombre: string,
     descripcion: string,
     codigo: string,
-    foto: string,
+    fotos: string[],
     precio: number,
     stock: number,
-    timestamp: string
+    timestamp: Date,
+    idCategoria: string
 }
 
 export interface NewProductoInterface {
@@ -17,9 +17,13 @@ export interface NewProductoInterface {
     nombre: string,
     descripcion: string,
     codigo: string,
-    foto: string,
+    fotos: string[],
     precio: number,
     stock: number,
-    timestamp: string
+    idCategoria: string
+    timestamp: Date
 }
 
+export interface Category {
+    nombre: string
+}

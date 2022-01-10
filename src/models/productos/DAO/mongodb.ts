@@ -4,7 +4,7 @@ import {
   ProductoInterface,
 //   ProductBaseClass,
 //   ProductQuery,
-} from '../productos.interfaces';
+} from '../../../interfaces/productos.interfaces';
 import Config from '../../../config/config';
 import escapeStringRegexp from 'escape-string-regexp';
 
@@ -16,7 +16,7 @@ export const productsSchema = new mongoose.Schema<ProductoInterface>({
   nombre: String,
   descripcion: String,
   codigo: String,
-  foto: String,
+  fotos: [String],
   precio: Number,
   stock: Number,
   timestamp: String
@@ -39,6 +39,10 @@ export class ProductosMongoDAO {//implements ProductBaseClass {
     return await this.productos.find();
   }
 
+  async getProductosByCat(cat: string) {
+    return await this.productos.find({categoria: cat});
+    
+  }
   async getProductosById(id:string) {
     return await this.productos.findById(id).exec();
   }

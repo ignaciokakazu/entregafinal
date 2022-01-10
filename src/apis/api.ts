@@ -2,9 +2,9 @@
 // import { ProductQuery } from '../models/interfaces';
 import {ProductosFactoryDAO, TipoPersistencia} from '../models/productos/productos.factory';
 import {CarritoFactoryDAO} from '../models/carrito/carrito.factory';
-import {ProductoInterface} from '../models/productos/productos.interfaces';
+import {ProductoInterface, NewProductoInterface} from '../interfaces/productos.interfaces';
 
-import {NewCarritoInterface, CarritoInterface} from '../models/carrito/carrito.interfaces';
+import {NewCarritoInterface, CarritoInterface} from '../interfaces/carrito.interfaces';
 /**
  * Con esta variable elegimos el tipo de persistencia
  */
@@ -21,21 +21,21 @@ class capaAPI { //incluye productos y carrito
   }
 
   //PRODUCTOS
-  async getProductosAll(): Promise<ProductoInterface>{//id: string | undefined = undefined){//: Promise<ProductI[]> {
+  async getProductosAll(): Promise<ProductoInterface[]>{//id: string | undefined = undefined){//: Promise<ProductI[]> {
     //if (id) return this.productos.getProductosById(id);
 
     return this.productos.getProductosAll();
   }
 
-  async getProductosById(id:string|number) {
+  async getProductosById(id:string|number): Promise<ProductoInterface> {
       return this.productos.getProductosById(id);
   }
 
-  async insertProducto(data:any) {
+  async insertProducto(data:NewProductoInterface) {
       return this.productos.insertProducto(data);
   }
 
-  async deleteProducto(data:any) {
+  async deleteProducto(data:string|number) {
     return this.productos.deleteProducto(data);
    }
 
@@ -43,8 +43,12 @@ class capaAPI { //incluye productos y carrito
     return this.productos.updateProducto(id, data);
    }
    
-   async search(data:string) {
+   async search(data:string): Promise<ProductoInterface[]> {
      return this.productos.search(data);
+   }
+
+   async getProductosByCat(data: string) {
+     return this.productos.productosByCat(data);
    }
 
    //carrito

@@ -28,11 +28,11 @@ router.get('/register', (req, res)=> {
 })
 
 router.get('/admin/index', async (req, res)=> {
-     const prod = await Productos.getProductosAll(req, res);
-     const datos = {
-         prod: prod 
-     }
-     res.render('crud/crud', datos);
+    //  const prod = await Productos.getProductosAll(req, res);
+    //  const datos = {
+    //      prod: prod 
+    //  }
+     res.render('crud/crud'); //datos);
  })
 
  router.get('/checkout', async (req, res)=> {
