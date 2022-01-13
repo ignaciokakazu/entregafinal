@@ -4,13 +4,8 @@ import { infoLogger } from './logger';
 import {Chat} from '../controllers/ClassChat';
 
 export const socket = (io: any) => {
-    //instancia el chat
-    // const chat:any = new classChat();
-    //  (async () => {
-    //  await chat.setChat()
-    //  })();
 
-    io.on('connection', (socket:any) => {
+      io.on('connection', (socket:any) => {
       infoLogger.info('Nueva Conexion establecida!');
  
       /*  CHAT */

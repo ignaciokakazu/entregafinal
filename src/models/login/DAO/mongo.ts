@@ -120,7 +120,7 @@ export class LoginAtlasDAO  {
           } else {
             output = await this.mongoModel.find();
           }
-          console.log(output)
+          infoLogger.log(output)
           return output;
         } catch (err) {
           return output;
@@ -141,16 +141,16 @@ export class LoginAtlasDAO  {
     } 
 
     async validatePassword(email:string, password:string): Promise<boolean> {
-        console.log('entro al validate ')
+        infoLogger.log('entro al validate ')
         //auth por Mongo
         try {
         
         // buscar en Mongo
         const userMongo = await this.mongoModel.find({username: email}).lean().exec();
-        console.log(userMongo[0].password)
+        infoLogger.log(userMongo[0].password)
         const compare = await bcrypt.compare(password, userMongo[0].password)
-        console.log('compare ')
-        console.log(compare)
+        infoLogger.log('compare ')
+        infoLogger.log(compare)
         return compare
         
         } catch (e:any) {

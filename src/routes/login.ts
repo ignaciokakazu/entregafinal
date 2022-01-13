@@ -122,18 +122,7 @@ router.get("/logout", function (req, res) {
  *                 data:
  *                    
  *       403:
- *         description: Validación de campos no cumple con los requisitos
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 data:
- *                   type: String
- *                   example: Campos del body invalidos
- *
- *       403:
- *         description: Username duplicado. Ya existe el username en la base de datos
+ *         description: Validación de campos no cumple con los requisitos. Username duplicado. Ya existe el username en la base de datos
  *         content:
  *           application/json:
  *             schema:

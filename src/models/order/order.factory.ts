@@ -1,4 +1,5 @@
 import { OrdersMongoDAO } from './DAO/mongodb';
+import { infoLogger } from '../../services/logger';
 
 export enum TipoPersistencia {
     fileSystem = 'FS',
@@ -30,11 +31,11 @@ export class OrderFactoryDAO {
             //     return new ProductosMYSQLDAO()
             
             case TipoPersistencia.mongodbLocal:
-                    console.log("Soy el factory y es mongo local");
+                    infoLogger.log("Soy el factory y es mongo local. MensajesAtlasDAO");
                     return new OrdersMongoDAO(true);
             
             case TipoPersistencia.mongodbAtlas:
-                    console.log("Soy el factory y es mongo Atlas");
+                    infoLogger.log("Soy el factory y es mongo local. MensajesAtlasDAO");
                     return new OrdersMongoDAO(false);
 
             // case TipoPersistencia.firebase:

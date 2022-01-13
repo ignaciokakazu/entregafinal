@@ -8,12 +8,7 @@ export class ProductosFSDAO {
     lista: any;
 
     constructor () {
-        // this.urls = {
-        //     carrito: "./carrito.txt",
-        //     productos: "./productos.txt",
-        // };
         const filePath = path.resolve(__dirname, './productos.txt');
-        console.log(filePath);
         this.url = filePath;
         //Acá hay que mockear los datos y crear el archivo
     }

@@ -23,14 +23,14 @@ var upload = multer({ storage : storage }).array('foto',2);
  * @swagger
  * api/images/upload/:
  *   post:
- *     summary: Guarda imagenes
+ *     summary: Guarda imagenes, hasta 2
  *     requestBody:
  *       required: true
  *       content:
  *         application/json:
  *     responses:
  *       200:
- *         description: Guarda imagenes
+ *         description: Guarda imagenes, hasta 2 imagenes
  *         content:
  *           application/json:
  *             schema:

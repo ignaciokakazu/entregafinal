@@ -5,27 +5,8 @@ import Moment from 'moment';
 import { ProductoInterface } from '../../../interfaces/productos.interfaces';
 import {infoLogger} from '../../../services/logger';
 import {CarritoI, ProdCarritoI, DireccionI} from '../../../interfaces/carrito.interfaces'
-
-// export interface CarritoI {
-//   userId: string,
-//   productos: [ProdCarritoI],
-//   timestampCreacion: Date, // fecha de creación y update
-//   direccion: DireccionI
-// }
-
-// export interface ProdCarritoI {
-//   id: string,
-//   cantidad: number,
-//   timestamp: Date
-// }
-
-// export interface DireccionI {
-//   calle: string,
-//   altura: string,
-//   codigoPostal: string,
-//   piso?: number,
-//   departamento?: number
-// }
+import { api } from '../../../apis/api';
+import { apiLogin } from '../../../apis/login';
 
 const carritoSchema = new mongoose.Schema<CarritoI>({
   //en el SCHEMA no va el _id... sino no podría hacer save del NewCarritoInterface
@@ -33,16 +14,15 @@ const carritoSchema = new mongoose.Schema<CarritoI>({
     productos: [{
       itemId: String,
       cantidad: Number,
-
       timestamp: Date
     }], 
     timestamp: String,
     direccion: {
       calle: String,
-      altura: String,
+      altura: Number,
       codigoPostal: String,
-      piso: Number,
-      departamento: Number
+      piso: {type: Number, required: false, default: 0},
+      departamento: {type: Number, required: false, default: ''}
     }
 });
 
@@ -90,74 +70,10 @@ export class CarritoMongoDAO {//implements ProductBaseClass {
     /* rehacer */
     const id:string = data._id
     const carrito = await this.carrito.findOne({_id: id}).exec();
-    console.log(id)
-    console.log(data.productos)
     if (!carrito) {
       return 'no se encuentra el carrito'
     }
-
-        // if (!carrito.productos) {
-        
-        //   // userId: String,
-        //   // productos: [{
-        //   //   itemId: String,
-        //   //   cantidad: Number,
-        //   //   timestamp: Date
-        //   // }], 
-        //   // timestamp: String,
-        //   // direccion: {
-        //   //   calle: String,
-        //   //   altura: String,
-        //   //   codigoPostal: String,
-        //   //   piso: Number,
-        //   //   departamento: Number
-        //   // }
-
-        // carrito.productos.push({
-        //     _id: data.producto._id,
-        //     nombre: data.producto.nombre,
-        //     descripcion: data.producto.descripcion,
-        //     codigo: data.producto.codigo,
-        //     foto: data.producto.foto,
-        //     precio: data.producto.precio,
-        //     cantidad: 1,
-        //     timestamp: new Date(),
-        // })
-        
-        // await this.carrito.findByIdAndUpdate(id, carrito)
-
-        return 'hola'
-
-    // } else {
-
-    //   const productoArray:any = carrito.productos.filter((element:any)=> element._id == data.producto._id)
-    //   const cantidad: number = parseInt(productoArray[0].cantidad) + 1;
-    //   console.log(productoArray);
-    //   const carritoSinProducto = carrito.productos.filter((element:any)=> element._id != data.producto._id)
-
-    //   console.log(carritoSinProducto)
-    //   carritoSinProducto.push({
-    //         _id: data.producto._id,
-    //         nombre: data.producto.nombre,
-    //         descripcion: data.producto.descripcion,
-    //         codigo: data.producto.codigo,
-    //         foto: data.producto.foto,
-    //         precio: data.producto.precio,
-    //         cantidad: cantidad,
-    //         timestamp: Moment().format('YYYY-MM-DD-HH-mm-ss-A')
-    //     })
-      
-    //   const carritoNuevo = {
-    //     _id: carrito._id,
-    //     user: carrito.user,
-    //     timestamp: carrito.timestamp,
-    //     producto: carritoSinProducto,
-    //     abierto: true
-    //   }
-    //     await this.carrito.findByIdAndUpdate(id, carritoNuevo)
-        
-    //     return carritoNuevo
-    // }
+   
   }
 
     async checkout(carrito: any) {
@@ -178,18 +94,20 @@ export class CarritoMongoDAO {//implements ProductBaseClass {
     }
 
     async setCarritoNuevo(id:string){
-    //   const data: NewCarritoInterface = {
-    //     timestamp: Moment().format('YYYY-MM-DD-HH-mm-ss-A'),
-    //     user: id,
-    //     producto: [],
-    //     abierto:true
+    //   const user = await apiLogin.getByEmail(id)
+    //   const data: CarritoI = {
+    //     timestamp: new Date(),
+    //     user: user._id,
+    //     productos: [],
+    //     direccion: user.direccion
     // }
+
     // try {
     //   const newProduct = new this.carrito(data);
       
     //   await newProduct.save(function(err:any,data){
     //       if (err) {
-    //           console.log('no se pudo grabar')
+    //           infoLogger.log('no se pudo grabar')
     //           throw new Error('no se pudo grabar')
     //       } 
           

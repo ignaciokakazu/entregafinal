@@ -1,9 +1,5 @@
-// import {CarritoFSDAO} from './DAO/carrito/fileSystem';
-// import {ProductosSQLiteDAO} from './DAO/productos/sqlite';
-// import { ProductosMemoryDAO } from './DAO/productos/memory';
-// import { ProductosMYSQLDAO } from './DAO/productos/mySQL';
 import {CarritoMongoDAO} from './DAO/mongodb';
-// import {ProductosFirebaseDAO} from './DAO/productos/firebase';
+import { infoLogger } from '../../services/logger';
 
 export enum TipoPersistencia {
     fileSystem = 'FS',
@@ -41,11 +37,11 @@ export class CarritoFactoryDAO {
         //             return new CarritoMongoDAO(true);
             
             case TipoPersistencia.mongodbAtlas:
-                    console.log("Soy el factory y es mongo Atlas");
+                    infoLogger.log("Soy el factory y es mongo Atlas");
                     return new CarritoMongoDAO(false);
 
         //     case TipoPersistencia.firebase:
-        //             console.log("Soy el factory y es firebase");
+        //             infoLogger.log("Soy el factory y es firebase");
         //             return new CarritoFirebaseDAO();
         }
     }

@@ -1,6 +1,7 @@
 import {Request, Response} from 'express';
 import {LoginFactory, TipoPersistencia} from '../models/login/login.factory';
 import {UserI} from '../interfaces/login.interfaces';
+import { infoLogger } from '../services/logger';
 /**
  * Con esta variable elegimos el tipo de persistencia
  */
@@ -38,7 +39,7 @@ class ApiLogin {
     }
     
     async validatePassword(email:string, password:string) : Promise<boolean> {
-        console.log('validate password, linea 38 api/login ' + email + " " + password)
+        infoLogger.log('validate password, linea 38 api/login ' + email + " " + password)
         return await this.user.validatePassword(email, password)
     }
     

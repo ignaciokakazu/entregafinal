@@ -1,5 +1,5 @@
 import {LoginAtlasDAO} from './DAO/mongo';
-
+import { infoLogger } from '../../services/logger';
 export enum TipoPersistencia {
     mongodbLocal = 'MOL',
     mongodbAtlas = 'MOA',
@@ -10,6 +10,7 @@ export class LoginFactory {
     static get(tipo: TipoPersistencia) {
         switch (tipo) {
             case TipoPersistencia.mongodbAtlas:
+                infoLogger.log("Soy el factory y es mongo local. MensajesAtlasDAO");
                 return new LoginAtlasDAO();
             
             /*case TipoLogin.facebook:

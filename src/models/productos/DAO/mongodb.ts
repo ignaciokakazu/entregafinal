@@ -2,11 +2,8 @@ import mongoose from 'mongoose';
 import {
   NewProductoInterface,
   ProductoInterface,
-//   ProductBaseClass,
-//   ProductQuery,
 } from '../../../interfaces/productos.interfaces';
 import Config from '../../../config/config';
-import escapeStringRegexp from 'escape-string-regexp';
 
 
 export const productsSchema = new mongoose.Schema<ProductoInterface>({
