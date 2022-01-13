@@ -9,17 +9,14 @@ import * as http from 'http';
 import helmet from 'helmet';
 import swaggerUi from 'swagger-ui-express';
 import cors from 'cors';
-import { Server } from 'socket.io';
 import { swaggerDocument } from './swagger';
 import config from '../config/config'
-import passport from '../middleware/passportLocal';
+// import passport from '../middleware/passportLocal';
 import mainRouter from '../routes/index';
 import { infoLogger } from './logger';
-// import { socket } from './socket';
+
 // import { socketProducts } from './services/socket'; //socket io
 // import myServer from './services/server';
-
-// socketProducts(io);
 
 const app = express();
 
@@ -30,26 +27,30 @@ app.use(helmet());
 app.use(express.json());
 app.use(express.urlencoded({extended: true}))
 
-app.use(cookieParser('secreto'))
+// app.set('llave', config.SESSION_SECRET);
+
+// app.use(cookieParser('secreto'))
 
 /* Passport */
-const StoreOptions = {
-  store: MongoStore.create({
-    mongoUrl: config.MONGO_ATLAS_SRV,
-  }),
+// const StoreOptions = {
+//   store: MongoStore.create({
+//     mongoUrl: config.MONGO_ATLAS_SRV,
+//   }),
 
-  secret: config.SESSION_SECRET,
-  resave: false,
-  saveUninitialized: false,
-  cookie: {
-    maxAge: Number(config.SESSION_COOKIE_TIMEOUT_MIN) * 60 * 1000,
-  },
-};
+//   secret: config.SESSION_SECRET,
+//   resave: false,
+//   saveUninitialized: false,
+//   cookie: {
+//     maxAge: Number(config.SESSION_COOKIE_TIMEOUT_MIN) * 60 * 1000,
+//   },
+// };
 
-app.use(session(StoreOptions));
+app.use(session({secret:'secreto', resave: false, saveUninitialized:false, cookie: {maxAge: 1000}}));
 
-app.use(passport.initialize());
-app.use(passport.session());
+// app.use(session(StoreOptions));
+
+// app.use(passport.initialize());
+// app.use(passport.session());
 
 // app.use((req:Request, res:Response, next:NextFunction)=> {
 //   console.log('middleware de server.ts')

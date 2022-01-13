@@ -4,8 +4,14 @@ import minimist from 'minimist';
 import config from './config/config';
 import { infoLogger } from './services/logger';
 import myServer from './services/server';
+import { socket } from './services/socket';
+import { Server } from 'socket.io';
 
 const PORT = process.env.PORT || config.PORT;
+
+/* websocket */
+const io = new Server(myServer);
+socket(io);
 
 /* FORK O CLUSTER */
 const argv = minimist(process.argv.slice(2));

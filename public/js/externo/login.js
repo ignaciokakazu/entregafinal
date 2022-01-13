@@ -87,7 +87,7 @@ const login = () => {
   const password = document.getElementById('password').value;  
 
   const obj = {
-    email: user,
+    username: user,
     password: password
   }
   console.log(obj)

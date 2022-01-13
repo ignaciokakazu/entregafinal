@@ -10,7 +10,6 @@ export class LoginFactory {
     static get(tipo: TipoPersistencia) {
         switch (tipo) {
             case TipoPersistencia.mongodbAtlas:
-                
                 return new LoginAtlasDAO();
             
             /*case TipoLogin.facebook:

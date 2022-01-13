@@ -1,0 +1,6 @@
+cosas a tener en cuenta:
+
+1. Los códigos de actividad que tienen un 0 adelante (por ejemplo 017010) puede borrarse el 0 cuando pasa al excel
+2. Hacer pruebas globales antes de subir. Por ejemplo: todas los registros de alícuotas deben tener notas, todos los códigos de actividad tienen 6 dígitos, cantidad de registros por artículo, etc.
+3. Explicar la estructura de la ley
+4. Ordenamiento de registros, en función a su orden de aparación

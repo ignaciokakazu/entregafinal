@@ -1,26 +1,36 @@
-import joi, { NumberSchema } from 'joi';
-
 export interface NewUserI {
     name: string,
-    email: string,
+    surname: string,
+    username: string,
     password: string,
     passwordConfirmation: string,
-    avatar: string,
-    direction: string,
     tel: number,
-    age: number,
-    country: string  
+    direccion: DireccionE,
+    admin: boolean
+}
+
+export interface DireccionE {
+    calle: string,
+    altura: number,
+    codigoPostal: string,
+    piso?: number,
+    departamento?: string|number,
 }
 
 /* el usuario que no es nuevo ya tiene un _id */
 export interface UserI {   
     _id: string,
     name: string,
-    email: string,
+    surname: string,
+    username: string,
     password: string,
-    avatar: string,
-    direction: string,
     tel: number,
-    age: number,
-    country: string
+    admin: boolean,
+    timestamp: Date,
+    direccion: DireccionE
+}
+
+export interface LoginI {
+    username: string,
+    password: string
 }

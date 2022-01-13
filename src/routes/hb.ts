@@ -1,21 +1,14 @@
 import express, {Request, Response} from 'express';
-import {Productos} from '../controllers/ClassProductos';
-import { isLoggedIn } from '../middleware/passportLocal';
-import {Carrito} from '../controllers/ClassCarrito';
+import { isAdmin } from '../middleware/middleAdmin';
+import { verifyToken } from '../middleware/jwt';
 
 const router = express.Router();
-
-// router.get('/', isLoggedIn, (req,res)=> {
-//     res.render('main');
-// })
 
 router.get('/', (req, res)=> {
     res.render('main');
 })
 
 router.get('/admin', (req,res)=> {
-    // req.logout();
-    // console.log(req.session)
     res.render('login/login');
 })
 
@@ -27,7 +20,7 @@ router.get('/register', (req, res)=> {
     res.render('login/register');
 })
 
-router.get('/admin/index', async (req, res)=> {
+router.get('/admin/index', verifyToken, isAdmin, async (req, res)=> {
     //  const prod = await Productos.getProductosAll(req, res);
     //  const datos = {
     //      prod: prod 

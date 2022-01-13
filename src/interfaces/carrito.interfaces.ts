@@ -23,3 +23,24 @@ export interface NewCarritoInterface {
     producto: CarritoInterface[],
     abierto:boolean
 }
+
+export interface CarritoI {
+    userId: string,
+    productos: [ProdCarritoI],
+    timestamp: Date, // fecha de creación y update
+    direccion: DireccionI
+}
+
+export interface ProdCarritoI {
+    itemId: string,
+    cantidad: number,
+    timestamp: Date
+}
+
+export interface DireccionI {
+    calle: string,
+    altura: string,
+    codigoPostal: string,
+    piso?: number,
+    departamento?: number
+}

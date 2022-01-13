@@ -52,8 +52,7 @@ export class ProductosMongoDAO {//implements ProductBaseClass {
 
     const newProduct = new this.productos(data);
     await newProduct.save();
-
-    return data;
+    return newProduct;
   }
 
   async updateProducto(id: number|string, newProductData: any) {
@@ -63,9 +62,23 @@ export class ProductosMongoDAO {//implements ProductBaseClass {
     return this.productos.findOneAndUpdate(filter, newProductData);
   }
 
-  async deleteProducto(id: number) {
-    const filter = {id:id}
-    await this.productos.deleteOne(filter);
+  async deleteProducto(id: string) {
+    const filter = {_id:id}
+   
+    const mensaje = await this.productos.deleteOne(filter)
+    console.log(mensaje)
+    return mensaje
+    // const mensaje = await this.productos.deleteOne(filter , (err:any, d:any) => {
+    //   if (err) { return "Error" }
+    //     if (d.acknowledged && d.deletedCount == 1) {
+    //       return "Deleted Successfully"
+    //   } else {
+    //       return "Record doesn't exist or already deleted"   
+    //   }
+
+    // });
+    // console.log(mensaje)
+    // return mensaje;
   }
 
   async search(data:string) {

@@ -1,0 +1,6 @@
+1. Hacer interfaces de typescript
+2. Hacer schemas de mongoose
+3. Hacer los endpoints
+4. Hacer la api DAO
+5. Hacer la lógica de los controladores
+6. proccess .env

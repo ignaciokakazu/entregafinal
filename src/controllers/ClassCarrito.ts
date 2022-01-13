@@ -18,10 +18,11 @@ class ClassCarrito {
 
     async getCarritoById(req:Request, res:Response) {
         try {
-            const id: string|number = req.params.id;
-            const carrito = await api.getCarritoById(id);
+            const username: string = req.body.username;
+            const user: any = await apiLogin.getByEmail(username);
+            const carrito = await api.getCarritoById(user.id);
             
-            carrito? res.status(200).json(carrito) : res.status(404).json({error: `No hay carrito con el ID ${id}`});
+            carrito? res.status(200).json(carrito) : res.status(404).json({error: `No hay carrito con el ID ${user.id}`});
             
         } catch(error: any) {
             infoLogger.warn(error.message);
@@ -30,6 +31,7 @@ class ClassCarrito {
     }
 
     async getCarritoAll(req:Request, res:Response) {
+        /* este método es innecesario */
         try {
             const carritoAll = await api.getCarritoAll(); 
             if (!carritoAll) {
@@ -53,7 +55,7 @@ class ClassCarrito {
         }
     }
 
-    async setCarritoNuevo(id: string): Promise<string>{
+    async setCarritoNuevo(id: string|number): Promise<string>{
         return await api.setCarritoNuevo(id);
     }
 
@@ -86,7 +88,7 @@ class ClassCarrito {
         //enviar mail a admin
         const mail = new EmailService()
         console.log('enviado')
-        await mail.sendEmail(user[0].email, `Nuevo pedido de ${user[0].name}`, `${carrito}`)
+        await mail.sendEmail(user[0].username, `Nuevo pedido de ${user[0].name}`, `${carrito}`)
         await SmsService.sendMessage(`Nuevo pedido de ${user[0].name}`)
             res.json({msg: 'cerrado', carrito: carrito})
         } catch(e:any) {

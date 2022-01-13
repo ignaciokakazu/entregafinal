@@ -3,8 +3,9 @@
 import {ProductosFactoryDAO, TipoPersistencia} from '../models/productos/productos.factory';
 import {CarritoFactoryDAO} from '../models/carrito/carrito.factory';
 import {ProductoInterface, NewProductoInterface} from '../interfaces/productos.interfaces';
-
+import {OrderFactoryDAO} from '../models/order/order.factory';
 import {NewCarritoInterface, CarritoInterface} from '../interfaces/carrito.interfaces';
+import { MensajesFactoryDAO } from '../models/chat/chat.factory';
 /**
  * Con esta variable elegimos el tipo de persistencia
  */
@@ -14,10 +15,14 @@ const tipo = TipoPersistencia.mongodbAtlas;
 class capaAPI { //incluye productos y carrito
   private productos: any;
   private carrito: any;
+  private order: any;
+  private mensajes: any;
 
   constructor() {
     this.productos = ProductosFactoryDAO.get(tipo);
     this.carrito = CarritoFactoryDAO.get(tipo);
+    this.order = OrderFactoryDAO.get(tipo);
+    this.mensajes = MensajesFactoryDAO.get(tipo);
   }
 
   //PRODUCTOS
@@ -48,7 +53,7 @@ class capaAPI { //incluye productos y carrito
    }
 
    async getProductosByCat(data: string) {
-     return this.productos.productosByCat(data);
+     return this.productos.getProductosByCat(data);
    }
 
    //carrito
@@ -57,7 +62,7 @@ class capaAPI { //incluye productos y carrito
        return this.carrito.getCarritoAll();
    }
    
-   async getCarritoById(id:string) {
+   async getCarritoById(id:string|number) {
     return this.carrito.getCarritoById(id);
    }
 
@@ -66,7 +71,7 @@ class capaAPI { //incluye productos y carrito
    }
 
 
-   async setCarritoNuevo(id:string) {
+   async setCarritoNuevo(id:string|number) {
     return this.carrito.setCarritoNuevo(id);
   }
 
@@ -83,6 +88,25 @@ class capaAPI { //incluye productos y carrito
      return this.carrito.checkout(data);
    }
 
+
+   //orders
+
+   async getOrderByUserId(id:string|number) {
+    return this.order.getOrderByUserId(id);
+   }
+
+   async getOrderById(userId:string|number) {
+    return this.order.getOrderById(userId);
+  }
+
+  async orderComplete(id:string|number) {
+    return this.order.completeOrder(id);
+  }
+
+  //chat
+  async setMensajes(data:any) {
+    return this.mensajes.setMensajes(data);
+  }
 }
 
 export const api = new capaAPI();

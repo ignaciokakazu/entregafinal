@@ -5,40 +5,6 @@ const router = express.Router();
 
 /**
  * @swagger
- * components:
- *   schemas:
- *     ProductData:
- *       type: object
- *       properties:
- *         _id:
- *           type: String
- *           description: ID del producto
- *           example: 1
- *         nombre:
- *           type: String
- *           description: nombre del producto
- *           example: Camiseta Bokita the biggest
- *         precio:
- *           type: number
- *           description: precio del producto
- *           example: 2000
- *     NewProductInput:
- *       type: object
- *       properties:
- *         nombre:
- *           type: String
- *           description: nombre del producto
- *           example: Camiseta Bokita the biggest
- *         precio:
- *           type: number
- *           description: precio del producto
- *           example: 2000
- */
-
-router.get('/listar', Carrito.getCarritoAll);
-
-/**
- * @swagger
  * /listar:
  *   get:
  *     summary: Devuelve todos los carritos. Funcionalmente no tiene mucho sentido (sólo para cumplir con la consigna)
@@ -74,7 +40,7 @@ router.get('/listar', Carrito.getCarritoAll);
  *                   type: String
  *                   example: Error
  */
-router.get('/listar/:id', Carrito.getCarritoById);
+router.get('/', Carrito.getCarritoById);
 
 /**
  * @swagger

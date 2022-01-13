@@ -34,7 +34,10 @@ const config = {
   TWILIO_ACCOUNT_ID:process.env.TWILIO_ACCOUNT_ID || '',
   TWILIO_TOKEN:process.env.TWILIO_TOKEN || '',
   TWILIO_CELLPHONE:process.env.TWILIO_CELLPHONE || '',
-  TWILIO_ADMIN:process.env.TWILIO_ADMIN || ''
+  TWILIO_ADMIN:process.env.TWILIO_ADMIN || '',
+  //JWT
+  TOKEN_KEEP_ALIVE: process.env.TOKEN_KEEP_ALIVE || 60 * 60 * 3,
+  JWT_SECRET_KEY: process.env.JWT_SECRET_KEY || 'secret_key',
 };
 
 export default config;

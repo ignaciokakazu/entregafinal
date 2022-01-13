@@ -12247,3 +12247,609 @@
 [2022-01-09T15:14:00.086] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 1456
 [2022-01-09T15:17:30.927] [INFO] info - undefined
 [2022-01-09T15:17:30.931] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 14052
+[2022-01-10T00:08:52.160] [INFO] info - undefined
+[2022-01-10T00:08:52.164] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 13308
+[2022-01-10T00:19:02.222] [INFO] info - undefined
+[2022-01-10T00:19:02.228] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 3312
+[2022-01-10T00:21:53.298] [INFO] info - undefined
+[2022-01-10T00:21:53.301] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 7992
+[2022-01-10T00:24:12.095] [INFO] info - undefined
+[2022-01-10T00:24:12.098] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 9692
+[2022-01-10T00:31:12.142] [INFO] info - undefined
+[2022-01-10T00:31:12.145] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 2856
+[2022-01-10T00:31:59.475] [INFO] info - undefined
+[2022-01-10T00:31:59.478] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 15080
+[2022-01-10T00:32:31.955] [INFO] info - undefined
+[2022-01-10T00:32:31.960] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 10004
+[2022-01-10T00:45:09.168] [INFO] info - undefined
+[2022-01-10T00:45:09.171] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 15312
+[2022-01-10T00:46:56.465] [INFO] info - undefined
+[2022-01-10T00:46:56.469] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 3808
+[2022-01-10T00:49:20.767] [INFO] info - undefined
+[2022-01-10T00:49:20.771] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 7180
+[2022-01-10T00:51:32.921] [INFO] info - undefined
+[2022-01-10T00:51:32.924] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 5640
+[2022-01-10T00:56:58.541] [INFO] info - undefined
+[2022-01-10T00:56:58.544] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 3176
+[2022-01-10T01:15:13.426] [INFO] info - undefined
+[2022-01-10T01:15:13.429] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 15152
+[2022-01-10T01:23:15.463] [INFO] info - undefined
+[2022-01-10T01:23:15.469] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 2956
+[2022-01-10T01:30:45.802] [INFO] info - undefined
+[2022-01-10T01:30:45.806] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 5964
+[2022-01-10T01:34:02.978] [INFO] info - undefined
+[2022-01-10T01:34:02.981] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 4992
+[2022-01-10T01:34:38.013] [INFO] info - undefined
+[2022-01-10T01:34:38.018] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 7024
+[2022-01-10T01:37:12.222] [INFO] info - undefined
+[2022-01-10T01:37:12.226] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 11000
+[2022-01-10T01:38:06.897] [INFO] info - undefined
+[2022-01-10T01:38:06.900] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 10316
+[2022-01-10T01:41:54.216] [INFO] info - undefined
+[2022-01-10T01:41:54.220] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 15132
+[2022-01-10T01:47:06.790] [INFO] info - undefined
+[2022-01-10T01:47:06.793] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 9008
+[2022-01-10T01:52:06.835] [INFO] info - undefined
+[2022-01-10T01:52:06.838] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 6000
+[2022-01-10T01:53:41.278] [INFO] info - undefined
+[2022-01-10T01:53:41.282] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 8732
+[2022-01-10T01:58:50.413] [INFO] info - undefined
+[2022-01-10T01:58:50.416] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 7248
+[2022-01-10T02:01:00.660] [INFO] info - undefined
+[2022-01-10T02:01:00.664] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 7680
+[2022-01-10T02:02:43.310] [INFO] info - undefined
+[2022-01-10T02:02:43.313] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 3176
+[2022-01-10T02:03:44.839] [INFO] info - undefined
+[2022-01-10T02:03:44.843] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 14184
+[2022-01-10T02:06:20.487] [INFO] info - undefined
+[2022-01-10T02:06:20.490] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 12204
+[2022-01-10T02:09:01.168] [INFO] info - undefined
+[2022-01-10T02:09:01.172] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 9600
+[2022-01-10T02:14:18.636] [INFO] info - undefined
+[2022-01-10T02:14:18.640] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 8296
+[2022-01-10T23:44:49.398] [INFO] info - undefined
+[2022-01-10T23:44:49.405] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 14000
+[2022-01-10T23:45:23.888] [INFO] info - undefined
+[2022-01-10T23:45:23.891] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 1032
+[2022-01-10T23:45:53.166] [INFO] info - undefined
+[2022-01-10T23:45:53.170] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 11908
+[2022-01-10T23:46:40.376] [INFO] info - undefined
+[2022-01-10T23:46:40.379] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 8692
+[2022-01-10T23:46:55.434] [INFO] info - undefined
+[2022-01-10T23:46:55.439] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 14448
+[2022-01-10T23:53:27.825] [INFO] info - undefined
+[2022-01-10T23:53:27.829] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 8772
+[2022-01-10T23:55:24.180] [INFO] info - undefined
+[2022-01-10T23:55:24.186] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 9944
+[2022-01-10T23:56:00.535] [INFO] info - undefined
+[2022-01-10T23:56:00.538] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 5620
+[2022-01-11T00:08:59.574] [INFO] info - undefined
+[2022-01-11T00:08:59.577] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 9140
+[2022-01-11T00:10:04.830] [INFO] info - undefined
+[2022-01-11T00:10:04.834] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 10912
+[2022-01-11T00:11:27.015] [INFO] info - undefined
+[2022-01-11T00:11:27.019] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 10924
+[2022-01-11T00:19:35.956] [INFO] info - undefined
+[2022-01-11T00:19:35.960] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 8416
+[2022-01-11T00:20:06.805] [INFO] info - undefined
+[2022-01-11T00:20:06.810] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 13864
+[2022-01-11T00:21:25.312] [INFO] info - undefined
+[2022-01-11T00:21:25.317] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 7208
+[2022-01-11T00:23:21.640] [INFO] info - undefined
+[2022-01-11T00:23:21.647] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 8336
+[2022-01-11T00:26:00.717] [INFO] info - undefined
+[2022-01-11T00:26:00.720] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 12904
+[2022-01-11T00:26:52.135] [INFO] info - undefined
+[2022-01-11T00:26:52.139] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 12212
+[2022-01-11T00:27:38.661] [INFO] info - undefined
+[2022-01-11T00:27:38.665] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 15964
+[2022-01-11T00:28:58.927] [INFO] info - undefined
+[2022-01-11T00:28:58.931] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 8136
+[2022-01-11T00:30:29.675] [INFO] info - undefined
+[2022-01-11T00:30:29.680] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 6232
+[2022-01-11T00:33:22.734] [INFO] info - undefined
+[2022-01-11T00:33:22.741] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 13608
+[2022-01-11T01:39:00.137] [INFO] info - undefined
+[2022-01-11T01:39:00.141] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 15608
+[2022-01-11T01:40:14.493] [INFO] info - undefined
+[2022-01-11T01:40:14.497] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 9352
+[2022-01-11T01:46:30.526] [INFO] info - undefined
+[2022-01-11T01:46:30.536] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 13896
+[2022-01-11T02:09:44.070] [INFO] info - undefined
+[2022-01-11T02:09:44.077] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 15344
+[2022-01-11T10:27:23.470] [INFO] info - undefined
+[2022-01-11T10:27:23.478] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 13660
+[2022-01-11T11:23:48.379] [INFO] info - undefined
+[2022-01-11T11:23:48.383] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 12924
+[2022-01-11T11:25:21.673] [INFO] info - undefined
+[2022-01-11T11:25:21.680] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 6612
+[2022-01-11T11:25:54.283] [INFO] info - undefined
+[2022-01-11T11:25:54.286] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 15788
+[2022-01-11T11:26:44.387] [INFO] info - undefined
+[2022-01-11T11:26:44.391] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 10060
+[2022-01-11T12:12:41.225] [INFO] info - undefined
+[2022-01-11T12:12:41.230] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 15632
+[2022-01-11T12:25:54.064] [INFO] info - undefined
+[2022-01-11T12:25:54.067] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 4560
+[2022-01-11T12:47:35.740] [INFO] info - undefined
+[2022-01-11T12:47:35.743] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 11288
+[2022-01-11T12:55:00.890] [INFO] info - undefined
+[2022-01-11T12:55:00.895] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 10708
+[2022-01-11T14:18:12.688] [INFO] info - undefined
+[2022-01-11T14:18:12.692] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 16148
+[2022-01-12T21:39:03.732] [INFO] info - undefined
+[2022-01-12T21:39:03.738] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 9364
+[2022-01-12T21:41:31.337] [INFO] info - undefined
+[2022-01-12T21:41:31.341] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 9904
+[2022-01-12T21:42:07.144] [INFO] info - undefined
+[2022-01-12T21:42:07.148] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 1112
+[2022-01-12T21:44:25.336] [INFO] info - undefined
+[2022-01-12T21:44:25.340] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 9184
+[2022-01-12T21:45:57.575] [INFO] info - undefined
+[2022-01-12T21:45:57.579] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 9824
+[2022-01-12T21:48:15.085] [INFO] info - undefined
+[2022-01-12T21:48:15.091] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 1352
+[2022-01-12T21:56:32.563] [INFO] info - undefined
+[2022-01-12T21:56:32.567] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 9548
+[2022-01-12T21:56:49.591] [INFO] info - ignaciokakazu123@gmail.com
+[2022-01-12T22:00:56.244] [INFO] info - undefined
+[2022-01-12T22:00:56.248] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 11612
+[2022-01-12T22:01:13.225] [INFO] info - ignaciokakazu123@gmail.com
+[2022-01-12T22:04:16.811] [INFO] info - undefined
+[2022-01-12T22:04:16.816] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 5032
+[2022-01-12T22:04:29.263] [INFO] info - ignaciokakazu123@gmail.com
+[2022-01-12T22:06:50.818] [INFO] info - undefined
+[2022-01-12T22:06:50.821] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 1112
+[2022-01-12T22:08:43.281] [INFO] info - ignaciokakazu123@gmail.com
+[2022-01-12T22:20:38.671] [INFO] info - undefined
+[2022-01-12T22:20:38.677] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 9108
+[2022-01-12T22:21:31.309] [INFO] info - { username: 'ignaciokakazu123@gmail.com', password: '' }
+[2022-01-12T22:22:08.608] [INFO] info - undefined
+[2022-01-12T22:22:08.612] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 10648
+[2022-01-12T22:22:11.351] [INFO] info - { username: 'ignaciokakazu123@gmail.com', password: '' }
+[2022-01-12T22:30:45.947] [INFO] info - undefined
+[2022-01-12T22:30:45.951] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 3212
+[2022-01-12T22:30:47.621] [INFO] info - { username: 'ignaciokakazu123@gmail.com', password: '123456789' }
+[2022-01-12T22:30:50.032] [INFO] info - User log ignaciokakazu123@gmail.com
+[2022-01-12T22:30:57.451] [INFO] info - { username: 'ignaciokakazu123@gmail.com', password: '123456' }
+[2022-01-12T22:31:04.036] [INFO] info - {
+  username: 'ignaciokakazu123@gmail.com',
+  password: '1234561111111111'
+}
+[2022-01-12T22:31:04.222] [INFO] info - User log ignaciokakazu123@gmail.com
+[2022-01-13T10:45:07.005] [INFO] info - undefined
+[2022-01-13T10:45:07.009] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 8956
+[2022-01-13T10:45:21.753] [INFO] info - { username: 'ignaciokakazu123@gmail.com', password: '' }
+[2022-01-13T10:45:26.493] [INFO] info - { username: 'ignaciokakazu123@gmail.com', password: '123' }
+[2022-01-13T10:45:33.293] [INFO] info - { username: 'ignaciokakazu123@gmail.com', password: '123456789' }
+[2022-01-13T10:50:45.101] [INFO] info - { username: 'ignaciokakazu123@gmail.com', password: '123456789' }
+[2022-01-13T10:50:58.799] [INFO] info - { username: 'ignaciokakazu123@gmail.com', password: '123456789' }
+[2022-01-13T10:52:52.903] [INFO] info - undefined
+[2022-01-13T10:52:52.906] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 16208
+[2022-01-13T10:53:06.390] [INFO] info - { username: 'ignaciokakazu123@gmail.com', password: '123456789' }
+[2022-01-13T10:53:06.584] [INFO] info - User log ignaciokakazu123@gmail.com
+[2022-01-13T10:59:33.956] [INFO] info - undefined
+[2022-01-13T10:59:33.959] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 7504
+[2022-01-13T11:00:13.102] [INFO] info - undefined
+[2022-01-13T11:00:13.106] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 12468
+[2022-01-13T11:00:16.517] [INFO] info - User log ignacio123@gmail.com
+[2022-01-13T11:00:16.539] [INFO] info - Usuario ignacio123@gmail.com dado de alta Thu Jan 13 2022 11:00:16 GMT-0300 (hora estándar de Argentina)
+[2022-01-13T11:00:16.628] [INFO] info - New user [object Object]
+[2022-01-13T11:01:41.136] [INFO] info - User log ignacio123@gmail.com
+[2022-01-13T11:01:41.136] [INFO] info - Usuario ignacio123@gmail.com dado de alta Thu Jan 13 2022 11:01:41 GMT-0300 (hora estándar de Argentina)
+[2022-01-13T11:01:41.218] [INFO] info - New user [object Object]
+[2022-01-13T11:03:51.095] [INFO] info - User log ignacio123@gmail.com
+[2022-01-13T11:03:51.095] [INFO] info - Usuario ignacio123@gmail.com dado de alta Thu Jan 13 2022 11:03:51 GMT-0300 (hora estándar de Argentina)
+[2022-01-13T11:03:51.177] [INFO] info - New user [object Object]
+[2022-01-13T11:05:04.121] [INFO] info - undefined
+[2022-01-13T11:05:04.134] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 6000
+[2022-01-13T11:05:07.747] [INFO] info - User log ignacio123@gmail.com
+[2022-01-13T11:05:07.749] [INFO] info - Usuario ignacio123@gmail.com dado de alta Thu Jan 13 2022 11:05:07 GMT-0300 (hora estándar de Argentina)
+[2022-01-13T11:05:07.866] [INFO] info - New user [object Object]
+[2022-01-13T11:07:53.064] [INFO] info - undefined
+[2022-01-13T11:07:53.068] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 5684
+[2022-01-13T11:07:56.517] [INFO] info - User log ignacio123@gmail.com
+[2022-01-13T11:07:56.518] [INFO] info - Usuario ignacio123@gmail.com dado de alta Thu Jan 13 2022 11:07:56 GMT-0300 (hora estándar de Argentina)
+[2022-01-13T11:07:56.605] [INFO] info - New user [object Object]
+[2022-01-13T11:08:23.338] [INFO] info - undefined
+[2022-01-13T11:08:23.341] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 9540
+[2022-01-13T11:08:26.756] [INFO] info - User log ignacio123@gmail.com
+[2022-01-13T11:08:26.758] [INFO] info - Usuario ignacio123@gmail.com dado de alta Thu Jan 13 2022 11:08:26 GMT-0300 (hora estándar de Argentina)
+[2022-01-13T11:08:26.857] [INFO] info - New user [object Object]
+[2022-01-13T11:10:55.801] [INFO] info - User log ignacio123@gmail.com
+[2022-01-13T11:10:55.801] [INFO] info - Usuario ignacio123@gmail.com dado de alta Thu Jan 13 2022 11:10:55 GMT-0300 (hora estándar de Argentina)
+[2022-01-13T11:10:55.873] [INFO] info - New user [object Object]
+[2022-01-13T11:12:57.115] [INFO] info - undefined
+[2022-01-13T11:12:57.119] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 9336
+[2022-01-13T11:13:01.233] [INFO] info - User log ignacio123@gmail.com
+[2022-01-13T11:13:01.235] [INFO] info - Usuario ignacio123@gmail.com dado de alta Thu Jan 13 2022 11:13:01 GMT-0300 (hora estándar de Argentina)
+[2022-01-13T11:13:01.320] [INFO] info - New user [object Object]
+[2022-01-13T11:13:59.146] [INFO] info - undefined
+[2022-01-13T11:13:59.149] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 14892
+[2022-01-13T11:14:14.109] [INFO] info - undefined
+[2022-01-13T11:14:14.113] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 15036
+[2022-01-13T12:14:21.671] [INFO] info - User log ignacio123@gmail.com
+[2022-01-13T12:14:21.673] [INFO] info - Usuario ignacio123@gmail.com dado de alta Thu Jan 13 2022 12:14:21 GMT-0300 (hora estándar de Argentina)
+[2022-01-13T12:14:21.756] [INFO] info - New user [object Object]
+[2022-01-13T12:19:08.644] [INFO] info - undefined
+[2022-01-13T12:19:08.648] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 6672
+[2022-01-13T12:19:12.077] [INFO] info - User log ignacio123@gmail.com
+[2022-01-13T12:19:12.080] [INFO] info - Usuario ignacio123@gmail.com dado de alta Thu Jan 13 2022 12:19:12 GMT-0300 (hora estándar de Argentina)
+[2022-01-13T12:19:12.173] [INFO] info - New user [object Object]
+[2022-01-13T12:20:29.326] [INFO] info - undefined
+[2022-01-13T12:20:29.329] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 15052
+[2022-01-13T12:20:40.718] [INFO] info - User log ignacio123@gmail.com
+[2022-01-13T12:20:40.719] [INFO] info - Usuario ignacio123@gmail.com dado de alta Thu Jan 13 2022 12:20:40 GMT-0300 (hora estándar de Argentina)
+[2022-01-13T12:20:40.810] [INFO] info - New user [object Object]
+[2022-01-13T12:28:56.462] [INFO] info - undefined
+[2022-01-13T12:28:56.466] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 7576
+[2022-01-13T12:29:08.841] [INFO] info - User log ignacio123@gmail.com
+[2022-01-13T12:29:08.849] [INFO] info - Usuario ignacio123@gmail.com dado de alta Thu Jan 13 2022 12:29:08 GMT-0300 (hora estándar de Argentina)
+[2022-01-13T12:29:08.950] [INFO] info - New user [object Object]
+[2022-01-13T12:36:42.383] [INFO] info - undefined
+[2022-01-13T12:36:42.386] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 2740
+[2022-01-13T12:36:54.974] [INFO] info - User log ignacio123@gmail.com
+[2022-01-13T12:36:54.982] [INFO] info - Usuario ignacio123@gmail.com dado de alta Thu Jan 13 2022 12:36:54 GMT-0300 (hora estándar de Argentina)
+[2022-01-13T12:36:55.069] [INFO] info - New user [object Object]
+[2022-01-13T12:38:10.373] [INFO] info - undefined
+[2022-01-13T12:38:10.377] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 12420
+[2022-01-13T12:38:14.606] [INFO] info - User log ignacio123@gmail.com
+[2022-01-13T12:38:14.610] [INFO] info - Usuario ignacio123@gmail.com dado de alta Thu Jan 13 2022 12:38:14 GMT-0300 (hora estándar de Argentina)
+[2022-01-13T12:38:14.685] [INFO] info - New user [object Object]
+[2022-01-13T12:46:46.966] [INFO] info - undefined
+[2022-01-13T12:46:46.971] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 10932
+[2022-01-13T12:46:51.308] [INFO] info - User log ignacio123@gmail.com
+[2022-01-13T12:46:51.315] [INFO] info - Usuario ignacio123@gmail.com dado de alta Thu Jan 13 2022 12:46:51 GMT-0300 (hora estándar de Argentina)
+[2022-01-13T12:46:51.402] [INFO] info - New user [object Object]
+[2022-01-13T12:47:57.713] [INFO] info - User log ignacio123@gmail.com
+[2022-01-13T12:47:57.719] [INFO] info - Usuario ignacio123@gmail.com dado de alta Thu Jan 13 2022 12:47:57 GMT-0300 (hora estándar de Argentina)
+[2022-01-13T12:47:57.797] [INFO] info - New user [object Object]
+[2022-01-13T12:49:16.950] [INFO] info - undefined
+[2022-01-13T12:49:16.953] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 15124
+[2022-01-13T12:49:21.302] [INFO] info - User log ignacio123@gmail.com
+[2022-01-13T12:49:21.310] [INFO] info - Usuario ignacio123@gmail.com dado de alta Thu Jan 13 2022 12:49:21 GMT-0300 (hora estándar de Argentina)
+[2022-01-13T12:49:21.398] [INFO] info - New user [object Object]
+[2022-01-13T12:50:27.297] [INFO] info - undefined
+[2022-01-13T12:50:27.301] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 15416
+[2022-01-13T12:50:31.736] [INFO] info - User log ignacio123@gmail.com
+[2022-01-13T12:50:31.743] [INFO] info - Usuario ignacio123@gmail.com dado de alta Thu Jan 13 2022 12:50:31 GMT-0300 (hora estándar de Argentina)
+[2022-01-13T12:50:31.744] [INFO] info - Cannot set headers after they are sent to the client
+[2022-01-13T12:50:31.825] [INFO] info - New user [object Object]
+[2022-01-13T12:50:39.036] [INFO] info - User log ignacio1234@gmail.com
+[2022-01-13T12:50:39.038] [INFO] info - Usuario ignacio1234@gmail.com dado de alta Thu Jan 13 2022 12:50:39 GMT-0300 (hora estándar de Argentina)
+[2022-01-13T12:50:39.123] [INFO] info - New user [object Object]
+[2022-01-13T12:57:05.663] [INFO] info - undefined
+[2022-01-13T12:57:05.667] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 12084
+[2022-01-13T12:57:17.277] [INFO] info - User log ignacio1234@gmail.com
+[2022-01-13T12:57:17.278] [INFO] info - Usuario [object Object] dado de alta Thu Jan 13 2022 12:57:17 GMT-0300 (hora estándar de Argentina)
+[2022-01-13T12:57:17.358] [INFO] info - New user [object Object]
+[2022-01-13T12:57:17.443] [INFO] info - User log ignacio1234@gmail.com
+[2022-01-13T12:57:17.443] [INFO] info - Cannot read property '_id' of undefined
+[2022-01-13T12:58:19.073] [INFO] info - User log ignacio12345@gmail.com
+[2022-01-13T12:58:19.074] [INFO] info - Usuario [object Object] dado de alta Thu Jan 13 2022 12:58:19 GMT-0300 (hora estándar de Argentina)
+[2022-01-13T12:58:19.162] [INFO] info - New user [object Object]
+[2022-01-13T12:58:19.248] [INFO] info - User log ignacio12345@gmail.com
+[2022-01-13T12:58:19.249] [INFO] info - Cannot read property '_id' of undefined
+[2022-01-13T12:58:30.963] [INFO] info - User log ignacio12345678@gmail.com
+[2022-01-13T12:58:30.963] [INFO] info - Usuario [object Object] dado de alta Thu Jan 13 2022 12:58:30 GMT-0300 (hora estándar de Argentina)
+[2022-01-13T12:58:31.047] [INFO] info - New user [object Object]
+[2022-01-13T12:58:31.131] [INFO] info - User log ignacio12345678@gmail.com
+[2022-01-13T12:58:31.132] [INFO] info - Cannot read property '_id' of undefined
+[2022-01-13T12:59:09.554] [INFO] info - undefined
+[2022-01-13T12:59:09.558] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 4480
+[2022-01-13T14:02:16.901] [INFO] info - {
+  name: 'Hola234',
+  surname: 'Hola123456789',
+  username: 'ignacio12345678@gmail.com',
+  password: '123456789',
+  passwordConfirmation: '123456789',
+  tel: 1234567895215,
+  direccion: {
+    calle: 'hola',
+    altura: 1234,
+    codigoPostal: 'hola1234',
+    piso: 1,
+    departamento: 'A'
+  },
+  admin: true
+}
+[2022-01-13T14:02:17.959] [INFO] info - User log ignacio12345678@gmail.com
+[2022-01-13T14:02:58.368] [INFO] info - undefined
+[2022-01-13T14:02:58.372] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 12996
+[2022-01-13T14:03:15.526] [INFO] info - undefined
+[2022-01-13T14:03:15.529] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 13824
+[2022-01-13T14:03:48.293] [INFO] info - {
+  name: 'Hola234',
+  surname: 'Hola123456789',
+  username: 'ignacio12345678@gmail.com',
+  password: '123456789',
+  passwordConfirmation: '123456789',
+  tel: 1234567895215,
+  direccion: {
+    calle: 'hola',
+    altura: 1234,
+    codigoPostal: 'hola1234',
+    piso: 1,
+    departamento: 'A'
+  },
+  admin: true
+}
+[2022-01-13T14:03:48.478] [INFO] info - User log ignacio12345678@gmail.com
+[2022-01-13T14:04:34.600] [INFO] info - User log ignacio12345678@gmail.com
+[2022-01-13T14:04:34.602] [INFO] info - Usuario [object Object] dado de alta Thu Jan 13 2022 14:04:34 GMT-0300 (hora estándar de Argentina)
+[2022-01-13T14:04:34.743] [INFO] info - New user [object Object]
+[2022-01-13T14:04:34.771] [INFO] info - User log ignacio12345678@gmail.com
+[2022-01-13T14:04:46.212] [INFO] info - {
+  name: 'Hola234',
+  surname: 'Hola123456789',
+  username: 'ignacio12345678@gmail.com',
+  password: '123456789',
+  passwordConfirmation: '123456789',
+  tel: 1234567895215,
+  direccion: {
+    calle: 'hola',
+    altura: 1234,
+    codigoPostal: 'hola1234',
+    piso: 1,
+    departamento: 'A'
+  },
+  admin: true
+}
+[2022-01-13T14:04:46.381] [INFO] info - User log ignacio12345678@gmail.com
+[2022-01-13T14:05:19.149] [INFO] info - User log ignacio12345678@gmail.com
+[2022-01-13T14:05:19.149] [INFO] info - Usuario [object Object] dado de alta Thu Jan 13 2022 14:05:19 GMT-0300 (hora estándar de Argentina)
+[2022-01-13T14:05:19.223] [INFO] info - New user [object Object]
+[2022-01-13T14:05:19.319] [INFO] info - User log ignacio12345678@gmail.com
+[2022-01-13T14:06:21.340] [INFO] info - User log ignacio1@gmail.com
+[2022-01-13T14:06:21.341] [INFO] info - Usuario [object Object] dado de alta Thu Jan 13 2022 14:06:21 GMT-0300 (hora estándar de Argentina)
+[2022-01-13T14:06:21.430] [INFO] info - New user [object Object]
+[2022-01-13T14:06:21.509] [INFO] info - User log ignacio1@gmail.com
+[2022-01-13T14:07:00.132] [INFO] info - User log ignacio1@gmail.com
+[2022-01-13T14:07:00.132] [INFO] info - Usuario [object Object] dado de alta Thu Jan 13 2022 14:07:00 GMT-0300 (hora estándar de Argentina)
+[2022-01-13T14:07:00.200] [INFO] info - New user [object Object]
+[2022-01-13T14:07:00.301] [INFO] info - User log ignacio1@gmail.com
+[2022-01-13T14:07:19.548] [INFO] info - {
+  name: 'Hola234',
+  surname: 'Hola123456789',
+  username: 'ignacio1@gmail.com',
+  password: '123456789',
+  passwordConfirmation: '123456789',
+  tel: 1234567895215,
+  direccion: {
+    calle: 'hola',
+    altura: 1234,
+    codigoPostal: 'hola1234',
+    piso: 1,
+    departamento: 'A'
+  },
+  admin: true
+}
+[2022-01-13T14:07:19.718] [INFO] info - User log ignacio1@gmail.com
+[2022-01-13T14:07:36.119] [INFO] info - {
+  name: 'Hola234',
+  surname: 'Hola123456789',
+  username: 'ignacio1@gmail.com',
+  password: '123456789',
+  passwordConfirmation: '123456789',
+  tel: 1234567895215,
+  direccion: {
+    calle: 'hola',
+    altura: 1234,
+    codigoPostal: 'hola1234',
+    piso: 1,
+    departamento: 'A'
+  },
+  admin: true
+}
+[2022-01-13T14:07:36.286] [INFO] info - User log ignacio1@gmail.com
+[2022-01-13T14:09:04.490] [INFO] info - {
+  name: 'Hola234',
+  surname: 'Hola123456789',
+  username: 'ignacio1@gmail.com',
+  password: '123456789',
+  passwordConfirmation: '123456789',
+  tel: 1234567895215,
+  direccion: {
+    calle: 'hola',
+    altura: 1234,
+    codigoPostal: 'hola1234',
+    piso: 1,
+    departamento: 'A'
+  },
+  admin: true
+}
+[2022-01-13T14:09:04.657] [INFO] info - User log ignacio1@gmail.com
+[2022-01-13T14:10:23.367] [INFO] info - undefined
+[2022-01-13T14:10:23.371] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 14108
+[2022-01-13T14:10:27.874] [INFO] info - {
+  name: 'Hola234',
+  surname: 'Hola123456789',
+  username: 'ignacio1@gmail.com',
+  password: '123456789',
+  passwordConfirmation: '123456789',
+  tel: 1234567895215,
+  direccion: {
+    calle: 'hola',
+    altura: 1234,
+    codigoPostal: 'hola1234',
+    piso: 1,
+    departamento: 'A'
+  },
+  admin: true
+}
+[2022-01-13T14:10:28.050] [INFO] info - User log ignacio1@gmail.com
+[2022-01-13T14:17:59.861] [INFO] info - undefined
+[2022-01-13T14:17:59.866] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 12076
+[2022-01-13T14:23:58.397] [INFO] info - undefined
+[2022-01-13T14:23:58.400] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 4860
+[2022-01-13T14:26:13.866] [INFO] info - undefined
+[2022-01-13T14:26:13.871] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 3484
+[2022-01-13T14:45:03.584] [INFO] info - undefined
+[2022-01-13T14:45:03.589] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 3420
+[2022-01-13T14:46:13.481] [INFO] info - undefined
+[2022-01-13T14:46:13.485] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 15568
+[2022-01-13T14:48:48.674] [INFO] info - undefined
+[2022-01-13T14:48:48.678] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 3424
+[2022-01-13T14:53:05.535] [INFO] info - undefined
+[2022-01-13T14:53:05.539] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 7940
+[2022-01-13T14:53:38.115] [INFO] info - undefined
+[2022-01-13T14:53:38.118] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 8336
+[2022-01-13T14:55:33.658] [INFO] info - undefined
+[2022-01-13T14:55:33.662] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 11428
+[2022-01-13T14:56:52.179] [INFO] info - undefined
+[2022-01-13T14:56:52.183] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 12684
+[2022-01-13T14:59:02.070] [INFO] info - undefined
+[2022-01-13T14:59:02.074] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 13916
+[2022-01-13T15:00:20.543] [INFO] info - undefined
+[2022-01-13T15:00:20.547] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 16788
+[2022-01-13T15:01:22.242] [INFO] info - undefined
+[2022-01-13T15:01:22.248] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 4792
+[2022-01-13T15:02:18.747] [INFO] info - undefined
+[2022-01-13T15:02:18.752] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 12696
+[2022-01-13T15:03:36.395] [INFO] info - undefined
+[2022-01-13T15:03:36.399] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 16752
+[2022-01-13T15:04:46.441] [INFO] info - undefined
+[2022-01-13T15:04:46.444] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 8144
+[2022-01-13T15:14:08.147] [INFO] info - undefined
+[2022-01-13T15:14:08.151] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 15136
+[2022-01-13T15:17:06.716] [INFO] info - undefined
+[2022-01-13T15:17:06.720] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 11832
+[2022-01-13T15:17:50.815] [INFO] info - undefined
+[2022-01-13T15:17:50.819] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 2028
+[2022-01-13T15:21:41.925] [INFO] info - undefined
+[2022-01-13T15:21:41.929] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 6380
+[2022-01-13T15:23:01.522] [INFO] info - undefined
+[2022-01-13T15:23:01.526] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 2012
+[2022-01-13T15:23:04.304] [WARN] info - Error en la búsqueda. getProductosById (controller - productos)
+[2022-01-13T15:25:25.747] [INFO] info - undefined
+[2022-01-13T15:25:25.751] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 11576
+[2022-01-13T15:27:51.825] [INFO] info - undefined
+[2022-01-13T15:27:51.828] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 4412
+[2022-01-13T15:28:12.055] [WARN] info - Error en la búsqueda. getProductosById (controller - productos)
+[2022-01-13T15:28:40.299] [WARN] info - Error en la búsqueda. getProductosById (controller - productos)
+[2022-01-13T15:29:31.709] [INFO] info - undefined
+[2022-01-13T15:29:31.716] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 16716
+[2022-01-13T15:29:32.999] [WARN] info - Error en la búsqueda. getProductosById (controller - productos)
+[2022-01-13T15:30:11.059] [WARN] info - Error en la búsqueda. getProductosById (controller - productos)
+[2022-01-13T15:30:29.217] [WARN] info - Error en la búsqueda. getProductosById (controller - productos)
+[2022-01-13T15:30:49.662] [WARN] info - Error en la búsqueda. getProductosById (controller - productos)
+[2022-01-13T15:31:03.032] [WARN] info - Error en la búsqueda. getProductosById (controller - productos)
+[2022-01-13T15:31:30.274] [INFO] info - undefined
+[2022-01-13T15:31:30.278] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 2172
+[2022-01-13T15:31:33.376] [WARN] info - Error en la búsqueda. getProductosById (controller - productos)
+[2022-01-13T15:32:23.967] [WARN] info - Error en la búsqueda. getProductosById (controller - productos)
+[2022-01-13T15:33:44.285] [WARN] info - Error en la búsqueda. getProductosById (controller - productos)
+[2022-01-13T15:34:07.079] [INFO] info - Se buscó ID: 61dbbe3b60f84b1a774b3c34
+[2022-01-13T15:34:57.256] [INFO] info - undefined
+[2022-01-13T15:34:57.260] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 7672
+[2022-01-13T15:45:10.672] [INFO] info - undefined
+[2022-01-13T15:45:10.676] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 1304
+[2022-01-13T16:22:15.627] [INFO] info - undefined
+[2022-01-13T16:22:15.631] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 10856
+[2022-01-13T16:47:05.449] [INFO] info - undefined
+[2022-01-13T16:47:05.454] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 13868
+[2022-01-13T16:47:22.372] [INFO] info - { username: 'ignacio123@gmail.com', password: '123456789' }
+[2022-01-13T16:47:22.543] [INFO] info - User log ignacio123@gmail.com
+[2022-01-13T17:13:54.726] [INFO] info - undefined
+[2022-01-13T17:13:54.730] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 8724
+[2022-01-13T17:13:54.786] [INFO] info - Nueva Conexion establecida!
+[2022-01-13T17:14:07.465] [INFO] info - Nueva Conexion establecida!
+[2022-01-13T17:14:27.687] [INFO] info - { username: 'ignacio123@gmail.com', password: '123456789' }
+[2022-01-13T17:14:27.855] [INFO] info - User log ignacio123@gmail.com
+[2022-01-13T17:14:55.285] [INFO] info - Nueva Conexion establecida!
+[2022-01-13T17:17:46.014] [INFO] info - undefined
+[2022-01-13T17:17:46.018] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 4544
+[2022-01-13T17:17:46.069] [INFO] info - Nueva Conexion establecida!
+[2022-01-13T17:17:46.075] [INFO] info - Nueva Conexion establecida!
+[2022-01-13T17:17:52.771] [INFO] info - Nueva Conexion establecida!
+[2022-01-13T17:18:10.155] [INFO] info - { username: 'ignacio123@gmail.com', password: '123456789' }
+[2022-01-13T17:18:10.345] [INFO] info - User log ignacio123@gmail.com
+[2022-01-13T17:18:38.335] [INFO] info - Nueva Conexion establecida!
+[2022-01-13T17:20:34.581] [INFO] info - undefined
+[2022-01-13T17:20:34.585] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 16432
+[2022-01-13T17:20:34.798] [INFO] info - Nueva Conexion establecida!
+[2022-01-13T17:20:34.805] [INFO] info - Nueva Conexion establecida!
+[2022-01-13T17:20:47.932] [INFO] info - { username: 'ignacio123@gmail.com', password: '123456789' }
+[2022-01-13T17:20:48.101] [INFO] info - User log ignacio123@gmail.com
+[2022-01-13T17:21:22.283] [INFO] info - Nueva Conexion establecida!
+[2022-01-13T17:21:59.920] [INFO] info - Nueva Conexion establecida!
+[2022-01-13T17:23:13.890] [INFO] info - undefined
+[2022-01-13T17:23:13.895] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 15300
+[2022-01-13T17:23:14.111] [INFO] info - Nueva Conexion establecida!
+[2022-01-13T17:23:16.887] [INFO] info - { username: 'ignacio123@gmail.com', password: '123456789' }
+[2022-01-13T17:23:18.063] [INFO] info - User log ignacio123@gmail.com
+[2022-01-13T17:23:35.279] [INFO] info - Nueva Conexion establecida!
+[2022-01-13T17:26:31.101] [INFO] info - undefined
+[2022-01-13T17:26:31.105] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 15032
+[2022-01-13T17:26:34.293] [INFO] info - Nueva Conexion establecida!
+[2022-01-13T17:26:34.301] [INFO] info - Nueva Conexion establecida!
+[2022-01-13T17:27:05.024] [INFO] info - Nueva Conexion establecida!
+[2022-01-13T17:27:16.552] [INFO] info - { username: 'ignacio123@gmail.com', password: '123456789' }
+[2022-01-13T17:27:16.724] [INFO] info - User log ignacio123@gmail.com
+[2022-01-13T17:27:50.601] [INFO] info - Nueva Conexion establecida!
+[2022-01-13T17:27:51.237] [INFO] info - User log undefined
+[2022-01-13T17:31:20.095] [INFO] info - User log undefined
+[2022-01-13T17:33:45.048] [INFO] info - undefined
+[2022-01-13T17:33:45.052] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 14628
+[2022-01-13T17:33:45.093] [INFO] info - Nueva Conexion establecida!
+[2022-01-13T17:33:55.745] [INFO] info - Nueva Conexion establecida!
+[2022-01-13T17:34:00.593] [INFO] info - { username: 'ignacio123@gmail.com', password: '123456789' }
+[2022-01-13T17:34:00.779] [INFO] info - User log ignacio123@gmail.com
+[2022-01-13T17:34:43.287] [INFO] info - Nueva Conexion establecida!
+[2022-01-13T17:34:48.431] [INFO] info - Nueva Conexion establecida!
+[2022-01-13T17:35:07.239] [INFO] info - User log undefined
+[2022-01-13T17:36:49.528] [INFO] info - undefined
+[2022-01-13T17:36:49.532] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 8372
+[2022-01-13T17:36:50.199] [INFO] info - Nueva Conexion establecida!
+[2022-01-13T17:36:54.276] [INFO] info - Nueva Conexion establecida!
+[2022-01-13T17:37:19.646] [INFO] info - { username: 'ignacio123@gmail.com', password: '123456789' }
+[2022-01-13T17:37:19.827] [INFO] info - User log ignacio123@gmail.com
+[2022-01-13T17:38:02.282] [INFO] info - Nueva Conexion establecida!
+[2022-01-13T17:38:55.358] [INFO] info - User log ignacio123@gmail.com
+[2022-01-13T17:38:56.027] [INFO] info - User log ignacio123@gmail.com
+[2022-01-13T17:38:56.184] [INFO] info - User log ignacio123@gmail.com
+[2022-01-13T17:38:56.370] [INFO] info - User log ignacio123@gmail.com
+[2022-01-13T17:38:56.518] [INFO] info - User log ignacio123@gmail.com
+[2022-01-13T17:40:04.578] [INFO] info - undefined
+[2022-01-13T17:40:04.582] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 16744
+[2022-01-13T17:40:04.798] [INFO] info - Nueva Conexion establecida!
+[2022-01-13T17:40:08.291] [INFO] info - Nueva Conexion establecida!
+[2022-01-13T17:40:16.782] [INFO] info - { username: 'ignacio123@gmail.com', password: '123456789' }
+[2022-01-13T17:40:16.941] [INFO] info - User log ignacio123@gmail.com
+[2022-01-13T17:40:34.901] [INFO] info - Nueva Conexion establecida!
+[2022-01-13T17:40:39.688] [INFO] info - User log ignacio123@gmail.com
+[2022-01-13T17:42:41.538] [INFO] info - User log ignacio123@gmail.com
+[2022-01-13T17:42:42.423] [INFO] info - User log ignacio123@gmail.com
+[2022-01-13T17:42:42.833] [INFO] info - User log ignacio123@gmail.com
+[2022-01-13T17:42:43.064] [INFO] info - User log ignacio123@gmail.com
+[2022-01-13T17:43:28.044] [INFO] info - undefined
+[2022-01-13T17:43:28.048] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 15124
+[2022-01-13T17:43:28.092] [INFO] info - Nueva Conexion establecida!
+[2022-01-13T17:43:32.113] [INFO] info - Nueva Conexion establecida!
+[2022-01-13T17:43:33.283] [INFO] info - Nueva Conexion establecida!
+[2022-01-13T17:43:41.793] [INFO] info - { username: 'ignacio123@gmail.com', password: '123456789' }
+[2022-01-13T17:43:41.970] [INFO] info - User log ignacio123@gmail.com
+[2022-01-13T17:44:10.960] [INFO] info - Nueva Conexion establecida!
+[2022-01-13T17:44:19.665] [INFO] info - User log ignacio123@gmail.com
+[2022-01-13T17:47:17.362] [INFO] info - undefined
+[2022-01-13T17:47:17.366] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 10216
+[2022-01-13T17:47:17.559] [INFO] info - Nueva Conexion establecida!
+[2022-01-13T17:47:20.115] [INFO] info - Nueva Conexion establecida!
+[2022-01-13T17:47:29.765] [INFO] info - { username: 'ignacio123@gmail.com', password: '123456789' }
+[2022-01-13T17:47:29.949] [INFO] info - User log ignacio123@gmail.com
+[2022-01-13T17:48:07.294] [INFO] info - Nueva Conexion establecida!
+[2022-01-13T17:49:18.641] [INFO] info - undefined
+[2022-01-13T17:49:18.645] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 16956
+[2022-01-13T17:49:20.310] [INFO] info - Nueva Conexion establecida!
+[2022-01-13T17:49:21.514] [INFO] info - { username: 'ignacio123@gmail.com', password: '123456789' }
+[2022-01-13T17:49:22.953] [INFO] info - User log ignacio123@gmail.com
+[2022-01-13T17:49:35.536] [INFO] info - Nueva Conexion establecida!
+[2022-01-13T17:49:42.583] [INFO] info - User log ignacio123@gmail.com
+[2022-01-13T17:50:48.960] [INFO] info - undefined
+[2022-01-13T17:50:48.965] [INFO] info - Server Up port modo cluster 8080 - PID WORKER 4412
+[2022-01-13T17:50:49.040] [INFO] info - Nueva Conexion establecida!
+[2022-01-13T17:50:49.610] [INFO] info - { username: 'ignacio123@gmail.com', password: '123456789' }
+[2022-01-13T17:50:53.140] [INFO] info - User log ignacio123@gmail.com
+[2022-01-13T17:51:03.242] [INFO] info - Nueva Conexion establecida!
+[2022-01-13T17:51:04.152] [INFO] info - User log ignacio123@gmail.com
+[2022-01-13T17:56:31.652] [INFO] info - User log ignacio123@gmail.com

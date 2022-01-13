@@ -24,6 +24,6 @@ export interface NewProductoInterface {
     timestamp: Date
 }
 
-export interface Category {
+export interface Categoria {
     nombre: string
 }

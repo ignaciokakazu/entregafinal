@@ -4,7 +4,6 @@ import { Request, Response, NextFunction } from 'express';
 import Joi from 'joi'
 import {ProductoInterface,
         NewProductoInterface} from '../interfaces/productos.interfaces';
-import {MensajeErrorInterface} from '../models/mensajes/mensajeError.interfaces';
 import {api} from '../apis/api';
 import { infoLogger } from '../services/logger';
 
@@ -29,15 +28,17 @@ class ClassProductos {
         }
     }
 
-    async getProductosById(req: Request, res: Response): Promise<ProductoInterface[]|MensajeErrorInterface|void> {
+    async getProductosById(req: Request, res: Response) {
         try {
             const lista:ProductoInterface = await api.getProductosById(req.params.id);
             if (lista) {
-                res.status(200).json(lista);
                 infoLogger.info(`Se buscó ID: ${req.params.id}`)
+                res.status(200).json(lista);
+                
             } else {
-                res.status(200).json({error: "No se encuentra el producto"})
                 infoLogger.info(`Se buscó ID: ${req.params.id} y no se encontró`)
+                res.status(200).json({error: "No se encuentra el producto"})
+                
             }
             
         } catch (error: any) {
@@ -47,29 +48,18 @@ class ClassProductos {
         }
     }
 
-    async insertProducto(req: Request, res: Response) {
+    async insertProducto(newProducto: NewProductoInterface) {
         try {        
-            const newProducto: NewProductoInterface = {
-                nombre: req.body.nombre,
-                descripcion: req.body.descripcion,
-                codigo: req.body.codigo,
-                fotos: req.body.fotos,
-                precio: req.body.precio,
-                stock: req.body.stock,
-                timestamp: new Date(),
-                idCategoria: req.body.idCategoria
-            }
-
-            const respuesta = await api.insertProducto(newProducto);
-            res.status(200).json(respuesta);
             
+            await api.insertProducto(newProducto);
+            return newProducto
+                        
         } catch(error:any) {
-            res.status(403).json({error: error.message})
+            return {error: error.message}
         }
     }
 
     async deleteProducto(req:Request, res:Response) {
-        // acá tengo que validar, antes de mandar
         try {
             let id:number|string;
             if (isNaN(Number(req.params.id))) {
@@ -78,9 +68,14 @@ class ClassProductos {
                 id = Number(req.params.id);
             }
             
-            await api.deleteProducto(id);
-            res.status(200).json({msg: `Producto eliminado ${id} `});
-
+            const mensaje = await api.deleteProducto(id);
+            
+            if (mensaje.deletedCount) {
+                res.status(200).json({msg: mensaje});
+            } else {
+                res.status(404).json({msg: 'no existe el id'});
+            }
+            
         } catch(error: any) {
             res.status(403).json({error: error.message});
         }
@@ -128,6 +123,7 @@ class ClassProductos {
             nombre: Joi.string().min(3).max(50).required(),
             descripcion: Joi.string().min(10).max(200).required(),
             codigo: Joi.string().min(3).max(3).required(),
+            idCategoria: Joi.string().min(3).max(100).required,
             fotos: Joi.array().items(Joi.string().min(6).max(200).required()),
             precio: Joi.number().required(),
             stock: Joi.number().integer().required(),
@@ -147,31 +143,19 @@ class ClassProductos {
                     textoError += msg.message;
                 })
     
-            res.status(403).json({error: textoError});
-    
+                return {error: textoError};
+            
             } else {
                 next();
             }
         
         } catch(error:any) {
-            res.status(404).json({error: error.message})
+            return {error: error.message}
+            
         }
     }
     
 }
 
-/*
-{
-    "user": {"user": "admin",
-    "password": "1234"},
-        "product": {"nombre": "nombre2",
-    "descripcion": "descripcion2",
-                "codigo": "codigo",
-            "foto": "req.foto",
-            "precio": 1234,
-            "stock": 10}
-}
-
-*/
 
 export const Productos = new ClassProductos();

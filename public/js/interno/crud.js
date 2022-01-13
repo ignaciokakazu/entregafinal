@@ -44,6 +44,7 @@ const agregarProducto = (e) => {
   };
   console.log(producto)
   console.log(JSON.stringify(producto))
+}
 //   postDataParams(urlOrigen + 'api/images/upload', JSON.stringify(producto))
 //     .then((response) => response.json())
 //     .then((data) => {
