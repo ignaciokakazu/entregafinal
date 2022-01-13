@@ -6,13 +6,202 @@ import {Productos} from '../controllers/ClassProductos';
 const router = express.Router();
 
 
+/**
+ * @swagger
+ * api/productos/:
+ *   get:
+ *     summary: Devuelve todos los productos
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/ProductoI'
+ *     responses:
+ *       200:
+ *         description: devuelve todos los productos
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 msg:
+ *                   type: String
+ *                   example: 
+ *                 data:
+ *                    
+ *       400:
+ *         description: error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 data:
+ *                   type: String
+ *                   example: Campos del body invalidos
+ *
+ */
+
 router.get('/', Productos.getProductosAll);
+
+
+/**
+ * @swagger
+ * api/productos/:id:
+ *   get:
+ *     summary: Devuelve el producto por id de producto
+ *     requestBody:
+ *       required: false
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/ProductoInterface'
+ *     responses:
+ *       200:
+ *         description: Devuelve el producto por id de producto
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 msg:
+ *                   type: String
+ *                   example: 
+ *                 data:
+ *                    
+ *       400:
+ *         description: No existe el producto con ese id
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 data:
+ *                   type: String
+ *                   example: Campos del body invalidos
+ *
+ */
 
 router.get('/:id', Productos.getProductosById);
 
+
+/**
+ * @swagger
+ * api/productos/search/:search:
+ *   get:
+ *     summary: Busca productos por string
+ *     requestBody:
+ *       required: false
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/ProductoInterface'
+ *     responses:
+ *       200:
+ *         description: Devuelve un array de productos que coincidan con la búsqueda
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               properties:
+ *                 msg:
+ *                   type: String
+ *                   example: 
+ *                 data:
+ *                    
+ *       403:
+ *         description: No existe un producto para esa búsqueda
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 data:
+ *                   type: String
+ *                   example: Campos del body invalidos
+ *
+ */
+
 router.get('/search/:search', Productos.search);
 
+
+/**
+ * @swagger
+ * api/productos/:id:
+ *   delete:
+ *     summary: Elimina un producto por id de producto
+ *     requestBody:
+ *       required: false
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/ProductoInterface'
+ *     responses:
+ *       200:
+ *         description: Elimina un producto por id de producto
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               properties:
+ *                 msg:
+ *                   type: String
+ *                   example: Producto de id eliminado
+ *                 data:
+ *                    
+ *       403:
+ *         description: No existe un producto con ese id para eliminar
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 data:
+ *                   type: String
+ *                   example: Campos del body invalidos
+ *
+ */
+
 router.delete('/:id', verifyToken, isAdmin, Productos.deleteProducto);
+
+
+/**
+ * @swagger
+ * api/productos/agregar:
+ *   post:
+ *     summary: Ruta protegida para admin. Agrega un producto
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/ProductoInterface'
+ *     responses:
+ *       200:
+ *         description: Ruta protegida para admin. Agrega un producto
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               properties:
+ *                 msg:
+ *                   type: String
+ *                   example: producto agregado
+ *                 data:
+ *                    
+ *       403:
+ *         description: Validación de campos no cumple con los requisitos
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 data:
+ *                   type: String
+ *                   example: Campos del body invalidos
+ *
+ */
 
 router.post('/agregar', 
             verifyToken,
@@ -20,74 +209,48 @@ router.post('/agregar',
             Productos.validacionProd, 
             Productos.insertProducto);
 
+/**
+ * @swagger
+ * api/productos/actualizar/:id:
+ *   put:
+ *     summary: Ruta protegida para admin. Actualiza un producto por ID de producto
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/ProductoInterface'
+ *     responses:
+ *       200:
+ *         description: Ruta protegida para admin. Actualiza un producto por ID de producto
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               properties:
+ *                 msg:
+ *                   type: String
+ *                   example: producto agregado
+ *                 data:
+ *                    
+ *       403:
+ *         description: Validación de campos no cumple con los requisitos
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 data:
+ *                   type: String
+ *                   example: Campos del body invalidos
+ *
+ */
+
 router.put('/actualizar/:id', 
             verifyToken,
             isAdmin,
             Productos.validacionProd, 
             Productos.updateProducto);
-
-// router.get('/', Productos.getProductosAll);
-// /* ◦	no necesita autenticación previa
-// ◦	listara los productos como un array de objetos
-// ◦	cada objeto contendrá toda la información referida al productos
-// */
-
-// /**
-//  * @swagger
-//  * components:
-//  *   schemas:
-//  *     ProductData:
-//  *       type: object
-//  *       properties:
-//  *         _id:
-//  *           type: String
-//  *           description: ID del producto
-//  *           example: 1
-//  *         nombre:
-//  *           type: String
-//  *           description: nombre del producto
-//  *           example: Camiseta Bokita the biggest
-//  *         precio:
-//  *           type: number
-//  *           description: precio del producto
-//  *           example: 2000
-//  *     NewProductInput:
-//  *       type: object
-//  *       properties:
-//  *         nombre:
-//  *           type: String
-//  *           description: nombre del producto
-//  *           example: Camiseta Bokita the biggest
-//  *         precio:
-//  *           type: number
-//  *           description: precio del producto
-//  *           example: 2000
-//  */
-
-// router.get('/:category', Productos.getProductosByCat);
-
-// /*◦	no necesita autenticación previa
-// ◦	listara los productos como un array de objetos
-// ◦	Si no existe ningún documento con la categoría pedida, devolver el array vacio
-// ◦	cada objeto contendrá toda la información referida al productos */
-
-// router.get('/listar:productid', Productos.getProductosById);
-
-// router.get('/hola', (req, res)=> {
-//     res.json({hola:'hola'})
-// })
-// router.delete('/:productid', Productos.deleteProducto);
-
-// router.post('/', 
-//             Productos.validacionProd, 
-//             Productos.insertProducto);
-
-// router.put('/:productid', 
-//             Productos.validacionProd, 
-//             Productos.updateProducto);
-
-// router.get('/search/:search', Productos.search);
-
 
 
 export default router;

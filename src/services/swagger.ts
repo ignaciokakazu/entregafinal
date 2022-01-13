@@ -4,7 +4,7 @@ const options = {
     definition: {
       openapi: '3.0.0',
       info: {
-        title: 'Proyecto de Cristian con Swagger',
+        title: 'Proyecto Desafío final Coderhouse',
         version: '0.0.1',
         description:
           'This is a simple CRUD API application made with Express and documented with Swagger',
@@ -13,41 +13,19 @@ const options = {
           url: 'https://spdx.org/licenses/MIT.html',
         },
         contact: {
-          name: 'Cristian',
-          url: 'https://logrocket.com',
-          email: 'cristiancinetto@gmail.com',
+          name: 'Ignacio',
+          url: 'https://example.com',
+          email: 'ignaciokakazu@gmail.com',
         },
       },
       servers: [
         {
-          url: 'http://localhost:3000',
+          url: 'http://localhost:8080',
           description: 'Development server',
         },
       ],
     },
-    apis: ['src/router/*'],
+    apis: ['src/routes/*'],
   };
-// const options = {
-//     swaggerDefinition: {
-//         openapi: "3.0.0",
-//         info: {
-//             version: "1.0.0",
-//             title: "Documentación de API",
-//             description: "API Documentación para uso",
-//             contact: {
-//                 name: "Ignacio Kakazu",
-//                 url: "Alguna URL"
-//             },
-//             servers: [
-//                 {
-//                     url: "http://localhost:8080/api",
-//                     description: "Development "
-//                 },
-//             ],
-//         }
-//     },
-//     basepath: "/api",
-//     apis: ["../router/*.js"]
-//   }
 
 export const swaggerDocument = swaggerJsDoc(options)

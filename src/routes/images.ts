@@ -19,6 +19,30 @@ var storage = multer.diskStorage({
 
 var upload = multer({ storage : storage }).array('foto',2);
 
+/**
+ * @swagger
+ * api/images/upload/:
+ *   post:
+ *     summary: Guarda imagenes
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *     responses:
+ *       200:
+ *         description: Guarda imagenes
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               properties:
+ *                 msg:
+ *                   type: String
+ *                   example: Usuario agregado
+ *                 data:
+ *                    
+ *
+ */
 router.post('/upload', 
     verifyToken, 
     isAdmin, 

@@ -5,20 +5,25 @@ const router = express.Router();
 
 /**
  * @swagger
- * /listar:
+ * api/carrito/:
  *   get:
- *     summary: Devuelve todos los carritos. Funcionalmente no tiene mucho sentido (sólo para cumplir con la consigna)
+ *     summary: Devuelve el carrito por ID de usuario
  *     responses:
  *       200:
  *         description: success response
  *         content:
  *           application/json:
  *             schema:
- *               type: array 
+ *               type: object
  *               properties:
- *                 data:
- *                   type: array
- *                   items: 
+ *                 userId: 
+ *                   type: string
+ *                 productos:
+ *                   type: object
+ *                 timestamp: 
+ *                   type: date
+ *                 direccion:
+ *                   type: object
  *       404:
  *         description: No hay carritos
  *         content:
@@ -44,9 +49,9 @@ router.get('/', Carrito.getCarritoById);
 
 /**
  * @swagger
- * listar/:id:
+ * api/carrito/agregar/:id:
  *   get:
- *     summary: Devuelve el carrito por ID 
+ *     summary: agrega un carrito con userId
  *     responses:
  *       200:
  *         description: success response
@@ -59,7 +64,7 @@ router.get('/', Carrito.getCarritoById);
  *                   type: array
  *                   items: 
  *       404:
- *         description: No existe el carrito con el ID
+ *         description: No existe el usuario con ese id
  *         content:
  *           application/json:
  *             schema:
@@ -67,24 +72,12 @@ router.get('/', Carrito.getCarritoById);
  *               properties:
  *                 error:
  *                   type: String
- *                   example: No existe el carrito con el ID
+ *                   example: No existe el usuario con ese id
  *
  */
-/* Ejemplo de objeto del Response {
-"_id": "61924f8b74ebb19a086840d0", 
-"producto": {
-    "_id": "614a81044110e52a0702bf81", 
-    "nombre": "OsobucoModif",
-    "descripcion": "Descripcion osobuco",
-    "codigo": "Oso",
-    "foto": "foto",
-    "precio": 50,
-    "stock": 10,
-    "timestamp": "Tue Sep 21 2021 22:04:04 GMT-0300 (hora estándar de Argentina)"
-}
-*/
 
-router.post('/agregar', Carrito.setCarrito); //acá recibe _id del usuario y ProductoInterface
+
+router.post('/agregar', Carrito.setCarrito); 
 
 /**
  * @swagger

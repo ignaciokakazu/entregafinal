@@ -16,7 +16,7 @@ socket(io);
 /* FORK O CLUSTER */
 const argv = minimist(process.argv.slice(2));
 const modo = argv.server;
-// export const PORT = argv.puerto || 8080;
+
 infoLogger.info(modo);
 
 // myServer.listen(PORT, ()=> console.log(`server up ${PORT}`));
