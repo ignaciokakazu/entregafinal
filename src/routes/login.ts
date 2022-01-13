@@ -15,7 +15,7 @@ export let tokenJWT:any;
 
 /**
  * @swagger
- * api/productos/login/:
+ * api/user/login/:
  *   post:
  *     summary: Log in del usuario. Con Usuario y Contraseña
  *     requestBody:

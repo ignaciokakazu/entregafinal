@@ -34,3 +34,5 @@ class ClassOrden {
         }
     }
 }
+
+export const Ordenes = new ClassOrden();
