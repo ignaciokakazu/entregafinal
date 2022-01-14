@@ -45,11 +45,11 @@ const router = express.Router();
  *                   type: String
  *                   example: Error
  */
-router.get('/', Carrito.getCarritoById);
+router.get('/', Carrito.getCarritoByUsername);
 
 /**
  * @swagger
- * api/carrito/agregar/:id:
+ * api/carrito/add/:
  *   get:
  *     summary: agrega un carrito con userId
  *     responses:
@@ -77,7 +77,7 @@ router.get('/', Carrito.getCarritoById);
  */
 
 
-router.post('/agregar', Carrito.setCarrito); 
+router.post('/add', Carrito.setProductoToCarrito); 
 
 /**
  * @swagger
@@ -115,7 +115,7 @@ router.post('/agregar', Carrito.setCarrito);
  *
  */
 
-router.post('/checkout', Carrito.checkout);
+router.post('/submit', Carrito.submit);
 
 /**
  * @swagger
@@ -152,11 +152,8 @@ router.post('/checkout', Carrito.checkout);
  *                   example: Campos del body invalidos
  *
  */
+router.delete('/delete', Carrito.deleteCarrito);
 
-
-
-
-router.delete('/borrar/todo', Carrito.deleteCarritoById);
 // async (req:Request, res:Response)=> {
 //     res.json(await Carrito.deleteCarritoAll());
 // })
@@ -166,8 +163,10 @@ router.delete('/borrar/todo', Carrito.deleteCarritoById);
 //     res.json(await Carrito.deleteCarritoById(Number(req.params.id)))
 // })
 
-router.get('/', (req, res)=> {
-    res.render('crud')
-})
+// router.get('/', (req, res)=> {
+//     res.render('crud')
+// })
+
+// router.get('/vaciar', Carrito.vaciarCarrito);
 
 export default router;

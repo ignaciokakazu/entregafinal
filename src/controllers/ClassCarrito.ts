@@ -1,13 +1,14 @@
 /* eslint-disable import/no-unresolved */
 import {Request, Response} from 'express';
 import {api} from '../apis/api';
-import {CarritoArray, CarritoInterface, NewCarritoInterface} from '../interfaces/carrito.interfaces';
+import {CarritoI, NewCarritoI, ProdCarritoI} from '../interfaces/carrito.interfaces';
 import {UserI} from '../interfaces/login.interfaces';
 import {infoLogger} from '../services/logger';
 import { apiLogin } from '../apis/login';
 import SmsService from '../services/twilio';
 import EmailService from '../services/email';
-
+import {Login, tokenJWT} from './ClassLogin';
+import { ProductoInterface } from '../interfaces/productos.interfaces';
 
 class ClassCarrito {
     private lista:any;
@@ -16,103 +17,253 @@ class ClassCarrito {
 
     }
 
-    async getCarritoById(req:Request, res:Response) {
-        try {
-            const username: string = req.body.username;
-            const user: any = await apiLogin.getByEmail(username);
-            const carrito = await api.getCarritoById(user.id);
+//     async getCarritoById(req:Request, res:Response) {
+//         try {
+//             const username: string = req.body.username;
+//             const user: any = await apiLogin.getByEmail(username);
+//             const carrito = await api.getCarritoById(user.id);
             
-            carrito? res.status(200).json(carrito) : res.status(404).json({error: `No hay carrito con el ID ${user.id}`});
+//             carrito? res.status(200).json(carrito) : res.status(404).json({error: `No hay carrito con el ID ${user.id}`});
             
-        } catch(error: any) {
-            infoLogger.warn(error.message);
-            res.status(403).json ({error: error.message})
-        }
+//         } catch(error: any) {
+//             infoLogger.warn(error.message);
+//             res.status(403).json ({error: error.message})
+//         }
+//     }
+
+//     async getCarritoAll(req:Request, res:Response) {
+//         /* este método es innecesario */
+//         try {
+//             const carritoAll = await api.getCarritoAll(); 
+//             if (!carritoAll) {
+//                 res.status(404).json({error: 'No hay carritos'})
+//                 return;
+//             }
+//             res.status(200).json(carritoAll);
+//         } catch (error:any) {
+//             res.status(403).json({error: error.message});
+//         }
+//     }
+
+//     async deleteCarritoById(req:Request, res:Response){//id:number) {
+//         try {
+//             await api.deleteCarritoById(req.body.id);
+            
+//             res.json({msg: `Eliminado ${req.body.id}`});
+
+//         } catch (err:any) {
+//             res.json({error: err.message});
+//         }
+//     }
+
+    async setCarritoNuevo(username: string){
+        const user:UserI = await apiLogin.getByEmail(username)
+        const a = await api.setCarritoNuevo(user)
+        console.log('setCarritoNuevo')
     }
 
-    async getCarritoAll(req:Request, res:Response) {
-        /* este método es innecesario */
+    async setProductoToCarrito(req:Request, res:Response) {
         try {
-            const carritoAll = await api.getCarritoAll(); 
-            if (!carritoAll) {
-                res.status(404).json({error: 'No hay carritos'})
-                return;
+            const prodId: string = req.body.prodId;
+            
+            if (isNaN(Number(req.body.cantidad))) {
+                res.status(400).json({error: 'cantidad inválida. Sólo number'})
+                return
             }
-            res.status(200).json(carritoAll);
-        } catch (error:any) {
-            res.status(403).json({error: error.message});
-        }
-    }
 
-    async deleteCarritoById(req:Request, res:Response){//id:number) {
-        try {
-            await api.deleteCarritoById(req.body.id);
-            
-            res.json({msg: `Eliminado ${req.body.id}`});
+            const cantidad: number = req.body.cantidad;
 
-        } catch (err:any) {
-            res.json({error: err.message});
-        }
-    }
+            const buscaProd = await api.getProductosById(prodId);
 
-    async setCarritoNuevo(id: string|number): Promise<string>{
-        return await api.setCarritoNuevo(id);
-    }
+            if (!buscaProd) {
+                res.status(400).json({error: `producto no existente por id ${prodId}`})
+                return
+            }
 
-    async setCarrito(req:Request, res:Response) {
-        try {
-        /* Corroborar que haya stock */
+            const userId:UserI = await apiLogin.getByEmail(tokenJWT.user);
 
-        const carrito: CarritoInterface = await api.setCarrito(req.body);
-
-        res.json(carrito);
-
+            const carrito = await api.getCarritoByUserId(userId._id);
  
-        } catch (e:any) {
-            res.json({msg:e.message})
-        }
-    }
+            // hay stock suficiente?
+            const producto: ProductoInterface = await api.getProductosById(prodId);
 
-    async checkout(req:Request, res:Response) {
-        /*
-            {recibe del body el carrito}
-            cierra el carrito. Cambia de abierto a false
-        */
-       try {
-        let carrito:CarritoInterface = await api.getCarritoById(req.body._id)
-        const userId:string = carrito.user;
-        const user: UserI[] = await apiLogin.get(userId);
-        
-        carrito.abierto = false;
-        await api.checkout(carrito)
-        //enviar mail a admin
-        const mail = new EmailService()
-        console.log('enviado')
-        await mail.sendEmail(user[0].username, `Nuevo pedido de ${user[0].name}`, `${carrito}`)
-        await SmsService.sendMessage(`Nuevo pedido de ${user[0].name}`)
-            res.json({msg: 'cerrado', carrito: carrito})
-        } catch(e:any) {
-            res.json({msg: e.message})
-        }
-        //enviar sms a admin
+            if (producto.stock - cantidad <= 0) {
+                res.status(400).json({error: `stock no es suficiente. En existencia ${producto.stock}`});
+                return
+            }
 
-        //enviar sms a user
+            const carrProd = carrito.productos.filter((prod: ProdCarritoI) =>prod.itemId == prodId);
 
-}
-
-
-    async addCarritoById(req:Request, res:Response) {
-        try {
-            //Productos
-            const id:number = Number(req.params.body);
-            const lista = await api.getProductosById(id);
+            if (!carrito.productos.length || !carrProd.length) {
+                carrito.productos.push({itemId: prodId, cantidad: cantidad, timestamp: new Date()})
+                const carr = await api.updateCarrito(carrito);
+                res.status(200).json({msg: carr})
+                return
+            } 
             
-            console.log(lista);
-               
-        } catch (error:any) {
-            return {error: error.message}
+            const carrSinProd = carrito.productos.filter((prod: ProdCarritoI)=>prod.itemId != prodId)
+           
+            let cant = carrProd[0].cantidad;
+            cant += cantidad;
+            const productosId = carrProd[0]._id
+            carrSinProd.push({itemId: prodId, cantidad: cant, timestamp: new Date(), _id: productosId})
+ 
+            const carritoNuevo = {
+                _id: carrito._id,
+                userId: carrito.userId,
+                productos: carrSinProd,
+                timestamp: new Date(),
+                direccion: carrito.direccion
+            }
+ 
+            //actualiza carrito y producto (stock)
+            const carr = await api.updateCarrito(carritoNuevo);
+            const prod = await api.updateProducto(buscaProd._id, {
+                _id: buscaProd._id,
+                nombre: buscaProd.nombre,
+                descripcion: buscaProd.descripcion,
+                fotos: buscaProd.fotos,
+                stock: buscaProd.stock - cantidad,
+                idCategoria: buscaProd.idCategoria,
+                precio: buscaProd.precio,
+                timestamp: new Date()
+            })
+ 
+            res.status(200).json({carrito:carr})
+ 
+        } catch(error:any) {
+            res.status(400).json({error: 'error en setProducto ' + error.message})
         }
     }
+
+    async deleteCarrito(req:Request, res:Response) {
+        try {
+            const prodId: string = req.body.prodId;
+            
+            if (isNaN(Number(req.body.cantidad))) {
+                res.status(400).json({error: 'cantidad inválida. Sólo number'})
+                return
+            }
+
+            const cantidad: number = req.body.cantidad;
+
+            const buscaProd = await api.getProductosById(prodId);
+
+            if (!buscaProd) {
+                res.status(400).json({error: `producto no existente por id ${prodId}`})
+                return
+            }
+
+            const userId:UserI = await apiLogin.getByEmail(tokenJWT.user);
+
+            const carrito = await api.getCarritoByUserId(userId._id);
+ 
+            // hay cantidad suficiente para borrar?
+            const producto: ProductoInterface = await api.getProductosById(prodId);
+
+            const carrProd = carrito.productos.filter((prod: ProdCarritoI) =>prod.itemId == prodId);
+
+            if (!carrito.productos.length || !carrProd.length) {
+                res.status(400).json({msg: `no existe el producto en el carrito`})
+                return
+            } 
+            
+            if (carrProd[0].cantidad - cantidad <0) {
+                res.status(400).json({msg: `la cantidad del carrito es insuficiente ${carrProd[0].cantidad}`})
+            }
+
+            const carrSinProd = carrito.productos.filter((prod: ProdCarritoI)=>prod.itemId != prodId)
+           
+            let cant = carrProd[0].cantidad;
+            cant -= cantidad;
+            const productosId = carrProd[0]._id
+            carrSinProd.push({itemId: prodId, cantidad: cant, timestamp: new Date(), _id: productosId})
+ 
+            const carritoNuevo = {
+                _id: carrito._id,
+                userId: carrito.userId,
+                productos: carrSinProd,
+                timestamp: new Date(),
+                direccion: carrito.direccion
+            }
+ 
+            //actualiza carrito y producto (stock)
+            const carr = await api.updateCarrito(carritoNuevo);
+            const prod = await api.updateProducto(buscaProd._id, {
+                _id: buscaProd._id,
+                nombre: buscaProd.nombre,
+                descripcion: buscaProd.descripcion,
+                fotos: buscaProd.fotos,
+                stock: buscaProd.stock + cantidad,
+                idCategoria: buscaProd.idCategoria,
+                precio: buscaProd.precio,
+                timestamp: new Date()
+            })
+ 
+            res.status(200).json({carrito:carr})
+ 
+        } catch(error:any) {
+            res.status(400).json({error: 'error en setProducto ' + error.message})
+        }
+    }
+
+    async getCarritoByUsername(req:Request, res:Response) {
+        try {
+            if (!tokenJWT.user) {
+                res.status(400).json({error: 'no se encuentra loggeado el usuario'})
+                return
+            }
+
+            const user:UserI = await apiLogin.getByEmail(tokenJWT.user);
+            const carrito: CarritoI = await api.getCarritoByUserId(user._id.toString());
+            res.status(200).json({carrito: carrito});
+        } catch(error:any) {
+            res.status(403).json({error: 'error en getCarritoByUsername ' + error.message})
+        }
+    }
+
+    async submit(req: Request, res:Response) {
+        try {
+            if (!tokenJWT.user) {
+                res.status(400).json({error: 'no se encuentra loggeado el usuario'})
+                return
+            }
+
+            const user:UserI = await apiLogin.getByEmail(tokenJWT.user);
+            const carrito: CarritoI = await api.getCarritoByUserId(user._id.toString());
+
+            if (!carrito.productos) {
+                res.status(400).json({error: 'carrito vacío, no se puede cerrar la orden'})
+            }
+
+            let total = 0;
+            const items = [];
+            for (let i=0;i<carrito.productos.length;i++) {
+                const precio = await api.getProductoPrecioById(carrito.productos[i].itemId);
+                total = carrito.productos[i].cantidad * precio
+                console.log(carrito.productos[i].itemId)
+                console.log(carrito.productos[i].cantidad)
+                console.log(precio)
+                items.push({itemId:carrito.productos[i].itemId, 
+                            cantidad: carrito.productos[i].cantidad,
+                            precio: precio})
+            }
+            console.log(items)
+            const order = {
+                userId: user._id,
+                timestamp: new Date(),
+                items: items,
+                estado: 'GENERADO',
+                total: total
+            }
+            console.log(order);
+            const orderCreada = api.createOrder(order);
+            res.status(200).json({carrito: order});
+        } catch(error:any) {
+            res.status(403).json({error: 'error en getCarritoByUsername ' + error.message})
+        }
+    }
+
 
 }
 

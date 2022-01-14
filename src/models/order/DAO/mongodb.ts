@@ -6,11 +6,11 @@ import Config from '../../../config/config';
 
 export const ordenSchema = new mongoose.Schema<OrdenI>({
   userId: String,
-  items: {
+  items: [{
     itemId: String,
     cantidad: Number,
     precio: Number
-  },
+  }],
   timestamp: Date,
   estado: String, 
   total: Number
@@ -30,12 +30,16 @@ export class OrdersMongoDAO {//implements ProductBaseClass {
     this.orders = mongoose.model<OrdenI>('orden', ordenSchema);
   }
 
-  async getOrdersById(id:string) {
+  async getOrderById(id:string) {
     return await this.orders.findById(id).exec();
   }
 
-  async getOrdersByUserId(userId: string): Promise<OrdenI[]> {
+  async getOrderByUserId(userId: string): Promise<OrdenI[]> {
     return await this.orders.find({userId: userId});
+  }
+
+  async updateOrder(order:any) {
+    return await this.orders.findByIdAndUpdate(order._id, order)
   }
 
   async setOrderComplete(id: string) {
@@ -49,6 +53,12 @@ export class OrdersMongoDAO {//implements ProductBaseClass {
       console.log('enviar un email al usuario')
       return 'modificado'
     }
+  }
+
+  async createOrder(data:any) {
+    const newProduct = new this.orders(data);
+    await newProduct.save();
+    return newProduct;
   }
 
 }

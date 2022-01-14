@@ -6,9 +6,9 @@ import {tokenJWT} from '../controllers/ClassLogin';
 
 export function verifyToken(req:Request, res:Response, next:NextFunction) {
     // https://stackoverflow.com/questions/62014713/jwt-node-authentication-req-headersauthorization-is-undefined
-    console.log(req.headers)
-    console.log(req.headers['access-token'])
-    const accessToken:any = req.headers['authorization'] || req.query.accesstoken; //puede llegar por query
+    // console.log(req.headers)
+    // console.log(req.headers['access-token'])
+    const accessToken:any = req.headers['authorization'] || req.query.accesstoken || tokenJWT.token; //puede llegar por query
     console.log(tokenJWT)
     // console.log(authHeader)
     // const token = authHeader && authHeader.split(" ")[1];
@@ -16,14 +16,14 @@ export function verifyToken(req:Request, res:Response, next:NextFunction) {
     let decoded:string = '';
 
     tokenJWT? decoded = jwtDecode(tokenJWT.token) : decoded = ''
-    console.log(decoded);
+    // console.log(decoded);
     if (!decoded) {
-        res.json({error:'error'})
+        res.json({error:'error. Necesita loggearse en admin/index'})
         return
     }
 
     if (!accessToken) {
-        res.json({error: 'error'})
+        res.json({error: 'error. Necesita loggearse en admin/index'})
         return
     }
     

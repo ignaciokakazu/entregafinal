@@ -4,10 +4,10 @@ import Config from '../../../config/config';
 import Moment from 'moment';
 import { ProductoInterface } from '../../../interfaces/productos.interfaces';
 import {infoLogger} from '../../../services/logger';
-import {CarritoI, ProdCarritoI, DireccionI} from '../../../interfaces/carrito.interfaces'
+import {CarritoI, NewCarritoI} from '../../../interfaces/carrito.interfaces'
 import { api } from '../../../apis/api';
 import { apiLogin } from '../../../apis/login';
-
+import {UserI} from '../../../interfaces/login.interfaces';
 const carritoSchema = new mongoose.Schema<CarritoI>({
   //en el SCHEMA no va el _id... sino no podría hacer save del NewCarritoInterface
     userId: String,
@@ -57,18 +57,18 @@ export class CarritoMongoDAO {//implements ProductBaseClass {
     this.carrito = mongoose.model<CarritoI>('carrito', carritoSchema);
   }
 
-  async getCarritoAll() {
-      console.log('hola getCarrito All')
-    return await this.carrito.find();
+  async getCarritoByUserId(id:string) {
+    return await this.carrito.findOne({userId: id}).exec();
   }
 
-  async getCarritoById(id:string) {
-    return await this.carrito.findById(id).exec();
+  async updateCarrito(carrito:any) {
+    console.log(carrito)
+    return await this.carrito.findOneAndReplace({_id: carrito._id}, carrito)
   }
 
-  async setCarrito(data:any){
+  async setCarrito(userId:any){
     /* rehacer */
-    const id:string = data._id
+    const id:string = userId
     const carrito = await this.carrito.findOne({_id: id}).exec();
     if (!carrito) {
       return 'no se encuentra el carrito'
@@ -93,34 +93,34 @@ export class CarritoMongoDAO {//implements ProductBaseClass {
       }
     }
 
-    async setCarritoNuevo(id:string){
-    //   const user = await apiLogin.getByEmail(id)
-    //   const data: CarritoI = {
-    //     timestamp: new Date(),
-    //     user: user._id,
-    //     productos: [],
-    //     direccion: user.direccion
-    // }
+    async setCarritoNuevo(user:UserI){
+      try {
+        const data: NewCarritoI = {
+          timestamp: new Date(),
+          userId: user._id.toString(),
+          productos: [],
+          direccion: user.direccion
+      }
 
-    // try {
-    //   const newProduct = new this.carrito(data);
+      const newProduct = new this.carrito(data);
       
-    //   await newProduct.save(function(err:any,data){
-    //       if (err) {
-    //           infoLogger.log('no se pudo grabar')
-    //           throw new Error('no se pudo grabar')
-    //       } 
+      await newProduct.save(function(err:any,data){
+          if (err) {
+              infoLogger.log('no se pudo grabar')
+              throw new Error('no se pudo grabar')
+          } 
           
-    //       console.log(data._id.toString());
+          console.log(data._id.toString());
           
-    //   });
+      });
 
-    //   return newProduct._id
-
-    // } catch (e:any) {
-    //   return e.message
-    //  }
+      return newProduct._id
+    
+    } catch (error:any) {
+      return {error: 'error en la creación del carrito ' + error.message}
     }
+
+  }
 
   async deleteCarritoById(id:string) {
       await this.carrito.deleteOne({id:id});

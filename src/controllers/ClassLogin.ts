@@ -8,14 +8,17 @@ import jwt from 'jsonwebtoken';
 import {LoginI, DireccionE} from '../interfaces/login.interfaces';
 import config from '../config/config';
 import { Carrito } from './ClassCarrito';
+import { api } from '../apis/api';
 
-//el controller está en medio de API y models (donde también están las interfaces)
-//por ende, usa la API de Login, y la API usa la BD
-//el Req/Res sale de acá: 
+/*el controller está en medio de API y models (donde también están las interfaces)
+por ende, usa la API de Login, y la API usa la BD
+el Req/Res sale de acá: 
+*/
 /*  Req/res-> Controller. Maneja la lógica
     API->Maneja la interacción con la BD (que está en models). Por eso los métodos de API son iguales a los del DAO
 */
-export let tokenJWT:any;
+export let tokenJWT:any; 
+//el tokenJWT está para ser rellenado con los valores de JWT cuando se loguea (ruta api/user/login)
 
 const joiSchemaNewUser = Joi.object().keys({
     name: Joi.string().min(3).max(50).required(),
@@ -61,7 +64,7 @@ class ClassLogin {
         
         !flagPassword? res.status(400).json({error: "Password y PasswordConfirmation no coinciden"}) : '';
 
-        console.log("file" + req.body.file)
+        infoLogger.log("file" + req.body.file)
         
         const joiValidacion = joiSchemaNewUser.validate(req.body);
 
@@ -103,14 +106,16 @@ class ClassLogin {
                         },
                         admin: req.body.admin,
                         timestamp: new Date(),
-                    }) 
+                    })
+                    
+                    await Carrito.setCarritoNuevo(req.body.username);
                 }
             });
         });
 
             infoLogger.info(`Usuario ${req.body} dado de alta ${new Date()}`);
             const user = await apiLogin.getByEmail(req.body.username);
-            console.log(user)
+            infoLogger.log(user)
             
             
             // await Carrito.setCarritoNuevo(userId)
@@ -124,7 +129,7 @@ class ClassLogin {
    
     async auth(req:Request, res:Response, next: NextFunction) {
         //auth por Mongo
-        console.log(req.body)
+        infoLogger.log(req.body)
         infoLogger.info(req.body)
         
         const user:LoginI = {
@@ -149,7 +154,7 @@ class ClassLogin {
         const userMongo = await apiLogin.getByEmail(req.body.username);
         const validate = await apiLogin.validatePassword(user.username, user.password);
         
-        console.log(validate);
+        infoLogger.log(validate);
         if (validate) {
             const accessToken = jwt.sign({id: user.username}, config.JWT_SECRET_KEY , { expiresIn: config.TOKEN_KEEP_ALIVE })
             tokenJWT = {

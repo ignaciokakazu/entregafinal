@@ -1,5 +1,4 @@
 import mongoose from 'mongoose';
-import {CarritoInterface, NewCarritoInterface} from '../../../interfaces/carrito.interfaces';
 import Config from '../../../config/config';
 import Moment from 'moment';
 import { ProductoInterface } from '../../../interfaces/productos.interfaces';

@@ -1,34 +1,17 @@
-export type CarritoArray = Array<CarritoInterface>;
+import { DireccionE } from "./login.interfaces";
 
-export interface CarritoInterface {
-    _id: string, 
-    timestamp: string,
-    user: string,
-    producto: [{
-        _id: string,
-        nombre: string,
-        descripcion: string,
-        codigo: string,
-        foto: string,
-        precio: number,
-        cantidad: number,
-        timestamp: string
-    }],
-    abierto:boolean
-}
-
-export interface NewCarritoInterface {
-    timestamp: string,
-    user: string,
-    producto: CarritoInterface[],
-    abierto:boolean
+export interface NewCarritoI {
+    userId: string,
+    productos: [],
+    timestamp: Date, // fecha de creación y update
+    direccion: DireccionE
 }
 
 export interface CarritoI {
     userId: string,
     productos: [ProdCarritoI],
     timestamp: Date, // fecha de creación y update
-    direccion: DireccionI
+    direccion: DireccionE
 }
 
 export interface ProdCarritoI {
@@ -37,10 +20,5 @@ export interface ProdCarritoI {
     timestamp: Date
 }
 
-export interface DireccionI {
-    calle: string,
-    altura: string,
-    codigoPostal: string,
-    piso?: number,
-    departamento?: number
-}
+
+

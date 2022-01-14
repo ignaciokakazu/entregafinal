@@ -4,7 +4,7 @@ export interface OrdenI {
     userId: string,
     items: [ItemsI],
     timestamp: Date,
-    estado: ESTADO_VALUES, 
+    estado: string, 
     total: number
 }
 

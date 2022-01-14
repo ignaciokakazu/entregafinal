@@ -6,11 +6,11 @@ const router = express.Router();
 
 router.get('/', 
     verifyToken,
-    Ordenes.getOrderById);
-
-router.get('/:id', 
-    verifyToken,
     Ordenes.getOrderByUserId);
+
+router.get('/:orderId', 
+    verifyToken,
+    Ordenes.getOrderById);
 
 router.post('/complete', 
     verifyToken,

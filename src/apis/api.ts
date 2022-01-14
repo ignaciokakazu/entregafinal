@@ -4,8 +4,9 @@ import {ProductosFactoryDAO, TipoPersistencia} from '../models/productos/product
 import {CarritoFactoryDAO} from '../models/carrito/carrito.factory';
 import {ProductoInterface, NewProductoInterface} from '../interfaces/productos.interfaces';
 import {OrderFactoryDAO} from '../models/order/order.factory';
-import {NewCarritoInterface, CarritoInterface} from '../interfaces/carrito.interfaces';
+import {NewCarritoI, CarritoI, ProdCarritoI} from '../interfaces/carrito.interfaces';
 import { MensajesFactoryDAO } from '../models/chat/chat.factory';
+import { UserI } from '../interfaces/login.interfaces';
 /**
  * Con esta variable elegimos el tipo de persistencia
  */
@@ -32,6 +33,9 @@ class capaAPI { //incluye productos y carrito
     return this.productos.getProductosAll();
   }
 
+  async getProductoPrecioById(id:string|number) {
+    return this.productos.getProductoPrecioById(id)
+  }
   async getProductosById(id:string|number): Promise<ProductoInterface> {
       return this.productos.getProductosById(id);
   }
@@ -62,6 +66,14 @@ class capaAPI { //incluye productos y carrito
        return this.carrito.getCarritoAll();
    }
    
+   async updateCarrito(carrito:CarritoI) {
+    return this.carrito.updateCarrito(carrito)
+   }
+
+   async getCarritoByUserId(id:string) {
+    return this.carrito.getCarritoByUserId(id);
+   }
+
    async getCarritoById(id:string|number) {
     return this.carrito.getCarritoById(id);
    }
@@ -71,12 +83,12 @@ class capaAPI { //incluye productos y carrito
    }
 
 
-   async setCarritoNuevo(id:string|number) {
-    return this.carrito.setCarritoNuevo(id);
+   async setCarritoNuevo(user:UserI) {
+    return this.carrito.setCarritoNuevo(user);
   }
 
-  async setCarrito(data:CarritoInterface) { 
-    //en realidad acá le debería pasar el producto. En el DAO debería hacer la lógica de Mongo, para que sea útil para otras BD
+  async setCarrito(data:CarritoI) { 
+    
     return this.carrito.setCarrito(data);
   }
 
@@ -84,7 +96,7 @@ class capaAPI { //incluye productos y carrito
     return this.carrito.deleteCarritoById(id);
    }
 
-   async checkout(data:CarritoInterface) {
+   async checkout(data:CarritoI) {
      return this.carrito.checkout(data);
    }
 
@@ -103,6 +115,13 @@ class capaAPI { //incluye productos y carrito
     return this.order.completeOrder(id);
   }
 
+  async createOrder(carrito:any) {
+    return this.order.createOrder(carrito)
+  }
+
+  async updateOrder(order:any) {
+    return this.order.updateOrder(order);
+  }
   //chat
   async setMensajes(data:any) {
     return this.mensajes.setMensajes(data);

@@ -16,7 +16,7 @@ mainRouter.use('/api/images', routerImages)
 mainRouter.use('/api/productos', routerProductos);
 mainRouter.use('/api/orders', routerOrders);
 mainRouter.use('/api/user', routerLogin);
-mainRouter.use('/api/carrito', verifyToken, isAdmin, routerCarrito);
+mainRouter.use('/api/carrito', verifyToken, routerCarrito);
 mainRouter.use('*', routerError);
 
 export default mainRouter;

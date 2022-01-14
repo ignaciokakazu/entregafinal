@@ -19,7 +19,29 @@ const enviar = document.getElementById('enviar');
 enviar.addEventListener('click', iniciar);
 
 socket.on('resp-mensaje', (data)=> {
-  console.log(data)
+  const mensaje = document.getElementById('mensaje').value
+  const chat = document.getElementById('chat')
+  let html = '';
+  console.log(data);
+  if (mensaje.toUpperCase() == 'STOCK') {
+    console.log('stock')
+    data.msg.forEach(prod=> {
+      html += `nombre: ${prod.nombre} - stock: ${prod.stock} <br>`
+    })
+  } else if (mensaje.toUpperCase() == 'ORDEN') {
+    data.msg.forEach(orden=> {
+      html += `nombre: ${orden.items.id} - cantidad: ${orden.items.cantidad} - precio:${orden.items.precio} <br>`
+    })
+  } else if (mensaje.toUpperCase() == 'CARRITO') {
+    data.msg.forEach(carrito=> {
+      html += `id del producto: ${carrito.productos._id} - cantidad: ${carrito.productos.cantidad} <br>`
+    })
+  } else {
+    html = data.msg
+  }
+  console.log(html)
+  chat.innerHTML = html
+  html=''
 })
 // socket.on('chatConnectMessage', (data)=> {
 //   const chat = document.getElementById("chat");
