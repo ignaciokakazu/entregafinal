@@ -8,6 +8,11 @@ export function verifyToken(req:Request, res:Response, next:NextFunction) {
     // https://stackoverflow.com/questions/62014713/jwt-node-authentication-req-headersauthorization-is-undefined
     // console.log(req.headers)
     // console.log(req.headers['access-token'])
+    if (!tokenJWT) {
+        res.status(400).json({msg: 'Error. Necesita autenticarse'})
+        return
+    }
+
     const accessToken:any = req.headers['authorization'] || req.query.accesstoken || tokenJWT.token; //puede llegar por query
     console.log(tokenJWT)
     // console.log(authHeader)

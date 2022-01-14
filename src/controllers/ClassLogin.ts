@@ -160,7 +160,7 @@ class ClassLogin {
             tokenJWT = {
                 token: accessToken,
                 user: user.username,
-                admin: false
+                admin: userMongo.admin
             }
         
             res.header('authorization', accessToken).json({msg:'Usuario Autenticado', token: accessToken});    

@@ -7,10 +7,10 @@ import { verifyToken } from '../middleware/jwt';
 
 const router = express.Router();
 
-// const upload = multer({ dest: 'uploads/' })
+//const upload = multer({ dest: 'uploads/' })
 var storage = multer.diskStorage({
     destination: function (req, file, callback) {
-      callback(null, '../public/uploads');
+      callback(null, 'public/uploads');
     },
     filename: function (req, file, callback) {
       callback(null, file.fieldname + '-' + Date.now());
@@ -60,6 +60,7 @@ router.post('/upload',
           }
 
           if(err) {
+              console.log(err)
               res.end("Error uploading file.");
               return 
           }
@@ -89,7 +90,7 @@ router.post('/upload',
 
 router.get("/", (req:Request, res:Response) => {
   const img: string = req.params.id;
-  res.send(`/public/uploads/${img}`)
+  res.send(`http://localhost:8080/public/uploads/${img}`)
 });
 
 export default router

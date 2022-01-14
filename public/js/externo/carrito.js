@@ -1,4 +1,5 @@
-const urlOrigen = 'http://entrega-final-kakazu.herokuapp.com/' 
+const urlOrigen = 'http://localhost:8080/' 
+//const urlOrigen = 'http://entrega-final-kakazu.herokuapp.com/' 
 // 'http://tercera-pre.herokuapp.com/api/carrito/agregar/';
 
 const agregarCarrito = (id) => {
