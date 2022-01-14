@@ -1,23 +1,11 @@
 import express, {Request, Response, NextFunction} from 'express';
-import multer from 'multer';
 import {Productos} from '../controllers/ClassProductos';
 import { NewProductoInterface } from '../interfaces/productos.interfaces';
 import { isAdmin } from '../middleware/middleAdmin';
 import { verifyToken } from '../middleware/jwt';
+import { upload } from '../middleware/multer';
 
 const router = express.Router();
-
-//const upload = multer({ dest: 'uploads/' })
-var storage = multer.diskStorage({
-    destination: function (req, file, callback) {
-      callback(null, 'public/uploads');
-    },
-    filename: function (req, file, callback) {
-      callback(null, file.fieldname + '-' + Date.now());
-    }
-  });
-
-var upload = multer({ storage : storage }).array('foto',2);
 
 /**
  * @swagger
@@ -88,6 +76,30 @@ router.post('/upload',
     });
 });
 
+/**
+ * @swagger
+ * api/images/:id:
+ *   get:
+ *     summary: Obtiene las imagenes según el id de la imagen
+ *     requestBody:
+ *       required: false
+ *       content:
+ *         application/json:
+ *     responses:
+ *       200:
+ *         description:  Obtiene las imagenes según el id de la imagen
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               properties:
+ *                 msg:
+ *                   type: String
+ *                   example: No se encuentra
+ *                 data:
+ *                    
+ *
+ */
 router.get("/", (req:Request, res:Response) => {
   const img: string = req.params.id;
   res.send(`http://localhost:8080/public/uploads/${img}`)
