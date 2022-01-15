@@ -20,6 +20,9 @@ Se usaron los patrones MVC y DAO
 # Endpoints
 Para la documentación de los endpoints, ver http://localhost:8080/api-docs/
 
+# Importante
+Las variables de ambiente se ingresan en el archivo .env. El archivo .envExample contiene las diferentes variables utilizadas en la aplicación
+
 ## Modelos
 ### User
 Campo/variable | Tipo | Longitud máx | Requerido | Observaciones |
@@ -78,27 +81,71 @@ precio | number | - | true |  |
 Campo/variable | Tipo | Longitud máx | Requerido | Observaciones |
 -------------- | ---- | ------------ | --------- | ------------- |
 id | string o number | 50 | true | id dentro de la BD |
+userId | string | - | true | id dentro de la BD |
+productos | array | - | true | array de productos. Ver `productos` |
+direccion | array | - | true | direccion del usuario. Ver `direccion` en 'User' |
 
-    calle: {
-        type: String,
-        required: true
-    },
-    altura: {
-        type: Number,
-        required: true
-    },
-    codigoPostal: {
-        type: String,
-        required: true
-    },
-    piso: {
-        type: Number,
-        required: false
-    },
-    departamento: {
-        type: String,
-        required: false
-    }
+#### Productos
+Campo/variable | Tipo | Longitud máx | Requerido | Observaciones |
+-------------- | ---- | ------------ | --------- | ------------- |
+id | string o number | 50 | true | id dentro de la BD |
+itemId | string | - | true |  |
+cantidad | number | - | true |  |
+timestamp | date | - | true | timestamp de agregado o modificado |
 
-### Orden
+### Mensajes
+Campo/variable | Tipo | Longitud máx | Requerido | Observaciones |
+-------------- | ---- | ------------ | --------- | ------------- |
+id | string o number | 50 | true | id dentro de la BD |
+userId | string | - | true | id del usuario |
+tipo | bool | - | true | origen del mensaje. false para sistema. true para usuario |
+mensaje | array | - | true | mensaje entregado |
+
+## Controllers
+
+### ClassCarrito
+
+### ClassChat
+
+### ClassLogin
+Utilizada para lo relativo al usuario. Contiene una variable de nombre tokenJWT que, a lo largo de la aplicación, sirve para validar el token generado con JsonWebToken.
+
+#### addUSer
+Utilizada para la registración del usuario. 
+Recibe del body:
+- name
+- surname
+- username
+- password
+- passwordConfirmation
+- tel
+- direccion (calle, altura, codigoPostal, piso <opcional>, departamento <opcional>)
+- admin
+
+Valida:
+1. Los datos enviados con Joi
+2. Confirmación del password
+3. Email (variable username en el código) no repetido
+
+En el alta del usuario se encripta la contraseña con bcrypt. Agrega el timestamp
+A su vez, se setea el carrito para el usuario, haciendo uso del método Carrito.setCarritoNuevo (ver en `Carrito`)
+
+#### auth
+Utilizada para autenticar al usuario. 
+Recibe del body:
+- username
+- password
+
+Valida:
+1. Los datos enviados con Joi
+2. Que username se encuentre en la BD users. 
+3. Que el password sea correcto
+
+Luego, ingresa los valores en el objeto tokenJWT (username, admin y token).
+
+#### getIdByEmail
+
+### ClassOrden
+
+### ClassProducto
 

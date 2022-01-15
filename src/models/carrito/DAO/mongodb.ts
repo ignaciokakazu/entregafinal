@@ -10,13 +10,27 @@ import { apiLogin } from '../../../apis/login';
 import {UserI} from '../../../interfaces/login.interfaces';
 const carritoSchema = new mongoose.Schema<CarritoI>({
   //en el SCHEMA no va el _id... sino no podría hacer save del NewCarritoInterface
-    userId: String,
+    userId: {
+      type: String,
+      required: true
+    },
     productos: [{
-      itemId: String,
-      cantidad: Number,
-      timestamp: Date
+      itemId: {
+        type: String,
+        required: true
+      },
+      cantidad: {
+        type: Number,
+        required: true
+      },
+      timestamp: {
+        type: Date,
+        required: true
+      }
     }], 
-    timestamp: String,
+    timestamp: {
+      type: Date
+    },
     direccion: {
       calle: String,
       altura: Number,
@@ -26,22 +40,6 @@ const carritoSchema = new mongoose.Schema<CarritoI>({
     }
 });
 
-// const carritoSchema = new mongoose.Schema<CarritoInterface>({
-//   //en el SCHEMA no va el _id... sino no podría hacer save del NewCarritoInterface
-//     timestamp: String,
-//     user: String,
-//     producto: [{
-//         _id: String,
-//         nombre: String,
-//         descripcion: String,
-//         codigo: String,
-//         foto: String,
-//         precio: Number,
-//         cantidad: Number,
-//         timestramp: String
-//     }],
-//     abierto:Boolean
-// });
 
 
 export class CarritoMongoDAO {//implements ProductBaseClass {

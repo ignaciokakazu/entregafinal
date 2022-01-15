@@ -7,8 +7,15 @@ import {MensajesI} from '../../../interfaces/mensajes.interfaces';
 
 const mensajesSchema = new mongoose.Schema<MensajesI>({
   //en el SCHEMA no va el _id... sino no podría hacer save del NewCarritoInterface
-  userId: String,
-  tipo: Boolean, // 0 para sistema, 1 para usuario
+  userId: {
+    type: String,
+    required: true
+  },
+  tipo: {
+    type: Boolean, // 0 para sistema, 1 para usuario
+    required: true,
+    default: false
+  },
   mensaje: [{
     type:Object
   }]

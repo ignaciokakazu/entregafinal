@@ -17,45 +17,6 @@ class ClassCarrito {
 
     }
 
-//     async getCarritoById(req:Request, res:Response) {
-//         try {
-//             const username: string = req.body.username;
-//             const user: any = await apiLogin.getByEmail(username);
-//             const carrito = await api.getCarritoById(user.id);
-            
-//             carrito? res.status(200).json(carrito) : res.status(404).json({error: `No hay carrito con el ID ${user.id}`});
-            
-//         } catch(error: any) {
-//             infoLogger.warn(error.message);
-//             res.status(403).json ({error: error.message})
-//         }
-//     }
-
-//     async getCarritoAll(req:Request, res:Response) {
-//         /* este método es innecesario */
-//         try {
-//             const carritoAll = await api.getCarritoAll(); 
-//             if (!carritoAll) {
-//                 res.status(404).json({error: 'No hay carritos'})
-//                 return;
-//             }
-//             res.status(200).json(carritoAll);
-//         } catch (error:any) {
-//             res.status(403).json({error: error.message});
-//         }
-//     }
-
-//     async deleteCarritoById(req:Request, res:Response){//id:number) {
-//         try {
-//             await api.deleteCarritoById(req.body.id);
-            
-//             res.json({msg: `Eliminado ${req.body.id}`});
-
-//         } catch (err:any) {
-//             res.json({error: err.message});
-//         }
-//     }
-
     async setCarritoNuevo(username: string){
         const user:UserI = await apiLogin.getByEmail(username)
         const a = await api.setCarritoNuevo(user)

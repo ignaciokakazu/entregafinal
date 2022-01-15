@@ -59,15 +59,16 @@ class ClassLogin {
         try {
         const password = req.body.password;
         const passwordConfirmation = req.body.passwordConfirmation;
-
+        
+        /* confirmación de password válida */
         const flagPassword: boolean = password === passwordConfirmation? true : false;
         
         !flagPassword? res.status(400).json({error: "Password y PasswordConfirmation no coinciden"}) : '';
 
-        infoLogger.log("file" + req.body.file)
-        
-        const joiValidacion = joiSchemaNewUser.validate(req.body);
+        /* validación con joi del objeto */
 
+        const joiValidacion = joiSchemaNewUser.validate(req.body);
+        
         if (joiValidacion.error) {
             let textoError:string = '';
 
@@ -79,6 +80,8 @@ class ClassLogin {
             return;
         }
 
+        /* validación de que el email no se encuentre registrado con anterioridad */
+
         const userArr = await apiLogin.getByEmail(req.body.username);
         
         if (userArr) {
@@ -86,11 +89,15 @@ class ClassLogin {
             return
         }
 
+        /* encriptación e insert en la BD */
+
         bcrypt.genSalt(10, function(err, salt) {
             bcrypt.hash(req.body.password, salt, async function(err, hash) {
                 if (!err) {
                     //guarda en la BD
-                     
+                    
+                    /* da de alta al usuario */
+
                      await apiLogin.addUser({
                         name: req.body.name,
                         surname: req.body.surname,
@@ -107,7 +114,8 @@ class ClassLogin {
                         admin: req.body.admin,
                         timestamp: new Date(),
                     })
-                    
+
+                    /* da de alta el carrito */
                     await Carrito.setCarritoNuevo(req.body.username);
                 }
             });
@@ -117,8 +125,6 @@ class ClassLogin {
             const user = await apiLogin.getByEmail(req.body.username);
             infoLogger.log(user)
             
-            
-            // await Carrito.setCarritoNuevo(userId)
             res.status(201).json({msg: `Usuario ${req.body} dado de alta ${new Date()}`, success:true})
         
         } catch(e:any) {
@@ -128,15 +134,13 @@ class ClassLogin {
     }
    
     async auth(req:Request, res:Response, next: NextFunction) {
-        //auth por Mongo
-        infoLogger.log(req.body)
-        infoLogger.info(req.body)
-        
+
         const user:LoginI = {
             username: req.body.username,
             password: req.body.password
         }
 
+        /* Validación con Joi */
         const joiValidacion = joiSchemaLog.validate(user);
 
         if (joiValidacion.error) {
@@ -150,12 +154,13 @@ class ClassLogin {
             return;
         }
     
-        // buscar en Mongo
+        // validación del usuario y password
         const userMongo = await apiLogin.getByEmail(req.body.username);
         const validate = await apiLogin.validatePassword(user.username, user.password);
         
         infoLogger.log(validate);
         if (validate) {
+            /* guarda en la variable tokenJWT */
             const accessToken = jwt.sign({id: user.username}, config.JWT_SECRET_KEY , { expiresIn: config.TOKEN_KEEP_ALIVE })
             tokenJWT = {
                 token: accessToken,
@@ -164,7 +169,7 @@ class ClassLogin {
             }
         
             res.header('authorization', accessToken).json({msg:'Usuario Autenticado', token: accessToken});    
-            // res.json({msg: 'ok', success:true});
+
         } else {
             res.json({error:'error en usuario o contraseña', success:false});
         }
@@ -175,8 +180,6 @@ class ClassLogin {
         const userMongo:UserI = await apiLogin.getByEmail(email);
         return userMongo._id
     }
-
-
 }
 /* */
 export const Login = new ClassLogin()
