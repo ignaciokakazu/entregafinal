@@ -102,12 +102,13 @@ router.get("/logout", function (req, res) {
  * api/user/signup/:
  *   post:
  *     summary: Registración del usuario
+ *     description: Endpoint para la registración del usuario a la plataforma. Para autenticarse deberá registrarse con anterioridad.
  *     requestBody:
  *       required: true
  *       content:
  *         application/json:
  *           schema:
- *             $ref: '#/components/schemas/NewUserI'
+ *             $ref: '#/interfaces/login.interfaces.ts/NewUserI'
  *     responses:
  *       200:
  *         description: Registración del usuario

@@ -17,7 +17,7 @@ function showProducts(productosObj) {
 		+= `<div class="col-md-3 col-xl-4 col-sm-12 mt-3">
             <article class="card text-center">
             <img class="w-100"
-                src="${productosObj[i].foto}"
+                src="${productosObj[i].fotos[0]}"
                 class="card-img-top" style="height:200px" alt="...">
             <div class="card-body">
                 <h5 class="card-title">${productosObj[i].nombre}</h5>
@@ -53,7 +53,7 @@ function showProducts(productosObj) {
 }
 
 function fetchProducts(page = '') {
-  const url = urlOrigen + 'api/productos/listar';
+  const url = urlOrigen + 'api/productos/';
 
   fetch(url)
     .then((response) => response.json())

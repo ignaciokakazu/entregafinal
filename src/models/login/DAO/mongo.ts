@@ -35,19 +35,27 @@ const usersSchema = new Mongoose.Schema<UserI>({
     name: {
         type: String,
         required: true,
+        min: 3,
+        max: 50
     },
     surname: {
         type: String,
-        required: true
+        required: true,
+        min: 3,
+        max: 50
     },
     username: {
         type: String,
         required: true,
-        unique: true
+        unique: true,
+        min: 3,
+        max: 50
     },
     password: {
         type:String,
-        required: true
+        required: true,
+        min: 8,
+        max: 20
     },
     tel: {
         type: Number,
@@ -62,20 +70,26 @@ const usersSchema = new Mongoose.Schema<UserI>({
         type: {
             calle: {
                 type: String,
-                required: true
+                required: true,
+                min: 3,
+                max: 50
             },
             altura: {
                 type: Number,
-                required: true
+                required: true,
+                min:1
             },
             codigoPostal: {
                 type: String,
-                required: true
+                required: true,
+                min: 3,
+                max: 50
             },
             piso: {
                 type: Number,
                 required: false,
-                default: 0
+                default: 0,
+                min: 1
             },
             departamento: {
                 type: String,

@@ -53,7 +53,7 @@ class ClassChat {
             let prodStock:any = [];
 
             productos.forEach((prod: any)=> {
-                console.log(prod)
+                infoLogger.log(prod)
                 prodStock.push({
                     nombre: prod.nombre,
                     stock: prod.stock

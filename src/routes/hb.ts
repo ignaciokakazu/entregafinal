@@ -1,10 +1,11 @@
 import express, {Request, Response} from 'express';
 import { isAdmin } from '../middleware/middleAdmin';
 import { verifyToken } from '../middleware/jwt';
+import { Productos } from '../controllers/ClassProductos';
 
 const router = express.Router();
 
-router.get('/', (req, res)=> {
+router.get('/', async (req, res)=> {
     res.render('main');
 })
 
