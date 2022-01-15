@@ -110,6 +110,12 @@ mensaje | array | - | true | mensaje entregado |
 ### ClassLogin
 Utilizada para lo relativo al usuario. Contiene una variable de nombre tokenJWT que, a lo largo de la aplicación, sirve para validar el token generado con JsonWebToken.
 
+tokenJWT {
+    username: 'email',
+    token: 'string',
+    admin: 'boolean'
+}
+
 #### addUSer
 Utilizada para la registración del usuario. 
 Recibe del body:
