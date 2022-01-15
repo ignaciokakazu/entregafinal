@@ -23,8 +23,8 @@ Para la documentación de los endpoints, ver http://localhost:8080/api-docs/
 # Importante
 Las variables de ambiente se ingresan en el archivo .env. El archivo .envExample contiene las diferentes variables utilizadas en la aplicación
 
-## Modelos
-### User
+# Modelos
+## User
 Campo/variable | Tipo | Longitud máx | Requerido | Observaciones |
 -------------- | ---- | ------------ | --------- | ------------- |
 id | string o number | 50 | true | id dentro de la BD |
@@ -37,7 +37,7 @@ admin | bool | - | true | por default, false |
 direccion | objeto | 50 | true | ver `Direccion` |
 
 
-#### Direccion
+### Direccion
 Campo/variable | Tipo | Longitud máx | Requerido | Observaciones |
 -------------- | ---- | ------------ | --------- | ------------- |
 id | string o number | 50 | true | id dentro de la BD |
@@ -47,7 +47,7 @@ codigoPostal | string | 50 | true |  |
 piso | number | - | false | por default |
 departamento | string | - | false | por default '' |
 
-### Productos
+## Productos
 Campo/variable | Tipo | Longitud máx | Requerido | Observaciones |
 -------------- | ---- | ------------ | --------- | ------------- |
 id | string o number | 50 | true | id dentro de la BD |
@@ -59,7 +59,7 @@ precio | number | - | true |  |
 stock | number | - | true |  |
 timestamp | date | - | true | autogenerado |
 
-### Orden
+## Orden
 Campo/variable | Tipo | Longitud máx | Requerido | Observaciones |
 -------------- | ---- | ------------ | --------- | ------------- |
 id | string o number | 50 | true | id dentro de la BD |
@@ -69,7 +69,7 @@ timestamp | date | - | true | timestamp de creación y modificación de estado |
 estado | string | true | true | 'Generado', 'Pagado', 'Enviado', 'Finalizado |
 total | number | - | true | total de $ de la orden. Sumatoria de items.precio * items.cantidad |
 
-#### Items
+### Items
 Campo/variable | Tipo | Longitud máx | Requerido | Observaciones |
 -------------- | ---- | ------------ | --------- | ------------- |
 id | string o number | 50 | true | id dentro de la BD |
@@ -77,7 +77,7 @@ itemId | string | - | true |  |
 cantidad | number | - | true |  |
 precio | number | - | true |  |
 
-### Carrito
+## Carrito
 Campo/variable | Tipo | Longitud máx | Requerido | Observaciones |
 -------------- | ---- | ------------ | --------- | ------------- |
 id | string o number | 50 | true | id dentro de la BD |
@@ -85,7 +85,7 @@ userId | string | - | true | id dentro de la BD |
 productos | array | - | true | array de productos. Ver `productos` |
 direccion | array | - | true | direccion del usuario. Ver `direccion` en 'User' |
 
-#### Productos
+### Productos
 Campo/variable | Tipo | Longitud máx | Requerido | Observaciones |
 -------------- | ---- | ------------ | --------- | ------------- |
 id | string o number | 50 | true | id dentro de la BD |
@@ -93,7 +93,7 @@ itemId | string | - | true |  |
 cantidad | number | - | true |  |
 timestamp | date | - | true | timestamp de agregado o modificado |
 
-### Mensajes
+## Mensajes
 Campo/variable | Tipo | Longitud máx | Requerido | Observaciones |
 -------------- | ---- | ------------ | --------- | ------------- |
 id | string o number | 50 | true | id dentro de la BD |
@@ -101,14 +101,14 @@ userId | string | - | true | id del usuario |
 tipo | bool | - | true | origen del mensaje. false para sistema. true para usuario |
 mensaje | array | - | true | mensaje entregado |
 
-## Controllers
+# Controllers
 
-### ClassCarrito
-#### setCarritoNuevo
+## ClassCarrito
+### setCarritoNuevo
 Agrega el carrito nuevo. Este método es utilizado en el alta de usuario (registración)
 Recibe el username (o email)
 
-#### setProductoToCarrito
+### setProductoToCarrito
 Agrega un producto al carrito del usuario. Recibe del body el prodId y la cantidad.
 Actualiza la BD de productos con el stock no disponible por sumarse al carrito
 
@@ -118,7 +118,7 @@ Response:
 - 400: Stock insuficiente para el producto
 - 200: {carrito}
 
-#### deleteCarrito
+### deleteCarrito
 Quita productos del carrito. Recibe del body el prodId y la cantidad.
 Actualiza la BD de productos con el stock recuperado por quitarse del carrito
 
@@ -129,14 +129,14 @@ Response:
 - 400: La cantidad del carrito es insuficiente
 - 200: {carrito}
 
-#### getCarritoByUsername
+### getCarritoByUsername
 Devuelve el carrito del usuario. No recibe ningún parámetro ya que utiliza la variable tokenJWT (descripta en el controlador Login) para recuperar el username
 
 Response:
 - 400: No se encuentra loggeado el usuario
 - 200: {carrito}
 
-#### submit
+### submit
 Da por completada la orden. Para ello, totaliza la factura.
 Utiliza el método createOrder de la clase Orden
 No recibe ningún parámetro ya que utiliza la variable tokenJWT (descripta en el controlador Login) para recuperar el username
@@ -145,10 +145,10 @@ Response:
 - 400: No se encuentra loggeado el usuario
 - 200: {orden}
 
-### ClassChat
+## ClassChat
 Controlador del chat implementado con websocket.
 
-#### sendMessage
+### sendMessage
 Corrobora si el token del usuario es válido. Se pudo haber hecho con tokenJWT
 Responderá:
 A) “Stock” => Se responderá con el stock actual de todos los productos
@@ -164,7 +164,7 @@ D) Cualquier otro mensaje se responderá con el siguiente mensaje:
                 * Carrito: para conocer el estado actual de tu carrito`}
 ````
 
-### ClassLogin
+## ClassLogin
 Utilizada para lo relativo al usuario. Contiene una variable de nombre tokenJWT que, a lo largo de la aplicación, sirve para validar el token generado con JsonWebToken.
 
 ```javascript
@@ -175,7 +175,7 @@ tokenJWT {
 }
 ```
 
-#### addUSer
+### addUSer
 Utilizada para la registración del usuario. 
 Recibe del body:
 - name
@@ -195,7 +195,7 @@ Valida:
 En el alta del usuario se encripta la contraseña con bcrypt. Agrega el timestamp
 A su vez, se setea el carrito para el usuario, haciendo uso del método Carrito.setCarritoNuevo (ver en `Carrito`)
 
-#### auth
+### auth
 Utilizada para autenticar al usuario. 
 Recibe del body:
 - username
@@ -208,23 +208,23 @@ Valida:
 
 Luego, ingresa los valores en el objeto tokenJWT (username, admin y token).
 
-#### getIdByEmail
+### getIdByEmail
 Método utilizado para devolver el userId por Email. Recibe un string (username o email)
 
-### ClassOrden
+## ClassOrden
 
-#### getOrderByUserId
+### getOrderByUserId
 getOrderByUserId
 Obtiene la orden del usuario. Para ello utiliza la variable tokenJWT (ver la clase `Login`)
 Interfaz: ordenI)
 
-#### getOrderById
+### getOrderById
 Recibe por param la orderId. 
 Devuelve la orden.
 
 Interfaz: ordenI)
 
-#### setOrderComplete
+### setOrderComplete
 Recibe por el body la orderId. 
 Pasa a estado "Completada la orden"
 Devuelve error en el caso de que no se encuentre la orden o no esté en estado "GENERADO"
@@ -242,12 +242,12 @@ Response:
     items
 }
 
-#### createOrder
+### createOrder
 Recibe el carrito y crea la orden
 
-### ClassProducto
+## ClassProducto
 
-#### getProductosAll
+### getProductosAll
 Devuelve todos los productos como un array de objetos. 
 
 InterfazI ProductosI
@@ -258,7 +258,7 @@ Response:
 - 200: {
 }
 
-#### getProductosByCat
+### getProductosByCat
 Obtiene el id de categoría por param y devuelve todos los productos de la categoría, como un array de objetos
 
 InterfazI ProductosI
@@ -269,7 +269,7 @@ Response:
 - 200: {
 }
 
-#### getProductosById
+### getProductosById
 Obtiene el id de producto por param y devuelve el producto
 
 Response:
@@ -278,7 +278,7 @@ Response:
 - 200: {
 }
 
-#### insertProducto
+### insertProducto
 Obtiene el producto nuevo a través del body del Request.
 Inserta el producto
 
@@ -287,21 +287,21 @@ Response:
 - 200: {
 }
 
-#### deleteProducto
+### deleteProducto
 Recibe el id de Producto por param y borra el producto
 
 Response:
 - 404: No existe el id de producto
 - 200: Producto eliminado
 
-#### updateProducto
+### updateProducto
 Actualiza el producto. Recibe el producto por el body
 
 Response:
 - 404: No existe el id de producto
 - 200: Producto modificado
 
-#### search
+### search
 Hace una búsqueda por string en el nombre del producto 
 Recibe el string por param
 
@@ -309,8 +309,32 @@ Response:
 - 400: Error
 - 200: Array de productos que cumplen con la condición
 
-#### validacionProd (middleWare)
+### validacionProd (middleWare)
 
 Middleware hecho en Joi para la validación de los tipos y requisitos del objeto Producto
 
+# Servicios
+## Logger
+Logger creado con Log4JS. El archivo del log se encuentra en el root
 
+## Websocket
+Socket-io para el chat
+
+## Twilio
+Utilizado para enviar SMS con la orden (clase Orden)
+
+## Swagger
+Utilizado para la documentación de los endpoints. Es posible consultarlo desde http://localhost:8080/api-docs
+
+## Email
+NodeMailer para enviar mails con la orden (clase Orden)
+
+# MiddleWares
+## JWT.ts
+Corrobora que el usuario se encuentre loggeado
+
+## middleAdmin.ts
+Corrobora que el usuario sea Admin para la carga de productos
+
+## multer.js
+Middleware de Multer para la subida de archivos al servidor
