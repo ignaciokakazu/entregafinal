@@ -4,7 +4,7 @@ import { api } from '../apis/api';
 import {Login, tokenJWT} from './ClassLogin';
 import EmailService from '../services/email';
 import SmsService from '../services/twilio';
-
+import {infoLogger} from '../services/logger';
 
 class ClassOrden {
     constructor() {
@@ -35,7 +35,7 @@ class ClassOrden {
     async setOrderComplete(req: Request, res: Response) {
         try {
             const id: number|string = req.body.orderId;
-            const order = await api.getOrderById(id);
+            const order: OrdenI = await api.getOrderById(id);
             
             if (!order) {
                 res.status(400).json({error: `No se encuentra la orden con el id ${id}`})
@@ -57,10 +57,13 @@ class ClassOrden {
             }
             
             const ordenGuardada = await api.updateOrder(nuevaOrder);
+            /* envía email */
             const mail = new EmailService()
-            console.log('enviado')
+            
             await mail.sendEmail(tokenJWT.user, `Nuevo pedido de ${tokenJWT.user}`, `${nuevaOrder}`)
+            infoLogger.log('mail enviado')
             await SmsService.sendMessage(`Nuevo pedido de ${tokenJWT.user}`)
+            infoLogger.log('sms enviado enviado')
 
             res.status(200).json(ordenGuardada)
 

@@ -65,8 +65,8 @@ router.post('/upload',
             timestamp: new Date(),
             idCategoria: req.body.idCategoria
         }
-
-          const respuesta = Productos.insertProducto(newProducto);
+          req.body = newProducto
+          const respuesta = Productos.insertProducto(req, res);
 
           res.status(200).json(respuesta);
 

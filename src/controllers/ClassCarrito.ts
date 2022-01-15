@@ -19,8 +19,7 @@ class ClassCarrito {
 
     async setCarritoNuevo(username: string){
         const user:UserI = await apiLogin.getByEmail(username)
-        const a = await api.setCarritoNuevo(user)
-        console.log('setCarritoNuevo')
+        const a = await api.setCarritoNuevo(user)       
     }
 
     async setProductoToCarrito(req:Request, res:Response) {
@@ -202,14 +201,14 @@ class ClassCarrito {
             for (let i=0;i<carrito.productos.length;i++) {
                 const precio = await api.getProductoPrecioById(carrito.productos[i].itemId);
                 total = carrito.productos[i].cantidad * precio
-                console.log(carrito.productos[i].itemId)
-                console.log(carrito.productos[i].cantidad)
-                console.log(precio)
+                // console.log(carrito.productos[i].itemId)
+                // console.log(carrito.productos[i].cantidad)
+                // console.log(precio)
                 items.push({itemId:carrito.productos[i].itemId, 
                             cantidad: carrito.productos[i].cantidad,
                             precio: precio})
             }
-            console.log(items)
+            // console.log(items)
             const order = {
                 userId: user._id,
                 timestamp: new Date(),
@@ -217,7 +216,7 @@ class ClassCarrito {
                 estado: 'GENERADO',
                 total: total
             }
-            console.log(order);
+            // console.log(order);
             const orderCreada = api.createOrder(order);
             res.status(200).json({carrito: order});
         } catch(error:any) {

@@ -11,23 +11,6 @@ class ClassChat {
 
     }
 
-    init(req:Request, res: Response, next: NextFunction) {
-        // middleware para corroborar y guardar
-
-        //         El server realizara las siguientes acciones al recibir ese evento
-        // •	Chequeará que el token pertenezca a un usuario valido.
-        // •	Si no existe el usuario respondera con un socket indicando que el usuario es incorrecto
-        // •	Si el usuario es correcto, toma su mensaje y lo guarda en un nuevo documento en la colección de mensaje
-
-        // buscar userId en BD
-        
-
-        // si no es correcto, devuelve
-        // si es correcto, guarda
-
-        next();
-    }
-
     async sendMsg(data: any) {
 //         Se enviara un socket con el nombre “resp-message” y la respuesta tendrá la siguiente lógica:
 

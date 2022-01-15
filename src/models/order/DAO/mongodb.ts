@@ -70,8 +70,6 @@ export class OrdersMongoDAO {//implements ProductBaseClass {
     } else if (resultado.estado) {
       return 'La orden no se encuentra generada. Error 400'
     } else {
-      console.log('ahora modifico la orden a completada')
-      console.log('enviar un email al usuario')
       return 'modificado'
     }
   }

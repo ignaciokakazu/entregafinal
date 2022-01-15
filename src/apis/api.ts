@@ -111,10 +111,6 @@ class capaAPI { //incluye productos y carrito
     return this.order.getOrderById(userId);
   }
 
-  async orderComplete(id:string|number) {
-    return this.order.completeOrder(id);
-  }
-
   async createOrder(carrito:any) {
     return this.order.createOrder(carrito)
   }

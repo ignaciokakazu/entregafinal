@@ -1,7 +1,7 @@
 /* eslint-disable import/no-unresolved */
 /* eslint-disable import/extensions */
 import { Request, Response, NextFunction } from 'express';
-import Joi from 'joi'
+import Joi, { equal } from 'joi'
 import {ProductoInterface,
         NewProductoInterface} from '../interfaces/productos.interfaces';
 import {api} from '../apis/api';
@@ -11,18 +11,31 @@ class ClassProductos {
 
     async getProductosAll(req: Request, res: Response) {
         try {
-            const lista = await api.getProductosAll();
-            res.json(lista);
+            const lista: ProductoInterface[] = await api.getProductosAll();
+            if (!lista) {
+                res.status(400).json({error: 'No hay productos en la base'})
+                return
+            } 
+            
+            res.status(200).json(lista);
+             
         } catch (error: any) {
-            res.json({error: error.message});
+            res.status(400).json({error: error.message});
         }
     }
 
     async getProductosByCat(req: Request, res: Response) {
         try {
             const category: string = req.params.category;
+
+            if (!category) { 
+                res.status(403).json({error: 'No se recibió el id de categoría'})
+                return
+            }
+
             const prod: ProductoInterface[] = await api.getProductosByCat(category);
-            res.json(prod);
+            res.status(200).json(prod);
+
         } catch (error: any) {
             res.json({error: error.message})
         }
@@ -30,15 +43,21 @@ class ClassProductos {
 
     async getProductosById(req: Request, res: Response) {
         try {
+            if (!req.params.id) {
+                res.status(403).json({error: 'No se recibió el Id de producto'})
+                return
+            }
+
             const lista:ProductoInterface = await api.getProductosById(req.params.id);
+
             if (lista) {
                 infoLogger.info(`Se buscó ID: ${req.params.id}`)
                 res.status(200).json(lista);
-                
+                return    
             } else {
                 infoLogger.info(`Se buscó ID: ${req.params.id} y no se encontró`)
                 res.status(200).json({error: "No se encuentra el producto"})
-                
+                return    
             }
             
         } catch (error: any) {
@@ -48,14 +67,14 @@ class ClassProductos {
         }
     }
 
-    async insertProducto(newProducto: NewProductoInterface) {
+    async insertProducto(req:Request, res:Response) {
         try {        
-            
+            const newProducto: NewProductoInterface = req.body
             await api.insertProducto(newProducto);
-            return newProducto
+            res.status(200).json(newProducto)
                         
         } catch(error:any) {
-            return {error: error.message}
+            res.status(400).json({error: error.message})
         }
     }
 
@@ -71,7 +90,7 @@ class ClassProductos {
             const mensaje = await api.deleteProducto(id);
             
             if (mensaje.deletedCount) {
-                res.status(200).json({msg: mensaje});
+                res.status(200).json({msg: 'eliminado el producto ' + id});
             } else {
                 res.status(404).json({msg: 'no existe el id'});
             }
@@ -98,7 +117,7 @@ class ClassProductos {
             }
 
             await api.updateProducto(id, obj);
-            res.status(200).json({ msg: `Producto modificado ${id}`});
+            res.status(200).json({ msg: `Producto modificado ${id}`, prod: obj});
 
         } catch (error: any) {
             res.status(403).json({error: error.message});
@@ -107,12 +126,16 @@ class ClassProductos {
 
     
     async search(req: Request, res: Response)  {
-        if (req.params.search) {
-            const lista = await api.search(req.params.search);
-            res.status(200).json(lista);
-        } else {
-            const lista = await api.getProductosAll()
-            res.status(200).json(lista);
+        try {
+            if (req.params.search) {
+                const lista: ProductoInterface[] = await api.search(req.params.search);
+                res.status(200).json(lista);
+            } else {
+                const lista: ProductoInterface[] = await api.getProductosAll()
+                res.status(200).json(lista);
+            }
+        } catch(error:any) {
+            res.status(400).json({error: error.message})
         }
     }
 
