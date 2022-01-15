@@ -34,6 +34,50 @@ admin | bool | - | true | por default, false |
 direccion | objeto | 50 | true | ver `Direccion` |
 
 
+#### Direccion
+Campo/variable | Tipo | Longitud máx | Requerido | Observaciones |
+-------------- | ---- | ------------ | --------- | ------------- |
+id | string o number | 50 | true | id dentro de la BD |
+calle | string | 50 | true |  |
+altura | number | - | true |  |
+codigoPostal | string | 50 | true |  |
+piso | number | - | false | por default |
+departamento | string | - | false | por default '' |
+
+### Productos
+Campo/variable | Tipo | Longitud máx | Requerido | Observaciones |
+-------------- | ---- | ------------ | --------- | ------------- |
+id | string o number | 50 | true | id dentro de la BD |
+nombre | string | 50 | true |  |
+descripcion | string | 50 | true |  |
+codigo | string | 4 | true |  |
+fotos | array | - | true | array de strings. El string es el nombre del archivo |
+precio | number | - | true |  |
+stock | number | - | true |  |
+timestamp | date | - | true | autogenerado |
+
+### Orden
+Campo/variable | Tipo | Longitud máx | Requerido | Observaciones |
+-------------- | ---- | ------------ | --------- | ------------- |
+id | string o number | 50 | true | id dentro de la BD |
+userId | string | - | true |  |
+items | array | - | true | array de items. Ver `items` |
+timestamp | date | - | true | timestamp de creación y modificación de estado |
+estado | string | true | true | 'Generado', 'Pagado', 'Enviado', 'Finalizado |
+total | number | - | true | total de $ de la orden. Sumatoria de items.precio * items.cantidad |
+
+#### Items
+Campo/variable | Tipo | Longitud máx | Requerido | Observaciones |
+-------------- | ---- | ------------ | --------- | ------------- |
+id | string o number | 50 | true | id dentro de la BD |
+itemId | string | - | true |  |
+cantidad | number | - | true |  |
+precio | number | - | true |  |
+
+### Carrito
+Campo/variable | Tipo | Longitud máx | Requerido | Observaciones |
+-------------- | ---- | ------------ | --------- | ------------- |
+id | string o number | 50 | true | id dentro de la BD |
 
     calle: {
         type: String,

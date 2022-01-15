@@ -10,13 +10,36 @@ export const productsSchema = new mongoose.Schema<ProductoInterface>({
 //   nombre: String,
 //   precio: Number,
   //_id: String, NOTA: no hace falta el _id en el Schema. No funciona el findById()
-  nombre: String,
-  descripcion: String,
-  codigo: String,
+  nombre: {
+    type: String,
+    required: true,
+    min: 3,
+    max: 50
+  },
+  descripcion: {
+    type: String,
+    required: true,
+    min: 3,
+    max: 50
+  },
+  codigo: {
+    type: String,
+    required: true,
+    min: 3,
+    max: 4
+  },
   fotos: [String],
-  precio: Number,
-  stock: Number,
-  timestamp: String
+  precio: {
+    type: Number,
+    required: true
+  },
+  stock: {
+    type: Number,
+    required: true
+  },
+  timestamp: {
+    type: Date
+  }
 });
 
 export class ProductosMongoDAO {//implements ProductBaseClass {

@@ -5,15 +5,36 @@ import {
 import Config from '../../../config/config';
 
 export const ordenSchema = new mongoose.Schema<OrdenI>({
-  userId: String,
+  userId: {
+    type: String,
+    required: true
+  },
   items: [{
-    itemId: String,
-    cantidad: Number,
-    precio: Number
+    itemId: {
+      type: String,
+      required: true
+    },
+    cantidad: {
+      type: Number,
+      required: true,
+    },
+    precio: {
+      type:Number,
+      required: true
+    }
   }],
-  timestamp: Date,
-  estado: String, 
-  total: Number
+  timestamp: {
+    type: Date,
+    required: true
+  },
+  estado: {
+    type: String, 
+    required: true
+  },
+  total: {
+    type: Number,
+    required: true
+  }
 })
 
 
