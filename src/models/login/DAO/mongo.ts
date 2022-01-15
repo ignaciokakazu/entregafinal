@@ -6,31 +6,6 @@ import { infoLogger } from '../../../services/logger';
 import { boolean } from 'joi';
 
 /* schemas para mongoose */
-
-
-const direccionSchema = new Mongoose.Schema<DireccionE>({
-    calle: {
-        type: String,
-        required: true
-    },
-    altura: {
-        type: Number,
-        required: true
-    },
-    codigoPostal: {
-        type: String,
-        required: true
-    },
-    piso: {
-        type: Number,
-        required: false
-    },
-    departamento: {
-        type: String,
-        required: false
-    }
-})
-
 const usersSchema = new Mongoose.Schema<UserI>({
     name: {
         type: String,

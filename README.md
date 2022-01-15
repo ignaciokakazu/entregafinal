@@ -23,7 +23,7 @@ Para la documentación de los endpoints, ver http://localhost:8080/api-docs/
 ## Modelos
 ### User
 Campo/variable | Tipo | Longitud máx | Requerido | Observaciones |
---- | --- | --- | --- | --- | --- |
+-------------- | ---- | ------------ | --------- | ------------- |
 id | string o number | 50 | true | id dentro de la BD |
 name | string | 50 | true | |
 surname | string | 50 | true | |
@@ -31,7 +31,7 @@ username | string | 50 | true | email del usuario. No puede ser duplicado |
 password | string | 20 | true | hasheado con bcrypt en la BD |
 tel | number | - | true | |
 admin | bool | - | true | por default, false |
-direccion | objeto | 50 | true | ver Direccion |
+direccion | objeto | 50 | true | ver `Direccion` |
 
 
 
