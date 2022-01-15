@@ -112,7 +112,6 @@ export class LoginAtlasDAO  {
         /* hacer según un argumento de entrada */
         this.srv = config.MONGO_ATLAS_SRV;
         Mongoose.connect(this.srv)
-        this.mongoModel = Mongoose.model<UserI>('direccion', direccionSchema, 'direccion');
         this.mongoModel = Mongoose.model<UserI>('user', usersSchema);
     }
 
