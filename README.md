@@ -11,7 +11,7 @@ npm install
 npm run build
 
 ## Uso
-npm run start:test
+npm run start
 
 # Introducción
 Aplicación de E Commerce con Node Js, Typescript y Mongo DB. 
