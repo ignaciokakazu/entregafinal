@@ -13,6 +13,9 @@ class ClassOrden {
 
     async getOrderByUserId(req: Request, res:Response) {
         try {
+            if (!tokenJWT.user) {
+                res.status(400).json({error: 'Necesita estar loggeado'})
+            }
             const user = await Login.getIdByEmail(tokenJWT.user)
             console.log(user)
             const orden: OrdenI = await api.getOrderByUserId(user);
@@ -34,6 +37,11 @@ class ClassOrden {
 
     async setOrderComplete(req: Request, res: Response) {
         try {
+            if (!req.body.orderId) {
+                res.status(400).json({error: 'No hay orderId'})
+                return
+            }
+
             const id: number|string = req.body.orderId;
             const order: OrdenI = await api.getOrderById(id);
             
@@ -48,15 +56,14 @@ class ClassOrden {
             }
 
             const nuevaOrder = {
-                _id: order._id,
                 userId: order.userId,
                 timestamp: new Date(),
                 estado: "COMPLETADA",
                 total: order.total,
                 items: order.items
             }
-            
-            const ordenGuardada = await api.updateOrder(nuevaOrder);
+
+            const ordenGuardada = await api.updateOrder(order._id.toString(), nuevaOrder);
             /* envía email */
             const mail = new EmailService()
             

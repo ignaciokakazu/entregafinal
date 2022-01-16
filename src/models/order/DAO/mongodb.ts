@@ -59,19 +59,9 @@ export class OrdersMongoDAO {//implements ProductBaseClass {
     return await this.orders.find({userId: userId});
   }
 
-  async updateOrder(order:any) {
-    return await this.orders.findByIdAndUpdate(order._id, order)
-  }
-
-  async setOrderComplete(id: string) {
-    const resultado = await this.orders.findById(id).exec();
-    if (!resultado) { 
-      return 'No se encuentra la orden. Error 400'
-    } else if (resultado.estado) {
-      return 'La orden no se encuentra generada. Error 400'
-    } else {
-      return 'modificado'
-    }
+  async updateOrder(orderId: string, order:any) {
+    return await this.orders.findOneAndReplace({_id: orderId}, order) 
+    
   }
 
   async createOrder(data:any) {

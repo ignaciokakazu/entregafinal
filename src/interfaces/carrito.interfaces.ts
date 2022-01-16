@@ -8,6 +8,7 @@ export interface NewCarritoI {
 }
 
 export interface CarritoI {
+    _id: string,
     userId: string,
     productos: [ProdCarritoI],
     timestamp: Date, // fecha de creación y update
@@ -15,6 +16,7 @@ export interface CarritoI {
 }
 
 export interface ProdCarritoI {
+    _id: string,
     itemId: string,
     cantidad: number,
     timestamp: Date

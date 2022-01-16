@@ -66,8 +66,8 @@ class capaAPI { //incluye productos y carrito
        return this.carrito.getCarritoAll();
    }
    
-   async updateCarrito(carrito:CarritoI) {
-    return this.carrito.updateCarrito(carrito)
+   async updateCarrito(carrito:any, carritoId:any) {
+     this.carrito.updateCarrito(carrito, carritoId)
    }
 
    async getCarritoByUserId(id:string) {
@@ -115,8 +115,8 @@ class capaAPI { //incluye productos y carrito
     return this.order.createOrder(carrito)
   }
 
-  async updateOrder(order:any) {
-    return this.order.updateOrder(order);
+  async updateOrder(orderId: any, order:any) {
+    return this.order.updateOrder(orderId, order);
   }
   //chat
   async setMensajes(data:any) {

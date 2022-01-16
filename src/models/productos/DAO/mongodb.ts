@@ -39,6 +39,10 @@ export const productsSchema = new mongoose.Schema<ProductoInterface>({
   },
   timestamp: {
     type: Date
+  },
+  idCategoria: {
+    type: String,
+    required:true
   }
 });
 
@@ -60,7 +64,7 @@ export class ProductosMongoDAO {//implements ProductBaseClass {
   }
 
   async getProductosByCat(cat: string) {
-    return await this.productos.find({categoria: cat});
+    return await this.productos.find({idCategoria: cat});
     
   }
   async getProductosById(id:string) {

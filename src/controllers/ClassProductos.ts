@@ -43,20 +43,20 @@ class ClassProductos {
 
     async getProductosById(req: Request, res: Response) {
         try {
-            if (!req.params.id) {
+            if (!req.body.prodId) {
                 res.status(403).json({error: 'No se recibió el Id de producto'})
                 return
             }
 
-            const lista:ProductoInterface = await api.getProductosById(req.params.id);
+            const lista:ProductoInterface = await api.getProductosById(req.body.prodId);
 
             if (lista) {
-                infoLogger.info(`Se buscó ID: ${req.params.id}`)
+                infoLogger.info(`Se buscó ID: ${req.body.prodId}`)
                 res.status(200).json(lista);
                 return    
             } else {
-                infoLogger.info(`Se buscó ID: ${req.params.id} y no se encontró`)
-                res.status(200).json({error: "No se encuentra el producto"})
+                infoLogger.info(`Se buscó ID: ${req.body.prodId} y no se encontró`)
+                res.status(400).json({error: "No se encuentra el producto"})
                 return    
             }
             
@@ -69,6 +69,7 @@ class ClassProductos {
 
     async insertProducto(req:Request, res:Response) {
         try {        
+            
             const newProducto: NewProductoInterface = req.body
             await api.insertProducto(newProducto);
             res.status(200).json(newProducto)
@@ -146,15 +147,15 @@ class ClassProductos {
             nombre: Joi.string().min(3).max(50).required(),
             descripcion: Joi.string().min(10).max(200).required(),
             codigo: Joi.string().min(3).max(3).required(),
-            idCategoria: Joi.string().min(3).max(100).required,
-            fotos: Joi.array().items(Joi.string().min(6).max(200).required()),
+            idCategoria: Joi.string().min(3).max(100).required(),
+            fotos: Joi.array().items(Joi.string().min(6).max(200)),
             precio: Joi.number().required(),
             stock: Joi.number().integer().required(),
             // no está el timestamp porque se arma con el DAO
           }); 
 
         try {
-            const obj: any = req.body;
+            const obj: NewProductoInterface = req.body;
             
             // validacion con JOI. Está afuera de la class
             const validacionJoi = joiSchema.validate(obj);
@@ -166,14 +167,14 @@ class ClassProductos {
                     textoError += msg.message;
                 })
     
-                return {error: textoError};
+                res.status(400).json({error: textoError});
             
             } else {
                 next();
             }
         
         } catch(error:any) {
-            return {error: error.message}
+            res.status(400).json({error: error.message})
             
         }
     }

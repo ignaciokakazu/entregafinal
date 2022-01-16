@@ -203,7 +203,7 @@ router.delete('/:id', verifyToken, isAdmin, Productos.deleteProducto);
  *
  */
 
-router.post('/agregar', 
+router.post('/', 
             verifyToken,
             isAdmin,
             Productos.validacionProd, 
@@ -246,11 +246,13 @@ router.post('/agregar',
  *
  */
 
-router.put('/actualizar/:id', 
+router.put('/:id', 
             verifyToken,
             isAdmin,
             Productos.validacionProd, 
             Productos.updateProducto);
 
+router.get('/category/:category',
+            Productos.getProductosByCat)
 
 export default router;

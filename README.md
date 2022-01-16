@@ -17,11 +17,665 @@ npm run start:test
 Aplicación de E Commerce con Node Js, Typescript y Mongo DB. 
 Se usaron los patrones MVC y DAO
 
-# Endpoints
-Para la documentación de los endpoints, ver http://localhost:8080/api-docs/
-
 # Importante
 Las variables de ambiente se ingresan en el archivo .env. El archivo .envExample contiene las diferentes variables utilizadas en la aplicación
+
+# Endpoints
+
+## Carrito
+### GET - api/cart/
+- Descripción: Devuelve el carrito del usuario. Necesita estar loggeado
+
+- Response:
+- '200': Respuesta exitosa:
+````javascript
+    {
+        _id: string,
+        userId: string,
+        productos: [{
+            _id: string,
+            itemId: string,
+            cantidad: number,
+            timestamp: Date
+        }],
+        timestamp: Date, // fecha de creación y update
+        direccion: {
+            calle: string,
+            altura: number,
+            codigoPostal: string,
+            piso?: number,
+            departamento?: string|number,
+        }
+    }
+````
+- 400: No se encuentra loggeado el usuario
+
+### POST - api/cart/add
+- Descripción: Agrega un producto al carrito del usuario. Necesita estar loggeado como usuario
+- Request body:
+````javascript
+    {
+        prodId: string,
+        cantidad: number
+    }
+````
+
+- Response:
+- '200': Respuesta exitosa
+````javascript
+    {
+        _id: string,
+        userId: string,
+        productos: [{
+            _id: string,
+            itemId: string,
+            cantidad: number,
+            timestamp: Date
+        }],
+        timestamp: Date, // fecha de creación y update
+        direccion: {
+            calle: string,
+            altura: number,
+            codigoPostal: string,
+            piso?: number,
+            departamento?: string|number,
+        }
+    }
+````
+- 400: El parámetro cantidad no es válido. Debe ser de tipo number y mayor a 0
+````javascript
+    {
+        error: 'Cantidad inválida'
+    }
+````
+- 400: No existe el prodId
+````javascript
+    {
+        error: 'Producto no existente por id'
+    }
+````
+- 400: No hay suficiente stock
+````javascript
+    {
+        error: 'Stock insuficiente para la cantidad pedida'
+    }
+````
+- 400: No se encuentra loggeado el usuario
+````javascript
+    {
+        error: 'No se encuentra loggeado el usuario'
+    }
+````
+
+### POST - api/cart/delete
+- Descripción: Elimina productos del carrito del usuario. Necesita estar loggeado como usuario
+- Request body:
+````javascript
+    {
+        prodId: string,
+        cantidad: number
+    }
+````
+- Response:
+- '200': Respuesta exitosa
+````javascript
+    {
+        _id: string,
+        userId: string,
+        productos: [{
+            _id: string,
+            itemId: string,
+            cantidad: number,
+            timestamp: Date
+        }],
+        timestamp: Date, // fecha de creación y update
+        direccion: {
+            calle: string,
+            altura: number,
+            codigoPostal: string,
+            piso?: number,
+            departamento?: string|number,
+        }
+    }
+````
+- 400: Cantidad inválida
+````javascript
+    {
+        error: 'Cantidad inválida'
+    }
+````
+- 400: Producto no existente por id
+````javascript
+    {
+        error: 'Producto no existente por id'
+    }
+````
+- 400: No se encuentra loggeado el usuario
+````javascript
+    {
+        error: 'No se encuentra loggeado el usuario'
+    }
+````
+
+### POST - api/cart/submit
+- Descripción: Cierra la orden
+
+- Response:
+- '200': Respuesta exitosa
+````javascript
+    {
+        _id: string,
+        userId: string,
+        items: [{
+            itemId: string,
+            cantidad: number,
+            precio: number
+        }],
+        timestamp: Date,
+        estado: string, 
+        total: number
+    }
+````
+- 400: No se encuentra loggeado el usuario
+````javascript
+    {
+        error: 'No se encuentra loggeado el usuario'
+    }
+````
+- 400: carrito vacío
+````javascript
+    {
+        error: 'Carrito vacío'
+    }
+````
+## ORDERS
+### GET - api/orders
+- Descripción: Devuelve las órdenes del usuario loggeado
+
+- Response:
+- '200': Respuesta exitosa
+````javascript
+    {
+        _id: string,
+        userId: string,
+        items: [{
+            itemId: string,
+            cantidad: number,
+            precio: number
+        }],
+        timestamp: Date,
+        estado: string, 
+        total: number
+    }
+````
+- 400: No se encuentra loggeado el usuario
+````javascript
+    {
+        error: 'No se encuentra loggeado el usuario'
+    }
+````
+
+
+### GET - api/orders/{:orderId}
+- Descripción: lista las órdenes con el id pedido del usuario loggeado
+- Request param: orderId
+
+- Response:
+- '200': Respuesta exitosa
+````javascript
+    {
+        _id: string,
+        userId: string,
+        items: [{
+            itemId: string,
+            cantidad: number,
+            precio: number
+        }],
+        timestamp: Date,
+        estado: string, 
+        total: number
+    }
+````
+- 400: No se encuentra loggeado el usuario
+- 400: No se encuentra la orden por id
+````javascript
+    {
+        error: 'No se encuentra la orden por id'
+    }
+````
+
+
+### POST - api/orders/complete
+- Descripción: completa la orden del usuario
+- Request body: 
+````javascript
+    {
+        orderId: string,
+    }
+````
+
+- Response:
+- '200': Respuesta exitosa
+````javascript
+    {
+        _id: string,
+        userId: string,
+        items: [{
+            itemId: string,
+            cantidad: number,
+            precio: number
+        }],
+        timestamp: Date,
+        estado: string, 
+        total: number
+    }
+````
+- 400: No se encuentra loggeado el usuario
+````javascript
+    {
+        error: 'No se encuentra loggeado el usuario'
+    }
+````
+- 400: No se encuentra la orden por id
+````javascript
+    {
+        error: 'No se encuentra la orden por id'
+    }
+````
+- 400: Carrito vacío, no se puede completar la orden
+````javascript
+    {
+        error: 'Carrito vacío, no se puede completar la orden'
+    }
+````
+
+## Productos
+### GET - api/products/
+- Descripción: No necesita una autenticación previa. Devuelve todos los productos
+- Response:
+- '200': Respuesta exitosa
+````javascript
+    {
+        _id: string|number, 
+        nombre: string,
+        descripcion: string,
+        codigo: string,
+        fotos: string[],
+        precio: number,
+        stock: number,
+        timestamp: Date,
+        idCategoria: string
+    }
+````
+- '400': No se encuentran productos
+````javascript
+    {
+        error: 'No se encuentran productos'
+    }
+````
+
+### GET - api/products/{:category}
+- Descripción: No necesita una autenticación previa. Devuelve los productos de la categoría pedida (id de categoría)
+- Request param: id de categoría
+- Response:
+- '200': Respuesta exitosa
+````javascript
+    {
+        _id: string|number, 
+        nombre: string,
+        descripcion: string,
+        codigo: string,
+        fotos: string[],
+        precio: number,
+        stock: number,
+        timestamp: Date,
+        idCategoria: string
+    }
+````
+- '400': No se encuentra el id de categoría
+````javascript
+    {
+        error: 'No se encuentra el id de categoría'
+    }
+````
+
+### POST - api/products/
+- Descripción: Necesita de autenticación previa. Debe ser admin.
+Agrega un producto a la lista de productos
+- Request body: 
+````javascript
+    {
+        nombre: string,
+        descripcion: string,
+        codigo: string,
+        fotos: string[],
+        precio: number,
+        stock: number,
+        idCategoria: string
+    }
+````
+
+- Response:
+- '200': Respuesta exitosa
+````javascript
+    {
+        _id: string|number, 
+        nombre: string,
+        descripcion: string,
+        codigo: string,
+        fotos: string[],
+        precio: number,
+        stock: number,
+        timestamp: Date,
+        idCategoria: string
+    }
+````
+- '400': Errores de validación. Ver `Modelos`
+````javascript
+    {
+        error: 'El código debe contener 3 caracteres mínimo'
+    }
+````
+- '400': No se enviaron los datos del producto
+````javascript
+    {
+        error: 'No hay datos'
+    }
+````
+
+### PUT - api/products/{:productId}
+- Descripción: Necesita de autenticación previa. Debe ser admin.
+Modifica los datos del producto
+- Request param: id del producto
+- Request body: 
+````javascript
+    {
+        nombre: string,
+        descripcion: string,
+        codigo: string,
+        fotos: string[],
+        precio: number,
+        stock: number,
+        timestamp: Date
+        idCategoria: string
+    }
+````
+
+- Response:
+- '200': Respuesta exitosa
+````javascript
+    {
+        msg: 'Producto modificado ${id}'
+    }
+````
+- '400': Errores de validación. Ver `Modelos`
+````javascript
+    {
+        error: 'El código debe contener 3 caracteres mínimo'
+    }
+````
+
+### PUT - api/products/{:productId}
+- Descripción: Necesita de autenticación previa. Debe ser admin.
+Modifica los datos del producto
+- Request param: id del producto
+- Request body: 
+````javascript
+    {
+        nombre: string,
+        descripcion: string,
+        codigo: string,
+        fotos: string[],
+        precio: number,
+        stock: number,
+        timestamp: Date
+        idCategoria: string
+    }
+````
+
+- Response:
+- '200': Respuesta exitosa
+````javascript
+    {
+        msg: 'Producto modificado ${id}'
+    }
+````
+- '400': Errores de validación. Ver `Modelos`
+````javascript
+    {
+        error: 'El código debe contener 3 caracteres mínimo'
+    }
+````
+
+### PUT - api/products/{:productId}
+- Descripción: Necesita de autenticación previa. Debe ser admin.
+Modifica los datos del producto
+- Request param: id del producto
+- Request body: 
+````javascript
+    {
+        nombre: string,
+        descripcion: string,
+        codigo: string,
+        fotos: string[],
+        precio: number,
+        stock: number,
+        timestamp: Date
+        idCategoria: string
+    }
+````
+
+- Response:
+- '200': Respuesta exitosa
+````javascript
+    {
+        msg: 'Producto modificado ${id}'
+    }
+````
+- '400': Errores de validación. Ver `Modelos`
+````javascript
+    {
+        error: 'El código debe contener 3 caracteres mínimo'
+    }
+````
+
+### DELETE - api/products/{:productId}
+- Descripción: Necesita de autenticación previa. Debe ser admin.
+Elimina el producto
+- Request param: id del producto
+
+- Response:
+- '200': Respuesta exitosa
+````javascript
+    {
+        msg: 'Producto eliminado'
+    }
+````
+- '400': No se encuentra el producto con ese id
+````javascript
+    {
+        error: 'No existe el producto'
+    }
+````
+
+
+## Login
+### GET - api/user/login
+- Descripción: Genera un token de sesión para acceder a las rutas segurizadas
+- Request body:
+````javascript
+    {
+        username: string,
+        password: string
+    }
+````
+- Response:
+- '200': Respuesta exitosa
+````javascript
+    {
+        username: string,
+        token: string
+        admin: boolean
+    }
+````
+- '401': No autorizado
+````javascript
+    {
+        error: 'Error en usuario o contraseña'
+    }
+````
+- '400': Error en validación de los datos
+````javascript
+    {
+        error: 'Password debe contener 8 caracteres'
+    }
+````
+### POST - api/user/signup
+- Descripción: Da de alta un usuario para el posterior login. Crea el carrito por default del usuario
+- Request body:
+````javascript
+    {
+        name: string,
+        surname: string,
+        username: string,
+        password: string,
+        passwordConfirmation: string,
+        tel: number,
+        direccion: {
+            calle: string,
+            altura: number,
+            codigoPostal: string,
+            piso?: number,
+            departamento?: string|number,
+        },
+        admin: boolean
+    }
+````
+- Response:
+- '201': Respuesta exitosa
+````javascript
+    {
+        name: string,
+        surname: string,
+        username: string,
+        password: string,
+        passwordConfirmation: string,
+        tel: number,
+        direccion: {
+            calle: string,
+            altura: number,
+            codigoPostal: string,
+            piso: number,
+            departamento: string|number,
+        },
+        admin: boolean
+    }
+````
+- '400': Error en validación de los datos
+````javascript
+    {
+        error: 'Password debe contener 8 caracteres'
+    }
+````
+
+### POST - api/user/signup
+- Descripción: Da de alta un usuario para el posterior login. Crea el carrito por default del usuario
+- Request body:
+````javascript
+    {
+        name: string,
+        surname: string,
+        username: string,
+        password: string,
+        passwordConfirmation: string,
+        tel: number,
+        direccion: {
+            calle: string,
+            altura: number,
+            codigoPostal: string,
+            piso?: number,
+            departamento?: string|number,
+        },
+        admin: boolean
+    }
+````
+- Response:
+- '201': Respuesta exitosa
+````javascript
+    {
+        name: string,
+        surname: string,
+        username: string,
+        password: string,
+        passwordConfirmation: string,
+        tel: number,
+        direccion: {
+            calle: string,
+            altura: number,
+            codigoPostal: string,
+            piso: number,
+            departamento: string|number,
+        },
+        admin: boolean
+    }
+````
+- '400': Error en validación de los datos
+````javascript
+    {
+        error: 'Password debe contener 8 caracteres'
+    }
+````
+## Images
+### POST - api/images/upload
+- Descripción: Da de alta las imágenes (máximo 2 archivos) del producto. Debe estar loggeado y ser admin
+- Request files: archivos de imágen (png, jpg, etc.)
+- Request body:
+````javascript
+    {
+        prodId: string,
+    }
+````
+- Response:
+- '201': Respuesta exitosa
+- '400': No se encuentra el/los file/s
+````javascript
+    {
+        error: 'No subió archivos'
+    }
+````
+- '400': Falta el prodId del body
+````javascript
+    {
+        error: 'Falta prodId'
+    }
+````
+
+### GET - api/images/{id}
+- Descripción: Permite acceder a una imagenes
+- Request param: nombre del archivo de la imagen. El nombre se encuentra en el array productos.fotos
+
+- Response:
+- '200': URL de la imagen
+- '404': No se encuentra el/los file/s
+````javascript
+    {
+        error: 'No se encuentra'
+    }
+````
+
+### DELETE - api/images/{id}
+- Descripción: Debe ser admin y estar autenticado. 
+- Request param: nombre del archivo de la imagen. El nombre se encuentra en el array productos.fotos
+- Response:
+- '200': Respuesta exitosa
+- '404': No se encuentra el/los file/s
+````javascript
+    {
+        error: 'No se encuentra'
+    }
+````
+
+
 
 # Modelos
 ## User
@@ -116,7 +770,9 @@ Response:
 - 400: Cantidad inválida
 - 400: Producto no existente por id
 - 400: Stock insuficiente para el producto
-- 200: {carrito}
+- 200: {
+    
+}
 
 ### deleteCarrito
 Quita productos del carrito. Recibe del body el prodId y la cantidad.
@@ -134,7 +790,27 @@ Devuelve el carrito del usuario. No recibe ningún parámetro ya que utiliza la 
 
 Response:
 - 400: No se encuentra loggeado el usuario
-- 200: {carrito}
+- 200: 
+````javascript
+    {
+        _id: string,
+        userId: string,
+        productos: [{
+            _id: string,
+            itemId: string,
+            cantidad: number,
+            timestamp: Date
+        }],
+        timestamp: Date, // fecha de creación y update
+        direccion: {
+            calle: string,
+            altura: number,
+            codigoPostal: string,
+            piso?: number,
+            departamento?: string|number,
+        }
+    }
+````
 
 ### submit
 Da por completada la orden. Para ello, totaliza la factura.
@@ -312,6 +988,9 @@ Response:
 ### validacionProd (middleWare)
 
 Middleware hecho en Joi para la validación de los tipos y requisitos del objeto Producto
+
+# Vistas
+Generadas con handlebars
 
 # Servicios
 ## Logger

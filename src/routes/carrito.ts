@@ -3,77 +3,91 @@ import {Carrito} from '../controllers/ClassCarrito';
 
 const router = express.Router();
 
+// Routes
 /**
  * @swagger
- * api/carrito/:
- *   get:
- *     summary: Devuelve el carrito por ID de usuario
- *     responses:
- *       200:
- *         description: success response
- *         content:
- *           application/json:
- *             schema:
- *               type: object
+ * /api/carrito/:
+ *  get:
+ *    summary: Devuelve el carrito del usuario
+ *    parameters:
+ *    - in: path
+ *      name: name
+ *      schema:
+ *        type: string
+ *      required: true
+ *    request body:
+ *    description: Devuelve el carrito del usuario. Necesita estar logeado
+ *    responses:
+ *      '200':
+ *        description: Respuesta exitosa.
+ *        content: 
+ *          application/json:
+ *            schema:
+ *               type: Object 
  *               properties:
- *                 userId: 
+ *                 _id:
+ *                   type: string
+ *                 userId:
  *                   type: string
  *                 productos:
- *                   type: object
- *                 timestamp: 
+ *                   type: array
+ *                 timestamp:
  *                   type: date
  *                 direccion:
  *                   type: object
- *       404:
- *         description: No hay carritos
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 error:
- *                   type: String
- *                   example: No hay carritos
- *       403:
- *         description: Error
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 error:
- *                   type: String
- *                   example: Error
+ *      '400':
+ *        description: No se encuentra logueado el usuario.
+ *        content: 
+ *          application/json:
+ *            schema:
+ *               type: Object 
+ *               example: No se encuentra logueado el usuario
+ *                  
+ * 
  */
-router.get('/', Carrito.getCarritoByUsername);
+
 
 /**
  * @swagger
- * api/carrito/add/:
- *   get:
- *     summary: agrega un carrito con userId
- *     responses:
- *       200:
- *         description: success response
- *         content:
- *           application/json:
- *             schema:
+ * /api/carrito/add:
+ *  post:
+ *    summary: agrega cantidades de productos al carrito del usuario
+ *    request body:
+ *      content:
+ *        application/json:
+ *          schema:
+ *             type: Object
+ *             properties:
+ *               prodId:
+ *                 type: string
+ *    description: agrega cantidades de productos al carrito del usuario
+ *    responses:
+ *      '200':
+ *        description: Respuesta exitosa.
+ *        content: 
+ *          application/json:
+ *            schema:
  *               type: Object 
  *               properties:
- *                 data:
+ *                 _id:
+ *                   type: string
+ *                 userId:
+ *                   type: string
+ *                 productos:
  *                   type: array
- *                   items: 
- *       404:
- *         description: No existe el usuario con ese id
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 error:
- *                   type: String
- *                   example: No existe el usuario con ese id
- *
+ *                 timestamp:
+ *                   type: date
+ *                 direccion:
+ *                   type: object
+ *      '400':
+ *        description: No se encuentra logueado el usuario.
+ *        content: 
+ *          application/json:
+ *            schema:
+ *               type: Object 
+ *               example: No se encuentra logueado el usuario
+ *                  
+ * 
  */
 
 
@@ -152,21 +166,8 @@ router.post('/submit', Carrito.submit);
  *                   example: Campos del body invalidos
  *
  */
-router.delete('/delete', Carrito.deleteCarrito);
+router.post('/delete', Carrito.deleteCarrito);
 
-// async (req:Request, res:Response)=> {
-//     res.json(await Carrito.deleteCarritoAll());
-// })
 
-//router.delete('/borrar/:id', Carrito.deleteCarritoById);
-// async (req: Request,res:Response)=> {
-//     res.json(await Carrito.deleteCarritoById(Number(req.params.id)))
-// })
-
-// router.get('/', (req, res)=> {
-//     res.render('crud')
-// })
-
-// router.get('/vaciar', Carrito.vaciarCarrito);
 
 export default router;

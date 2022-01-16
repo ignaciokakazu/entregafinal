@@ -59,9 +59,17 @@ export class CarritoMongoDAO {//implements ProductBaseClass {
     return await this.carrito.findOne({userId: id}).exec();
   }
 
-  async updateCarrito(carrito:any) {
-    console.log(carrito)
-    return await this.carrito.findOneAndReplace({_id: carrito._id}, carrito)
+  async updateCarrito(carrito:any, carritoId:any) {
+    await this.carrito.findOneAndReplace({_id: carritoId}, carrito) /*,
+      function(err:any,result:any){
+        if(err){
+          console.log('error')
+          console.log(err)
+        } else {
+          console.log(result)
+        }
+      });*/
+      return
   }
 
   async setCarrito(userId:any){
